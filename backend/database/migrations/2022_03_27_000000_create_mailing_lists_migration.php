@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Schema;
 define('DB_TABLE_NAME', 'mailing_lists');
 
 
+// Code Function
 /**
  * 
  */
@@ -41,3 +42,5 @@ return new class extends Migration
         Schema::dropIfExists( DB_TABLE_NAME );
     }
 };
+
+?>

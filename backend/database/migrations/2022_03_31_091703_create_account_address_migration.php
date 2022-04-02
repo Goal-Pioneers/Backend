@@ -49,3 +49,5 @@ return new class extends Migration
         Schema::dropIfExists( DB_TABLE_NAME );
     }
 };
+
+?>

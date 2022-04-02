@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Schema;
 define('DB_TABLE_NAME', 'address_city');
 
 
+// Code Function
 /**
  * 
  */
@@ -49,3 +50,5 @@ return new class extends Migration
         Schema::dropIfExists( DB_TABLE_NAME );
     }
 };
+
+?>

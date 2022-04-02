@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Schema;
 define('DB_TABLE_NAME', 'failed_jobs');
 
 
+// Code Function
 /**
  * 
  */
@@ -44,3 +45,5 @@ return new class extends Migration
         Schema::dropIfExists( DB_TABLE_NAME );
     }
 };
+
+?>
