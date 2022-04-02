@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Code Preperation
+define('DB_TABLE_NAME', 'mailing_lists');
+
 
 /**
  * 
@@ -18,7 +21,7 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create( 'mailing_lists', 
+        Schema::create( DB_TABLE_NAME, 
             function ( Blueprint $table ) 
             {
                 $table->id();
@@ -35,6 +38,6 @@ return new class extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists( 'mailing_lists' );
+        Schema::dropIfExists( DB_TABLE_NAME );
     }
 };

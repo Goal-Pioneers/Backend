@@ -4,6 +4,10 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Code Preperation
+define('DB_TABLE_NAME', 'failed_jobs');
+
+
 /**
  * 
  */
@@ -16,7 +20,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create( 'failed_jobs', 
+        Schema::create( DB_TABLE_NAME, 
             function ( Blueprint $table ) 
             {
                 $table->id();
@@ -37,6 +41,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists( DB_TABLE_NAME );
     }
 };

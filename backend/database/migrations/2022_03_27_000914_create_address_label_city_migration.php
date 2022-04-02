@@ -4,6 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+// Code Preperation
+define('DB_TABLE_NAME', 'address_label_city');
+
+
+
 return new class extends Migration
 {
     /**
@@ -13,7 +18,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create( 'address_label_city', 
+        Schema::create( DB_TABLE_NAME, 
             function( Blueprint $table ) 
             {
                 $table->id();
@@ -29,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('address_label_city');
+        Schema::dropIfExists( DB_TABLE_NAME );
     }
 };
