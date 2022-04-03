@@ -1,25 +1,33 @@
 <?php
 
-namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+    namespace App\Http\Requests;
+
+    use Illuminate\Foundation\Http\FormRequest;
+
+    use App\Http\Requests\OnlySecureRequest;
 
 
-class AccountLoginRequest 
-    extends FormRequest
-{
-    final public function authorize(): bool
+    /**
+     * 
+     */
+    class AccountLoginRequest 
+        extends OnlySecureRequest
     {
-        return $this->secure();
+        final public function inputAuthorization(): bool
+        {
+            return  !is_null( $this->bearerToken() );
+        }
+
+        
+        final public function rules()
+        {
+            return 
+            [
+                'username' => 'required',
+                'password' => 'required',
+            ];
+        }
     }
 
-    
-    final public function rules()
-    {
-        return 
-        [
-            'username' => 'required',
-            'password' => 'required',
-        ];
-    }
-}
+?>

@@ -1,20 +1,21 @@
 <?php
 
+
     namespace App\Http\Requests;
 
-
     use Illuminate\Foundation\Http\FormRequest;
-
+    
+    use App\Http\Requests\OnlySecureRequest;
 
     /**
      * 
      */
     class AccountRegisterRequest 
-        extends FormRequest
+        extends OnlySecureRequest
     {
-        final public function authorize(): bool
+        final public function inputAuthorization(): bool
         {
-            return $this->secure();
+            return  !is_null( $this->bearerToken() );
         }
 
 

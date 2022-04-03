@@ -3,16 +3,15 @@
     namespace App\Http\Requests;
 
     use Illuminate\Foundation\Http\FormRequest;
-
+    use App\Http\Requests\OnlyJSONRequest;
     
     class SubscriptionRequest 
-        extends FormRequest
+        extends OnlyJSONRequest
     {
 
-        final public function authorize(): bool
+        final public function inputAuthorization(): bool
         {
-            return  $this->secure() && 
-                    !is_null( $this->bearerToken() );
+            return  !is_null( $this->bearerToken() );
         }
 
 

@@ -72,28 +72,6 @@
             return False;
         }
 
-
-        /**
-         * 
-         
-        final public function hasBearerToken( Request $request ): bool 
-        {
-            return is_null( $request->bearerToken() ) === False );
-        }
-
-
-        
-         * Checks if the current request is over https and if the request has a token
-         * ie. is safe for usage. 
-        
-        final public function isSafe( Request $request ): bool 
-        {
-            // Determine if request is HTTPS
-            return $request->secure() && self::hasBearerToken();
-        }
-        */
-
-
     }
 
 ?>
