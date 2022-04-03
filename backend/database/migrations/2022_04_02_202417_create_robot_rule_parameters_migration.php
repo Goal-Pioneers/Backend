@@ -4,12 +4,10 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-
-/**
- * 
- */
 return new class extends Migration
 {
+    const DB_TABLE_NAME = 'robot_rule_parameters';
+
     /**
      * Run the migrations.
      *
@@ -17,23 +15,15 @@ return new class extends Migration
      */
     public function up()
     {
-        //
-        Schema::create( 'address', 
+        Schema::create( self::DB_TABLE_NAME, 
             function ( Blueprint $table ) 
             {
-                $table->id(); 
-
-                $table->bigInteger('address_city_id')->unsigned();
-
-                $table->string('address_number');
-
-                $table->foreign('address_city_id')->references('id')->on('address_city');
-
+                $table->id();
+                $table->timestamps();
             }
         );
     }
 
-    
     /**
      * Reverse the migrations.
      *
@@ -41,7 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
-        Schema::dropIfExists('address');
+        Schema::dropIfExists( self::DB_TABLE_NAME );
     }
 };

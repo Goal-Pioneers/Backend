@@ -1,48 +1,55 @@
 <?php
 
+// Needed Libraries
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 
+// Code Function
 /**
  * 
  */
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    return new class extends Migration
     {
-        //
-        Schema::create( 'address_city', 
-            function ( Blueprint $table ) 
-            {
-                $table->id(); 
+        // Code Preperation
+        const DB_TABLE_NAME = 'address_city';
 
-                $table->bigInteger('address_label_country_id')->unsigned();
-                $table->bigInteger('address_province_id')->unsigned();
+        /**
+         * Run the migrations.
+         *
+         * @return void
+         */
+        public function up()
+        {
+            //
+            Schema::create( self::DB_TABLE_NAME, 
+                function ( Blueprint $table ) 
+                {
+                    $table->id(); 
 
-                $table->bigInteger('city_name_id')->unsigned()->unique();
+                    $table->bigInteger('address_label_country_id')->unsigned();
+                    $table->bigInteger('address_province_id')->unsigned();
 
-                $table->foreign('address_label_country_id')->references('id')->on('address_label_country');
-                $table->foreign('address_province_id')->references('id')->on('address_city_province');
-                $table->foreign('city_name_id')->references('id')->on('address_label_city');
-            }
-        );
-    }
+                    $table->bigInteger('city_name_id')->unsigned()->unique();
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        //
-        Schema::dropIfExists('address_city');
-    }
-};
+                    $table->foreign('address_label_country_id')->references('id')->on('address_label_country');
+                    $table->foreign('address_province_id')->references('id')->on('address_city_province');
+                    $table->foreign('city_name_id')->references('id')->on('address_label_city');
+                }
+            );
+        }
+
+        /**
+         * Reverse the migrations.
+         *
+         * @return void
+         */
+        public function down()
+        {
+            //
+            Schema::dropIfExists( self::DB_TABLE_NAME );
+        }
+    };
+
+?>

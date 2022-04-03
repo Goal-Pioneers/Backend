@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\Schema;
  */
     return new class extends Migration
     {
+        
         // Code Preperation
-        const DB_TABLE_NAME = 'password_resets';
+        const DB_TABLE_NAME = 'account_address';
 
         /**
          * Run the migrations.
@@ -22,21 +23,23 @@ use Illuminate\Support\Facades\Schema;
          */
         public function up()
         {
+            //
             Schema::create( self::DB_TABLE_NAME, 
                 function ( Blueprint $table ) 
                 {
-                    $table->id();
+                    $table->id(); 
 
-                    $table->bigInteger('email_id')->unsigned()->index();
+                    $table->bigInteger('address_city_id')->unsigned();
 
-                    $table->string('token');
-                    
-                    $table->timestamp('created_at')->nullable()->useCurrent();
-                    $table->foreign('email_id')->references('id')->on('mailing_lists');
+                    $table->string('address_number');
+
+                    $table->foreign('address_city_id')->references('id')->on( 'address_city' );
+
                 }
             );
         }
 
+        
         /**
          * Reverse the migrations.
          *
@@ -44,8 +47,8 @@ use Illuminate\Support\Facades\Schema;
          */
         public function down()
         {
+            //
             Schema::dropIfExists( self::DB_TABLE_NAME );
         }
     };
-
 ?>

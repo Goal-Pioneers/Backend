@@ -4,12 +4,10 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-
-/**
- * 
- */
 return new class extends Migration
 {
+    public const DB_TABLE_NAME = 'sitemap';
+
     /**
      * Run the migrations.
      *
@@ -17,12 +15,11 @@ return new class extends Migration
      */
     public function up()
     {
-        //
-        Schema::create( 'address_label_province', 
+        Schema::create( self::DB_TABLE_NAME, 
             function ( Blueprint $table ) 
             {
-                $table->id(); 
-                $table->string('province_name')->unique();
+                $table->id();
+                $table->timestamps();
             }
         );
     }
@@ -34,7 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
-        Schema::dropIfExists('address_label_province');
+        Schema::dropIfExists( self::DB_TABLE_NAME );
     }
 };
