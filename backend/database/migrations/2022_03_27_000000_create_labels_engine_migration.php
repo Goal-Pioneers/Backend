@@ -1,9 +1,9 @@
 <?php
-
 // Needed Libraries
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+
 
     // Code function
     /**
@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Schema;
     return new class extends Migration
     {
         // Code Preperation
-        const DB_TABLE_NAME_1 = 'mailing_lists';
-        const DB_TABLE_NAME_5 = 'label_robot_rule';
+        const DB_TABLE_NAME_MAILING_LIST        = 'mailing_lists';
+        const DB_TABLE_NAME_ROBOT_RULE_LABEL    = 'label_robot_rule';
 
 
         /**
@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Schema;
         public function up()
         {
             //
-            Schema::create( self::DB_TABLE_NAME_1, 
+            Schema::create( self::DB_TABLE_NAME_MAILING_LIST, 
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -32,7 +32,7 @@ use Illuminate\Support\Facades\Schema;
                 }
             );
 
-            Schema::create( self::DB_TABLE_NAME_5, 
+            Schema::create( self::DB_TABLE_NAME_ROBOT_RULE_LABEL, 
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -50,9 +50,8 @@ use Illuminate\Support\Facades\Schema;
         public function down()
         {
             //
-            Schema::dropIfExists( self::DB_TABLE_NAME_1 );
-            Schema::dropIfExists( self::DB_TABLE_NAME_5 );
+            Schema::dropIfExists( self::DB_TABLE_NAME_MAILING_LIST );
+            Schema::dropIfExists( self::DB_TABLE_NAME_ROBOT_RULE_LABEL );
         }
     };
-
 ?>

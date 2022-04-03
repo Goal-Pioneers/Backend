@@ -1,5 +1,4 @@
 <?php
-
 // Needed Libraries
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,8 +12,8 @@ use Illuminate\Support\Facades\Schema;
     return new class extends Migration
     {   
         // Code Preperation
-        const DB_TABLE_NAME_1 = 'subscription_category';
-        const DB_TABLE_NAME_2 = 'subscriptions';
+        const DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY = 'subscription_category';
+        const DB_TABLE_NAME_SUBSCRIPTION                = 'subscriptions';
         
         
         /**
@@ -25,7 +24,7 @@ use Illuminate\Support\Facades\Schema;
         public function up()
         {
             //
-            Schema::create( self::DB_TABLE_NAME_1, 
+            Schema::create( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY, 
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -34,7 +33,7 @@ use Illuminate\Support\Facades\Schema;
             );
 
 
-            Schema::create( self::DB_TABLE_NAME_2, 
+            Schema::create( self::DB_TABLE_NAME_SUBSCRIPTION, 
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -59,9 +58,8 @@ use Illuminate\Support\Facades\Schema;
         public function down()
         {
             //
-            Schema::dropIfExists( self::DB_TABLE_NAME_1 );
-            Schema::dropIfExists( self::DB_TABLE_NAME_2 );
+            Schema::dropIfExists( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY );
+            Schema::dropIfExists( self::DB_TABLE_NAME_SUBSCRIPTION );
         }
     }; 
-
 ?>

@@ -1,5 +1,4 @@
 <?php
-
 // Needed Libraries
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -86,5 +85,4 @@ use Illuminate\Support\Facades\Schema;
             Schema::dropIfExists( self::DB_TABLE_NAME_PASSWORD_RESET );
         }
     };
-
 ?>

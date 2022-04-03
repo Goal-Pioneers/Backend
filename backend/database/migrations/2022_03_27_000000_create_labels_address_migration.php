@@ -1,5 +1,4 @@
 <?php
-
 // Needed Libraries
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -12,9 +11,10 @@ use Illuminate\Support\Facades\Schema;
      */
     return new class extends Migration
     {
-        const DB_TABLE_NAME_PROVINCE = 'address_label_province';
-        const DB_TABLE_NAME_COUNTRY = 'address_label_country';
-        const DB_TABLE_NAME_CITY = 'address_label_city';
+        const DB_TABLE_NAME_PROVINCE    = 'address_label_province';
+        const DB_TABLE_NAME_COUNTRY     = 'address_label_country';
+        const DB_TABLE_NAME_CITY        = 'address_label_city';
+        
         
         /**
          * Run the migrations.
@@ -31,6 +31,7 @@ use Illuminate\Support\Facades\Schema;
                 }
             );
 
+
             Schema::create( self::DB_TABLE_NAME_CITY, 
                 function( Blueprint $table ) 
                 {
@@ -38,6 +39,7 @@ use Illuminate\Support\Facades\Schema;
                     $table->string('city_name')->unique();
                 }
             );
+
 
             Schema::create( self::DB_TABLE_NAME_PROVINCE, 
                 function ( Blueprint $table ) 
@@ -61,5 +63,4 @@ use Illuminate\Support\Facades\Schema;
             Schema::dropIfExists( self::DB_TABLE_NAME_PROVINCE );
         }
     };
-
 ?>

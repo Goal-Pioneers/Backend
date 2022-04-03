@@ -1,5 +1,4 @@
 <?php
-
 // Needed Libraries
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -12,9 +11,10 @@ use Illuminate\Support\Facades\Schema;
      */
     return new class extends Migration
     {
-        const DB_TABLE_NAME_PARAMETER_RULES = 'robot_rule_parameters';
-        const DB_TABLE_NAME_ROBOT_PARAMETERS = 'robot_parameters';
-        const DB_TABLE_NAME_SITEMAP = 'sitemap';
+        const DB_TABLE_NAME_PARAMETER_RULES     = 'robot_rule_parameters';
+        const DB_TABLE_NAME_ROBOT_PARAMETERS    = 'robot_parameters';
+        const DB_TABLE_NAME_SITEMAP             = 'sitemap';
+
 
         /**
          * Run the migrations.
@@ -31,6 +31,7 @@ use Illuminate\Support\Facades\Schema;
                 }
             );
 
+
             Schema::create( self::DB_TABLE_NAME_ROBOT_PARAMETERS, 
                 function ( Blueprint $table ) 
                 {
@@ -38,6 +39,7 @@ use Illuminate\Support\Facades\Schema;
                     $table->timestamps();
                 }
             );
+
 
             Schema::create( self::DB_TABLE_NAME_SITEMAP, 
                 function ( Blueprint $table ) 
@@ -48,6 +50,7 @@ use Illuminate\Support\Facades\Schema;
             );
         }
 
+        
         /**
          * Reverse the migrations.
          *
@@ -60,5 +63,4 @@ use Illuminate\Support\Facades\Schema;
             Schema::dropIfExists( self::DB_TABLE_NAME_SITEMAP );
         }
     };
-
 ?>
