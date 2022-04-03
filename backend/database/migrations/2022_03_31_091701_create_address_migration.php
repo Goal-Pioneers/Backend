@@ -6,10 +6,10 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 
-// Code Function
-/**
- * 
- */
+    // Code function
+    /**
+     * 
+     */
     return new class extends Migration
     {
         // Code Preperation
