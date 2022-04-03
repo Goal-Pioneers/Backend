@@ -1,87 +1,69 @@
 <?php
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Validator;
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\Hash;
 
-use App\Models\User;
+    use Validator;
 
-
-/**
- * 
- */
-class AccountController 
-    extends Controller
-{
-    public function register( Request $request )
-    {
-        self::logClientIP( $request );
-        
-        $validator = Validator::make( $request->all(), 
-            [
-                'username'          => 'required',
-                'mail'             => 'required|email',
-                'password'          => 'required',
-                'confirm_password'  => 'required|same:password',
-            ]
-        );
-
-        if( $validator->fails() )
-        {
-            return response()->json( $validator->errors() );       
-        }
-
-        $inputModel = $request->all();
-        $inputModel['email'] = $request->input('mail');
-        $inputModel['password'] = Hash::make( $inputModel['password'] );
-
-        $account = User::create( $inputModel );
-
-        $outputMessage['token']     = $account->createToken('account')->plainTextToken;
-        $outputMessage['username']  = $account->username;
-        $outputMessage['id']        = $account->id;
-
-        return response()->json($outputMessage, 200);
-    }
+    use App\Models\User;
     
+    use App\Http\Requests\AccountRegisterRequest;
+    use App\Http\Requests\AccountLoginRequest;
+
 
     /**
      * 
      */
-    public function login( Request $request )
+    class AccountController 
+        extends Controller
     {
-        self::logClientIP( $request );
-
-        $validator = Validator::make( $request->all(), 
-            [
-                'username'          => 'required',
-                'password'          => 'required',
-            ]
-        );
-
-        if( $validator->fails() )
+        /**
+         * 
+         */
+        final public function register( AccountRegisterRequest $request )
         {
-            return response()->json( $validator->errors() );       
+            self::logClientIP( $request );
+            
+            $inputModel = $request->all();
+            $inputModel['email'] = $request->input('mail');
+            $inputModel['password'] = Hash::make( $inputModel['password'] );
+
+            $account = User::create( $inputModel );
+
+            $outputMessage['token']     = $account->createToken('account')->plainTextToken;
+            $outputMessage['username']  = $account->username;
+            $outputMessage['id']        = $account->id;
+
+            return response()->json($outputMessage, 200);
         }
-
-        $outputMessage = null;
-
-        if( Auth::attempt( ['username' => $request->username, 'password' => $request->password] ) )
-        { 
-            $authUser = Auth::user(); 
-
-            $outputMessage['token']     =  $authUser->createToken( 'account' )->plainTextToken; 
-            $outputMessage['username']  =  $authUser->username;
-            $outputMessage['id']        = $authUser->id;
-        } 
-        else
-        { 
-            return response()->json('Unauthorised.', ['error'=>'Unauthorised']);
-        } 
         
-        return response()->json($outputMessage, 200);
+
+        /**
+         * 
+         */
+        final public function login( AccountLoginRequest $request )
+        {
+            self::logClientIP( $request );
+
+            $outputMessage = null;
+
+            if( Auth::attempt( ['username' => $request->username, 'password' => $request->password] ) )
+            { 
+                $authUser = Auth::user(); 
+
+                $outputMessage['token']     =  $authUser->createToken( 'account' )->plainTextToken; 
+                $outputMessage['username']  =  $authUser->username;
+                $outputMessage['id']        = $authUser->id;
+            } 
+            else
+            { 
+                return response()->json('Unauthorised.', ['error'=>'Unauthorised']);
+            } 
+            
+            return response()->json($outputMessage, 200);
+        }
     }
-}
+?>
