@@ -5,6 +5,7 @@
 
     use Illuminate\Foundation\Http\FormRequest;
 
+    
     class OnlySecureRequest 
         extends FormRequest
     {
