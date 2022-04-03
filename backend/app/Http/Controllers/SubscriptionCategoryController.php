@@ -34,8 +34,9 @@ class SubscriptionCategoryController
     /**
      * 
      */
-    public function page( $request )
+    public function page( Request $request )
     {
+        self::logClientIP( $request );
 
     }
 
@@ -45,6 +46,8 @@ class SubscriptionCategoryController
      */
     public function create( Request $request )
     {
+        self::logClientIP( $request );
+
         $mailRequest = $request->all();
 
         $validator = Validator::make( $mailRequest, [
@@ -69,6 +72,8 @@ class SubscriptionCategoryController
      */
     public function update( Request $request )
     {
+        self::logClientIP( $request );
+
         $model = SubscriptionCategoryModel::find( $request->input('id') );
 
         if( is_null( $model ) )
@@ -88,6 +93,8 @@ class SubscriptionCategoryController
      */
     public function delete( Request $request )
     {
+        self::logClientIP( $request );
+
         $subscriptionCategoryRequest = $request->all();
 
         $validator = Validator::make( $subscriptionCategoryRequest, [

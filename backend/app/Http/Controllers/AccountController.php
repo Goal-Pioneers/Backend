@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 
@@ -18,6 +18,8 @@ class AccountController
 {
     public function register( Request $request )
     {
+        self::logClientIP( $request );
+        
         $validator = Validator::make( $request->all(), 
             [
                 'username'          => 'required',
@@ -51,6 +53,8 @@ class AccountController
      */
     public function login( Request $request )
     {
+        self::logClientIP( $request );
+
         $validator = Validator::make( $request->all(), 
             [
                 'username'          => 'required',

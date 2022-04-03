@@ -1,6 +1,9 @@
 <?php
 
-return [
+    return 
+    [
+    // Explains what it is
+    // https://www.stackhawk.com/blog/laravel-cors/
 
     /*
     |--------------------------------------------------------------------------
@@ -14,21 +17,21 @@ return [
     | To learn more: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
     |
     */
-
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
+    //
     'allowed_methods' => ['*'],
 
+    //
     'allowed_origins' => ['*'],
-
     'allowed_origins_patterns' => [],
 
+    //
     'allowed_headers' => ['*'],
-
     'exposed_headers' => [],
 
-    'max_age' => 0,
-
+    // 60 * 60 * 8
+    'max_age' => 21600,
     'supports_credentials' => false,
-
-];
+    ];
+?>
