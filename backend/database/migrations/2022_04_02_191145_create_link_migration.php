@@ -13,6 +13,9 @@ return new class extends Migration
     const DB_TABLE_NAME_1 = 'alternate_subdomain';
     const DB_TABLE_NAME_2 = 'alternate_uri';
 
+    const DB_TABLE_NAME_3 = 'extern_link';
+    const DB_TABLE_NAME_4 = 'intern_link';
+
     /**
      * Run the migrations.
      *
