@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    const DB_TABLE_NAME = 'robot_rule_parameters';
+
     /**
      * Run the migrations.
      *
@@ -13,10 +15,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('robot_rule_parameters_migration', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        Schema::create( self::DB_TABLE_NAME, 
+            function ( Blueprint $table ) 
+            {
+                $table->id();
+                $table->timestamps();
+            }
+        );
     }
 
     /**
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('robot_rule_parameters_migration');
+        Schema::dropIfExists( self::DB_TABLE_NAME );
     }
 };
