@@ -4,11 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
+/**
+ * 
+ */
 return new class extends Migration
 {
-    const DB_TABLE_NAME_1 = 'robot_rule_parameters';
-    const DB_TABLE_NAME_2 = 'robot_parameters';
-    const DB_TABLE_NAME_3 = 'sitemap';
+    const DB_TABLE_NAME_PARAMETER_RULES = 'robot_rule_parameters';
+    const DB_TABLE_NAME_ROBOT_PARAMETERS = 'robot_parameters';
+    const DB_TABLE_NAME_SITEMAP = 'sitemap';
 
     /**
      * Run the migrations.
@@ -17,7 +21,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create( self::DB_TABLE_NAME_1, 
+        Schema::create( self::DB_TABLE_NAME_PARAMETER_RULES, 
             function ( Blueprint $table ) 
             {
                 $table->id();
@@ -25,7 +29,7 @@ return new class extends Migration
             }
         );
 
-        Schema::create( self::DB_TABLE_NAME_2, 
+        Schema::create( self::DB_TABLE_NAME_ROBOT_PARAMETERS, 
             function ( Blueprint $table ) 
             {
                 $table->id();
@@ -33,7 +37,7 @@ return new class extends Migration
             }
         );
 
-        Schema::create( self::DB_TABLE_NAME_3, 
+        Schema::create( self::DB_TABLE_NAME_SITEMAP, 
             function ( Blueprint $table ) 
             {
                 $table->id();
@@ -49,8 +53,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists( self::DB_TABLE_NAME_1 );
-        Schema::dropIfExists( self::DB_TABLE_NAME_2 );
-        Schema::dropIfExists( self::DB_TABLE_NAME_3 );
+        Schema::dropIfExists( self::DB_TABLE_NAME_PARAMETER_RULES );
+        Schema::dropIfExists( self::DB_TABLE_NAME_ROBOT_PARAMETERS );
+        Schema::dropIfExists( self::DB_TABLE_NAME_SITEMAP );
     }
 };

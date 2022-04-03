@@ -33,6 +33,7 @@ use Illuminate\Support\Facades\Schema;
                 }
             );
 
+
             Schema::create( self::DB_TABLE_NAME_2, 
                 function ( Blueprint $table ) 
                 {
@@ -49,6 +50,7 @@ use Illuminate\Support\Facades\Schema;
             );
         }
 
+        
         /**
          * Reverse the migrations.
          *
