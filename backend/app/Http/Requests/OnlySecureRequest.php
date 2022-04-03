@@ -9,8 +9,6 @@
     class OnlySecureRequest 
         extends FormRequest
     {
-        abstract public function inputAuthorization(): bool;
-
         /**
          * Determine if the user is authorized to make this request.
          *
@@ -18,8 +16,7 @@
          */
         final public function authorize(): bool
         {
-            return $this->secure() && 
-                   $this->inputAuthorization();
+            return $this->secure();
         }
     }
 

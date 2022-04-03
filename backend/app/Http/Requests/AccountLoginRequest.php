@@ -13,19 +13,32 @@
      */
     class AccountLoginRequest 
         extends OnlySecureRequest
-    {
-        final public function inputAuthorization(): bool
-        {
-            return  !is_null( $this->bearerToken() );
-        }
-
-        
+    {   
         final public function rules()
         {
             return 
             [
                 'username' => 'required',
                 'password' => 'required',
+            ];
+        }
+
+
+        final public function messages()
+        {
+            return 
+            [
+                'email.required' => 'Email is required!',
+                'password.required' => 'Password is required!'
+            ];
+        }
+
+
+        final public function filters()
+        {
+            return 
+            [
+                'email' => 'trim|lowercase'
             ];
         }
     }

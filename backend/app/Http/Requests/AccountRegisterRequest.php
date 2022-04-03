@@ -13,12 +13,6 @@
     class AccountRegisterRequest 
         extends OnlySecureRequest
     {
-        final public function inputAuthorization(): bool
-        {
-            return  !is_null( $this->bearerToken() );
-        }
-
-
         final public function rules()
         {
             return 
@@ -37,7 +31,9 @@
             return 
             [
                 'email.required' => 'Email is required!',
-                'password.required' => 'Password is required!'
+                'username.required'=> 'username is required!',
+                'password.required' => 'Password is required!',
+                'confirm_password.required' => 'confirm password is required!'
             ];
         }
 
@@ -46,7 +42,8 @@
         {
             return 
             [
-                'email' => 'trim|lowercase'
+                'email' => 'trim|lowercase',
+                'username' => 'trim|lowercase'
             ];
         }
     }
