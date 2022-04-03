@@ -1,12 +1,17 @@
 <?php
 
+// Needed Libraries
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
+// Code Function
 return new class extends Migration
 {
-    public const DB_TABLE_NAME = 'sitemap';
+    // Code Preperation
+    const DB_TABLE_NAME_1 = 'alternate_subdomain';
+    const DB_TABLE_NAME_2 = 'alternate_uri';
 
     /**
      * Run the migrations.
@@ -15,7 +20,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create( self::DB_TABLE_NAME, 
+        Schema::create( self::DB_TABLE_NAME_1, 
+            function ( Blueprint $table ) 
+            {
+                $table->id();
+                $table->timestamps();
+            }
+        );
+        
+        Schema::create( self::DB_TABLE_NAME_2, 
             function ( Blueprint $table ) 
             {
                 $table->id();
@@ -24,6 +37,7 @@ return new class extends Migration
         );
     }
 
+
     /**
      * Reverse the migrations.
      *
@@ -31,6 +45,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists( self::DB_TABLE_NAME );
+        Schema::dropIfExists( self::DB_TABLE_NAME_1 );
+        Schema::dropIfExists( self::DB_TABLE_NAME_2 );
     }
 };
