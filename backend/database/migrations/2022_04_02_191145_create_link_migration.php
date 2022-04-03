@@ -6,15 +6,18 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 
-// Code Function
-/**
- * 
- */
+    // Code function
+    /**
+     * 
+     */
     return new class extends Migration
     {
         // Code Preperation
-        const DB_TABLE_NAME = 'users';
+        const DB_TABLE_NAME_1 = 'alternate_subdomain';
+        const DB_TABLE_NAME_2 = 'alternate_uri';
 
+        const DB_TABLE_NAME_3 = 'extern_link';
+        const DB_TABLE_NAME_4 = 'intern_link';
 
         /**
          * Run the migrations.
@@ -23,25 +26,23 @@ use Illuminate\Support\Facades\Schema;
          */
         public function up()
         {
-            Schema::create( self::DB_TABLE_NAME, 
+            Schema::create( self::DB_TABLE_NAME_1, 
                 function ( Blueprint $table ) 
                 {
                     $table->id();
-                    $table->string('username');
-                    
-                    
-                    $table->bigInteger('email_id')->unsigned()->unique();
-                    $table->timestamp('email_verified_at')->nullable()->useCurrent();
-
-                    $table->string('password');
-                    $table->rememberToken();
                     $table->timestamps();
-
-                    $table->foreign('email_id')->references('id')->on('mailing_lists');
+                }
+            );
+            
+            Schema::create( self::DB_TABLE_NAME_2, 
+                function ( Blueprint $table ) 
+                {
+                    $table->id();
+                    $table->timestamps();
                 }
             );
         }
-        
+
 
         /**
          * Reverse the migrations.
@@ -50,7 +51,8 @@ use Illuminate\Support\Facades\Schema;
          */
         public function down()
         {
-            Schema::dropIfExists( self::DB_TABLE_NAME );
+            Schema::dropIfExists( self::DB_TABLE_NAME_1 );
+            Schema::dropIfExists( self::DB_TABLE_NAME_2 );
         }
     };
 
