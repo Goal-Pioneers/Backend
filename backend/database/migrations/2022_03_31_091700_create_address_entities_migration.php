@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Schema;
     return new class extends Migration
     {
         // Code Preperation
-        const DB_TABLE_NAME_ADDRESS_CITY     = 'entities_address_city';
-        const DB_TABLE_NAME_ADDRESS_PROVINCE = 'entities_address_city_province';
+        const DB_TABLE_NAME_ADDRESS_FIELD     = 'entities_address_field';
+        const DB_TABLE_NAME_POST_FIELD        = 'entities_post_field';
 
 
         /**
@@ -24,33 +24,32 @@ use Illuminate\Support\Facades\Schema;
         public function up()
         {
             //
-            Schema::create( self::DB_TABLE_NAME_ADDRESS_PROVINCE, 
+            Schema::create( self::DB_TABLE_NAME_POST_FIELD, 
                 function ( Blueprint $table ) 
                 {
-                    $table->id(); 
+                    $table->id();
 
-                    $table->bigInteger('address_label_province_id')->unsigned();
-                    $table->integer('postal_code')->unsigned();
-                    
-                    $table->foreign( 'address_label_province_id' )->references( 'id' )->on( 'address_label_province' );
+                    $table->integer('zip_code')->unsigned()->index();
+                    $table->bigInteger( 'region_id' )->unsigned();
+
+                    $table->foreign('region_id')->references('id')->on('label_address_region');
                 }
             );
 
 
             //
-            Schema::create( self::DB_TABLE_NAME_ADDRESS_CITY, 
+            Schema::create( self::DB_TABLE_NAME_ADDRESS_FIELD, 
                 function ( Blueprint $table ) 
                 {
                     $table->id(); 
 
-                    $table->bigInteger('address_label_country_id')->unsigned();
-                    $table->bigInteger('address_province_id')->unsigned();
-
-                    $table->bigInteger('city_name_id')->unsigned()->unique();
-
-                    $table->foreign('address_label_country_id')->references('id')->on('address_label_country');
-                    $table->foreign('address_province_id')->references('id')->on('entities_address_city_province');
-                    $table->foreign('city_name_id')->references('id')->on('address_label_city');
+                    $table->bigInteger( 'roadname_id' )->unsigned();
+                    $table->integer( 'road_number' )->unsigned();
+                    $table->integer( 'level' )->unsigned();
+                    $table->bigInteger( 'apartment_id' )->unsigned();
+                    
+                    $table->foreign('roadname_id')->references('id')->on('label_address_roadname');
+                    $table->foreign('apartment_id')->references('id')->on('label_address_apartment');
                 }
             );
         }
@@ -64,8 +63,8 @@ use Illuminate\Support\Facades\Schema;
         public function down()
         {
             //
-            Schema::dropIfExists( self::DB_TABLE_NAME_ADDRESS_CITY );
-            Schema::dropIfExists( self::DB_TABLE_NAME_ADDRESS_PROVINCE );
+            Schema::dropIfExists( self::DB_TABLE_NAME_ADDRESS_FIELD );
+            Schema::dropIfExists( self::DB_TABLE_NAME_POST_FIELD );
         }
     };
 ?>
