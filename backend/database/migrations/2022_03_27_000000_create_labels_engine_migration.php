@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Schema;
         // Code Preperation
         const DB_TABLE_NAME_MAILING_LIST        = 'mailing_lists';
         const DB_TABLE_NAME_ROBOT_RULE_LABEL    = 'label_robot_rule';
+        const DB_TABLE_NAME_URL_LIST            = 'label_url_list';
 
 
         /**
@@ -32,7 +33,17 @@ use Illuminate\Support\Facades\Schema;
                 }
             );
 
+
             Schema::create( self::DB_TABLE_NAME_ROBOT_RULE_LABEL, 
+                function ( Blueprint $table ) 
+                {
+                    $table->id();
+                    $table->string('content')->unique();
+                }
+            );
+            
+
+            Schema::create( self::DB_TABLE_NAME_URL_LIST, 
                 function ( Blueprint $table ) 
                 {
                     $table->id();
@@ -52,6 +63,7 @@ use Illuminate\Support\Facades\Schema;
             //
             Schema::dropIfExists( self::DB_TABLE_NAME_MAILING_LIST );
             Schema::dropIfExists( self::DB_TABLE_NAME_ROBOT_RULE_LABEL );
+            Schema::dropIfExists( self::DB_TABLE_NAME_URL_LIST );
         }
     };
 ?>
