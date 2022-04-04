@@ -31,16 +31,18 @@ use Illuminate\Support\Facades\Schema;
                     $table->bigInteger( 'address_field_1_id' )->unsigned();
                     $table->bigInteger( 'address_field_2_id' )->unsigned()->nullable();
                     
-                    $table->bigInteger( 'address_city_id' )->unsigned();
-                    $table->bigInteger( 'address_post_field_id' )->unsigned();
-                    $table->bigInteger( 'address_country_id' )->unsigned();
+                    $table->bigInteger( 'city_id' )->unsigned();
+                    $table->bigInteger( 'post_field_id' )->unsigned()->index();
+                    $table->bigInteger( 'country_id' )->unsigned();
 
                     
                     $table->foreign('address_field_1_id')->references('id')->on('entities_address_field');
                     $table->foreign('address_field_2_id')->references('id')->on('entities_address_field');
-                    $table->foreign('address_city_id')->references('id')->on('label_address_city');
-                    $table->foreign('address_post_field_id')->references('id')->on('entities_post_field');
-                    $table->foreign('address_country_id')->references('id')->on('label_address_country');
+
+                    $table->foreign('city_id')->references('id')->on('label_address_city');
+                    $table->foreign('post_field_id')->references('id')->on('entities_post_field');
+                    
+                    $table->foreign('country_id')->references('id')->on('label_address_country');
                 }
             );
         }

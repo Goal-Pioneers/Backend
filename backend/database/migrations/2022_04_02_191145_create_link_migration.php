@@ -1,8 +1,8 @@
 <?php
-// Needed Libraries
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+    // Needed Libraries
+    use Illuminate\Database\Migrations\Migration;
+    use Illuminate\Database\Schema\Blueprint;
+    use Illuminate\Support\Facades\Schema;
 
 
     // Code function
@@ -41,6 +41,22 @@ use Illuminate\Support\Facades\Schema;
                     $table->timestamps();
                 }
             );
+
+            Schema::create( self::DB_TABLE_NAME_3, 
+                function ( Blueprint $table ) 
+                {
+                    $table->id();
+                    $table->timestamps();
+                }
+            );
+
+            Schema::create( self::DB_TABLE_NAME_4, 
+                function ( Blueprint $table ) 
+                {
+                    $table->id();
+                    $table->timestamps();
+                }
+            );
         }
 
 
@@ -53,6 +69,8 @@ use Illuminate\Support\Facades\Schema;
         {
             Schema::dropIfExists( self::DB_TABLE_NAME_1 );
             Schema::dropIfExists( self::DB_TABLE_NAME_2 );
+            Schema::dropIfExists( self::DB_TABLE_NAME_3 );
+            Schema::dropIfExists( self::DB_TABLE_NAME_4 );
         }
     };
 ?>
