@@ -13,6 +13,7 @@
       const DB_ENGINE_DEFAULT = 'InnoDB';
       
           // Table Name
+      const DB_TABLE_NAME_ACCOUNT_INVOICES_STATE = 'account_invoice_state';
       const DB_TABLE_NAME_ACCOUNT_INVOICES = 'account_invoices';
       const DB_TABLE_NAME_ACCOUNT_CURRENCY = 'currencies';
 
@@ -26,6 +27,20 @@
         {
             //
             Schema::connection( self::DB_CONNECTOR )
+                ->create( self::DB_TABLE_NAME_ACCOUNT_INVOICES_STATE, 
+                function ( Blueprint $table ) 
+                {
+                    $table->engine = self::DB_ENGINE_DEFAULT;
+
+                    $table->id();
+
+                    $table->string( 'content' )
+                          ->unique();
+                }
+            );
+
+
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_ACCOUNT_CURRENCY, 
                 function ( Blueprint $table ) 
                 {
@@ -33,13 +48,13 @@
 
                     $table->id();
 
-                    $table->string('currency_name')
+                    $table->string( 'currency_name' )
                           ->unique();
                     
-                    $table->string('currency_acronyms')
+                    $table->string( 'currency_acronyms' )
                           ->index();
 
-                    $table->string('currency_symbols')
+                    $table->string( 'currency_symbols' )
                           ->nullable();
                 }
             );
@@ -57,22 +72,29 @@
                               ->unsigned();
 
                         $table->json( 'billing_content' );
-                        $table->double('total_cost');
+                        $table->double( 'total_cost' );
 
-                        $table->bigInteger('currency_id')
+                        $table->bigInteger( 'currency_id' )
+                              ->unsigned();
+
+                        $table->bigInteger( 'account_invoice_id' )
                               ->unsigned();
 
                         $table->timestamps();
 
-                        $table->foreign('user_id')
-                              ->references('id')
-                              ->on('users');
+                        $table->foreign( 'user_id' )
+                              ->references( 'id' )
+                              ->on( 'users' );
                         
-                        $table->foreign('currency_id')
-                              ->references('id')
+                        $table->foreign( 'currency_id' )
+                              ->references( 'id' )
                               ->on( self::DB_TABLE_NAME_ACCOUNT_CURRENCY );
-                    }
-                );
+
+                        $table->foreign( 'account_invoice_id' )
+                              ->references( 'id' )
+                              ->on( self::DB_TABLE_NAME_ACCOUNT_INVOICES_STATE );
+                  }
+            );
         }
 
 
@@ -85,10 +107,13 @@
         {
             //
             Schema::connection( self::DB_CONNECTOR )
-                  ->dropIfExists( self::DB_TABLE_NAME_ACCOUNT_INVOICES );
-            
+                  ->dropIfExists( self::DB_TABLE_NAME_ACCOUNT_INVOICES_STATE );
+
             Schema::connection( self::DB_CONNECTOR )
                   ->dropIfExists( self::DB_TABLE_NAME_ACCOUNT_CURRENCY );
+
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_ACCOUNT_INVOICES );
         }
       };
 ?>

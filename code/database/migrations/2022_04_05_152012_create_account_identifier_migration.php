@@ -27,36 +27,51 @@
         public function up()
         {
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_APPLICATION, 
+                  ->create( self::DB_TABLE_NAME_APPLICATION, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id();
-                    $table->uuid( 'identifier' )->index();
 
-                    $table->string('title');
-                    $table->longText('description');
+                    $table->uuid( 'identifier' )
+                          ->index();
+
+                    $table->string( 'title' );
+
+                    $table->longText( 'description' )
+                          ->nullable();
                 }
             );
             
 
             //
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_ACCOUNT_ID, 
+                  ->create( self::DB_TABLE_NAME_ACCOUNT_ID, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id(); 
 
-                    $table->bigInteger( 'user_id' )->unsigned();
-                    $table->bigInteger( 'application_id' )->unsigned();
-                    
-                    $table->uuid( 'identifier' )->index();
+                    $table->bigInteger( 'user_id' )
+                          ->unsigned();
 
-                    $table->foreign('user_id')->references('id')->on('users');
-                    $table->foreign('application_id')->references('id')->on( self::DB_TABLE_NAME_APPLICATION );
+                    $table->bigInteger( 'application_id' )
+                          ->unsigned();
+                    
+                    $table->uuid( 'identifier' )
+                          ->index();
+
+
+
+                    $table->foreign( 'user_id' )
+                          ->references( 'id' )
+                          ->on( 'users' );
+
+                    $table->foreign( 'application_id' )
+                          ->references( 'id' )
+                          ->on( self::DB_TABLE_NAME_APPLICATION );
                 }
             );
         }
@@ -70,8 +85,11 @@
         public function down()
         {
             //
-            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_APPLICATION );
-            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_ACCOUNT_ID );
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_APPLICATION );
+                  
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_ACCOUNT_ID );
         }
     };
 
