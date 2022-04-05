@@ -11,6 +11,8 @@
      */
     return new class extends Migration
     {
+        const DB_CONNECTOR = 'mysql';
+        
         // Code Preperation
         const DB_TABLE_NAME_ADDRESS = 'account_address';
 
@@ -23,7 +25,7 @@
         public function up()
         {
             //
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_ADDRESS, 
                 function ( Blueprint $table ) 
                 {
@@ -59,7 +61,7 @@
         public function down()
         {
             //
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_ADDRESS );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_ADDRESS );
         }
     };
 ?>

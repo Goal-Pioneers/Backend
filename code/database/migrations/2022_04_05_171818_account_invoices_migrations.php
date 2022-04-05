@@ -10,7 +10,7 @@
         const DB_TABLE_NAME_ACCOUNT_INVOICES = 'account_invoices';
         const DB_TABLE_NAME_ACCOUNT_CURRENCY = 'currencies';
 
-
+        const DB_CONNECTOR = 'mysql';
         
         /**
          * Run the migrations.
@@ -20,7 +20,7 @@
         public function up()
         {
             //
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_ACCOUNT_CURRENCY, 
                 function ( Blueprint $table ) 
                 {
@@ -35,7 +35,7 @@
             );
 
 
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                     ->create( self::DB_TABLE_NAME_ACCOUNT_INVOICES, 
                     function ( Blueprint $table ) 
                     {
@@ -68,6 +68,8 @@
         public function down()
         {
             //
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_ACCOUNT_INVOICES );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_ACCOUNT_CURRENCY );
         }
     };
 ?>

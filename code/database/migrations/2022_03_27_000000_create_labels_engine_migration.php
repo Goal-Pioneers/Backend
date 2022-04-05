@@ -14,6 +14,8 @@
         // Code Preperation
         const DB_TABLE_NAME_MAILING_LIST = 'mailing_lists';
 
+        const DB_CONNECTOR = 'mysql';
+
 
         /**
          * Run the migrations.
@@ -23,7 +25,7 @@
         public function up()
         {
             //
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_MAILING_LIST, 
                 function ( Blueprint $table ) 
                 {
@@ -44,7 +46,7 @@
         public function down()
         {
             //
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_MAILING_LIST );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_MAILING_LIST );
         }
     };
 ?>

@@ -11,6 +11,8 @@
      */
     return new class extends Migration
     {
+        const DB_CONNECTOR = 'mysql';
+        
         // Code Preperation
         const DB_TABLE_NAME_ACCOUNT                  = 'users';
         
@@ -27,7 +29,7 @@
          */
         public function up()
         {
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_ACCOUNT, 
                 function ( Blueprint $table ) 
                 {
@@ -49,7 +51,7 @@
             );
 
 
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS, 
                 function ( Blueprint $table ) 
                 {
@@ -67,7 +69,7 @@
             );
 
             
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_FAILED_JOBS, 
                 function ( Blueprint $table ) 
                 {
@@ -84,7 +86,7 @@
             );
 
 
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_PASSWORD_RESET, 
                 function ( Blueprint $table ) 
                 {
@@ -110,9 +112,9 @@
          */
         public function down()
         {
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_ACCOUNT );
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_FAILED_JOBS );
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_PASSWORD_RESET );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_ACCOUNT );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_FAILED_JOBS );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_PASSWORD_RESET );
         }
     };
 ?>

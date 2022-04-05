@@ -11,6 +11,8 @@
      */
     return new class extends Migration
     {
+        const DB_CONNECTOR = 'mysql';
+        
         // Code Preperation
         const DB_TABLE_NAME_ADDRESS_FIELD     = 'entities_address_field';
         const DB_TABLE_NAME_POST_FIELD        = 'entities_post_field';
@@ -24,7 +26,7 @@
         public function up()
         {
             //
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_POST_FIELD, 
                 function ( Blueprint $table ) 
                 {
@@ -41,7 +43,7 @@
 
 
             //
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_ADDRESS_FIELD, 
                 function ( Blueprint $table ) 
                 {
@@ -71,8 +73,8 @@
         public function down()
         {
             //
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_ADDRESS_FIELD );
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_POST_FIELD );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_ADDRESS_FIELD );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_POST_FIELD );
         }
     };
 ?>

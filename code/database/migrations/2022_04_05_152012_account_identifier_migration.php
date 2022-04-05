@@ -11,6 +11,8 @@
         const DB_TABLE_NAME_ACCOUNT_ID = 'account_identifier';
         const DB_TABLE_NAME_APPLICATION = 'label_application_software';
 
+        const DB_CONNECTOR = 'mysql';
+
 
         /**
          * Run the migrations.
@@ -19,7 +21,7 @@
          */
         public function up()
         {
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_APPLICATION, 
                 function ( Blueprint $table ) 
                 {
@@ -35,7 +37,7 @@
             
 
             //
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_ACCOUNT_ID, 
                 function ( Blueprint $table ) 
                 {
@@ -63,8 +65,8 @@
         public function down()
         {
             //
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_APPLICATION );
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_ACCOUNT_ID );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_APPLICATION );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_ACCOUNT_ID );
         }
     };
 

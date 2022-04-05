@@ -20,6 +20,8 @@
         const DB_TABLE_NAME_APARTMENT       = 'label_address_apartment';
         
         const DB_COLUMN_CONTENT = 'content';
+        
+        const DB_CONNECTOR = 'mysql';
 
         
         /**
@@ -29,7 +31,7 @@
          */
         public function up()
         {
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_COUNTRY, 
                 function ( Blueprint $table ) 
                 {
@@ -40,7 +42,7 @@
             );
 
 
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_CITY, 
                 function( Blueprint $table ) 
                 {
@@ -51,7 +53,7 @@
             );
 
 
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_PROVINCE, 
                 function ( Blueprint $table ) 
                 {
@@ -62,7 +64,7 @@
             );   
 
 
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_ROADNAME, 
                 function ( Blueprint $table ) 
                 {
@@ -73,7 +75,7 @@
             );
 
 
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_REGION, 
                 function ( Blueprint $table ) 
                 {
@@ -84,7 +86,7 @@
             );
 
 
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_APARTMENT, 
                 function ( Blueprint $table ) 
                 {
@@ -103,12 +105,12 @@
          */
         public function down()
         {
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_COUNTRY );
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_CITY );
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_PROVINCE );
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_ROADNAME );
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_REGION );
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_APARTMENT );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_COUNTRY );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_CITY );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_PROVINCE );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_ROADNAME );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_REGION );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_APARTMENT );
         }
     };
 ?>

@@ -15,6 +15,7 @@
         const DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY = 'newsletter_subscription_categories';
         const DB_TABLE_NAME_SUBSCRIPTION                = 'newsletter_subscriptions';
         
+        const DB_CONNECTOR = 'mysql';
         
         /**
          * Run the migrations.
@@ -24,7 +25,7 @@
         public function up()
         {
             //
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY, 
                 function ( Blueprint $table ) 
                 {
@@ -36,7 +37,7 @@
             );
 
 
-            Schema::connection('mysql')
+            Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_SUBSCRIPTION, 
                 function ( Blueprint $table ) 
                 {
@@ -72,8 +73,8 @@
         public function down()
         {
             //
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY );
-            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_SUBSCRIPTION );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY );
+            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_SUBSCRIPTION );
         }
     }; 
 ?>
