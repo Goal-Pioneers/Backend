@@ -12,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 /**
  * 
  */
-class User 
+class AccountModel
     extends Authenticatable
 {
     use HasApiTokens, 

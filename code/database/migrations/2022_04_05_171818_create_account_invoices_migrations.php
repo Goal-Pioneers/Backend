@@ -68,7 +68,7 @@
 
                         $table->id();
 
-                        $table->bigInteger( 'user_id' )
+                        $table->bigInteger( 'account_id' )
                               ->unsigned();
 
                         $table->json( 'billing_content' );
@@ -82,9 +82,9 @@
 
                         $table->timestamps();
 
-                        $table->foreign( 'user_id' )
+                        $table->foreign( 'account_id' )
                               ->references( 'id' )
-                              ->on( 'users' );
+                              ->on( 'accounts' );
                         
                         $table->foreign( 'currency_id' )
                               ->references( 'id' )
