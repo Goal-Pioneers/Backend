@@ -7,12 +7,15 @@
     
     return new class extends Migration
     {
-        const DB_TABLE_NAME_ACCOUNT_INVOICES = 'account_invoices';
-        const DB_TABLE_NAME_ACCOUNT_CURRENCY = 'currencies';
+      // Code Preperation
+          // Base
+      const DB_CONNECTOR = 'mysql';
+      const DB_ENGINE_DEFAULT = 'InnoDB';
+      
+          // Table Name
+      const DB_TABLE_NAME_ACCOUNT_INVOICES = 'account_invoices';
+      const DB_TABLE_NAME_ACCOUNT_CURRENCY = 'currencies';
 
-        const DB_CONNECTOR = 'mysql';
-
-        const DB_ENGINE_DEFAULT = 'InnoDB';
         
         /**
          * Run the migrations.
@@ -87,5 +90,5 @@
             Schema::connection( self::DB_CONNECTOR )
                   ->dropIfExists( self::DB_TABLE_NAME_ACCOUNT_CURRENCY );
         }
-    };
+      };
 ?>

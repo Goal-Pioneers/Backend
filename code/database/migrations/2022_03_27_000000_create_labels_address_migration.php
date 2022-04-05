@@ -12,6 +12,11 @@
     return new class extends Migration
     {
         // Preperation
+            // Base
+        const DB_CONNECTOR = 'mysql';
+        const DB_ENGINE_DEFAULT = 'InnoDB';
+
+            // Table Names
         const DB_TABLE_NAME_PROVINCE        = 'label_address_province';
         const DB_TABLE_NAME_COUNTRY         = 'label_address_country';
         const DB_TABLE_NAME_CITY            = 'label_address_city';
@@ -19,10 +24,8 @@
         const DB_TABLE_NAME_REGION          = 'label_address_region';
         const DB_TABLE_NAME_APARTMENT       = 'label_address_apartment';
         
+            // Columns
         const DB_COLUMN_CONTENT = 'content';
-        
-        const DB_CONNECTOR = 'mysql';
-        const DB_ENGINE_DEFAULT = 'InnoDB';
 
         
         /**

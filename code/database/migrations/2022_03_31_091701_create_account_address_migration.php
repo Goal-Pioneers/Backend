@@ -11,10 +11,12 @@
      */
     return new class extends Migration
     {
+        // Code Preperation
+            // Base
         const DB_CONNECTOR = 'mysql';
         const DB_ENGINE_DEFAULT = 'InnoDB';
-        
-        // Code Preperation
+            
+            // Table names
         const DB_TABLE_NAME_ADDRESS = 'account_address';
 
 

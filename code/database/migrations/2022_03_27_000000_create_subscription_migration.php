@@ -12,11 +12,14 @@
     return new class extends Migration
     {   
         // Code Preperation
+            // Base
+        const DB_CONNECTOR = 'mysql';
+        const DB_ENGINE_DEFAULT = 'InnoDB';
+
+            // Table Names
         const DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY = 'newsletter_subscription_categories';
         const DB_TABLE_NAME_SUBSCRIPTION                = 'newsletter_subscriptions';
         
-        const DB_CONNECTOR = 'mysql';
-        const DB_ENGINE_DEFAULT = 'InnoDB';
         
         /**
          * Run the migrations.

@@ -8,11 +8,15 @@
     
     return new class extends Migration
     {
+        // Code Preperation
+            // Base
+        const DB_CONNECTOR = 'mysql';
+        const DB_ENGINE_DEFAULT = 'InnoDB';
+
+            // Table names
         const DB_TABLE_NAME_ACCOUNT_ID = 'account_identifier';
         const DB_TABLE_NAME_APPLICATION = 'label_application_software';
 
-        const DB_CONNECTOR = 'mysql';
-        const DB_ENGINE_DEFAULT = 'InnoDB';
 
 
         /**

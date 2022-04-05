@@ -12,10 +12,12 @@
     return new class extends Migration
     {
         // Code Preperation
-        const DB_TABLE_NAME_MAILING_LIST = 'mailing_lists';
-
+            // Base
         const DB_CONNECTOR = 'mysql';
         const DB_ENGINE_DEFAULT = 'InnoDB';
+
+            // Table Names
+        const DB_TABLE_NAME_MAILING_LIST = 'mailing_lists';
 
 
         /**
