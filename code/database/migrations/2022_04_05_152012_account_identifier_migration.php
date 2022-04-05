@@ -4,6 +4,8 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+
+    
     return new class extends Migration
     {
         const DB_TABLE_NAME_ACCOUNT_ID = 'account_identifier';
@@ -17,9 +19,11 @@
          */
         public function up()
         {
-            Schema::create( self::DB_TABLE_NAME_APPLICATION, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_APPLICATION, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
+
                     $table->id();
                     $table->uuid( 'identifier' )->index();
 
@@ -30,9 +34,11 @@
             
 
             //
-            Schema::create( self::DB_TABLE_NAME_ACCOUNT_ID, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_ACCOUNT_ID, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
+
                     $table->id(); 
 
                     $table->bigInteger( 'user_id' )->unsigned();
@@ -55,8 +61,8 @@
         public function down()
         {
             //
-            Schema::dropIfExists( self::DB_TABLE_NAME_APPLICATION );
-            Schema::dropIfExists( self::DB_TABLE_NAME_ACCOUNT_ID );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_APPLICATION );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_ACCOUNT_ID );
         }
     };
 

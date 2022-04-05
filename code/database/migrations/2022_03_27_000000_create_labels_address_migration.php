@@ -29,54 +29,60 @@ use Illuminate\Support\Facades\Schema;
          */
         public function up()
         {
-            Schema::create( self::DB_TABLE_NAME_COUNTRY, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_COUNTRY, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
                     $table->id(); 
                     $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
             );
 
 
-            Schema::create( self::DB_TABLE_NAME_CITY, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_CITY, 
                 function( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
                     $table->id();
                     $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
             );
 
 
-            Schema::create( self::DB_TABLE_NAME_PROVINCE, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_PROVINCE, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
                     $table->id(); 
                     $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
             );   
 
 
-            Schema::create( self::DB_TABLE_NAME_ROADNAME, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_ROADNAME, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
                     $table->id(); 
                     $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
             );
 
 
-            Schema::create( self::DB_TABLE_NAME_REGION, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_REGION, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
                     $table->id(); 
                     $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
             );
 
 
-            Schema::create( self::DB_TABLE_NAME_APARTMENT, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_APARTMENT, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
                     $table->id(); 
                     $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
@@ -91,12 +97,12 @@ use Illuminate\Support\Facades\Schema;
          */
         public function down()
         {
-            Schema::dropIfExists( self::DB_TABLE_NAME_COUNTRY );
-            Schema::dropIfExists( self::DB_TABLE_NAME_CITY );
-            Schema::dropIfExists( self::DB_TABLE_NAME_PROVINCE );
-            Schema::dropIfExists( self::DB_TABLE_NAME_ROADNAME );
-            Schema::dropIfExists( self::DB_TABLE_NAME_REGION );
-            Schema::dropIfExists( self::DB_TABLE_NAME_APARTMENT );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_COUNTRY );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_CITY );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_PROVINCE );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_ROADNAME );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_REGION );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_APARTMENT );
         }
     };
 ?>

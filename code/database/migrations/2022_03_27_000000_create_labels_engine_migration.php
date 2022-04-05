@@ -23,9 +23,10 @@ use Illuminate\Support\Facades\Schema;
         public function up()
         {
             //
-            Schema::create( self::DB_TABLE_NAME_MAILING_LIST, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_MAILING_LIST, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
                     $table->id();
                     $table->string('content')->unique();
                 }
@@ -42,7 +43,7 @@ use Illuminate\Support\Facades\Schema;
         public function down()
         {
             //
-            Schema::dropIfExists( self::DB_TABLE_NAME_MAILING_LIST );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_MAILING_LIST );
         }
     };
 ?>

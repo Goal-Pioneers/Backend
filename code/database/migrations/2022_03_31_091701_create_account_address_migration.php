@@ -23,9 +23,11 @@ use Illuminate\Support\Facades\Schema;
         public function up()
         {
             //
-            Schema::create( self::DB_TABLE_NAME_ADDRESS, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_ADDRESS, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
+
                     $table->id(); 
 
                     $table->bigInteger( 'address_field_1_id' )->unsigned();
@@ -56,7 +58,7 @@ use Illuminate\Support\Facades\Schema;
         public function down()
         {
             //
-            Schema::dropIfExists( self::DB_TABLE_NAME_ADDRESS );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_ADDRESS );
         }
     };
 ?>

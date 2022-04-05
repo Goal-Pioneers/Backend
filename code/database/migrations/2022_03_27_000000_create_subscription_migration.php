@@ -24,32 +24,37 @@ use Illuminate\Support\Facades\Schema;
         public function up()
         {
             //
-            Schema::create( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
                     $table->id();
-                    $table->string('title')->unique();
-                    $table->json('content');
+                    $table->string( 'title' )->unique();
+                    $table->mediumText( 'description' )->nullable();
                 }
             );
 
 
-            Schema::create( self::DB_TABLE_NAME_SUBSCRIPTION, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_SUBSCRIPTION, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
+                    
                     $table->id();
 
-                    $table->bigInteger('category_id')->unsigned();
-                    $table->bigInteger('mail_id')->unsigned();
+                    $table->bigInteger( 'category_id' )->unsigned();
+                    $table->bigInteger( 'mail_id' )->unsigned();
 
-                    $table->foreign('category_id')->references('id')
+                    $table->json( 'content' );
+
+                    $table->foreign( 'category_id' )->references('id')
                           ->on( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY )
                           ->onDelete('CASCADE');
 
-                    $table->foreign('mail_id')
-                          ->references('id')
-                          ->on('mailing_lists')
-                          ->onDelete('CASCADE');
+                    $table->foreign( 'mail_id' )
+                          ->references( 'id' )
+                          ->on( 'mailing_lists' )
+                          ->onDelete( 'CASCADE' );
 
                     $table->timestamps();
                 }
@@ -65,8 +70,8 @@ use Illuminate\Support\Facades\Schema;
         public function down()
         {
             //
-            Schema::dropIfExists( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY );
-            Schema::dropIfExists( self::DB_TABLE_NAME_SUBSCRIPTION );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_SUBSCRIPTION );
         }
     }; 
 ?>

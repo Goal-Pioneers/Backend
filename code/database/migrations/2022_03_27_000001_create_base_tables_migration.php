@@ -12,9 +12,12 @@ use Illuminate\Support\Facades\Schema;
     return new class extends Migration
     {
         // Code Preperation
-        const DB_TABLE_NAME_ACCOUNT         = 'users';
-        const DB_TABLE_NAME_FAILED_JOBS     = 'failed_jobs';
-        const DB_TABLE_NAME_PASSWORD_RESET  = 'password_resets';
+        const DB_TABLE_NAME_ACCOUNT                  = 'users';
+        
+        const DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS  = 'account_activity_visits';
+
+        const DB_TABLE_NAME_FAILED_JOBS              = 'failed_jobs';
+        const DB_TABLE_NAME_PASSWORD_RESET           = 'password_resets';
 
 
         /**
@@ -24,9 +27,11 @@ use Illuminate\Support\Facades\Schema;
          */
         public function up()
         {
-            Schema::create( self::DB_TABLE_NAME_ACCOUNT, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_ACCOUNT, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
+
                     $table->id();
                     $table->string('username');
                     
@@ -42,10 +47,29 @@ use Illuminate\Support\Facades\Schema;
                 }
             );
 
-            
-            Schema::create( self::DB_TABLE_NAME_FAILED_JOBS, 
+
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
+                    $table->id();
+
+                    $table->bigInteger('account_id')->unsigned();
+                    
+                    $table->ipAddress('address');
+                    
+                    $table->timestamp('authenticated_at')->nullable()->useCurrent();
+
+                    $table->foreign('account_id')->references('id')->on('users');
+                }
+            );
+
+            
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_FAILED_JOBS, 
+                function ( Blueprint $table ) 
+                {
+                    $table->engine = 'InnoDB';
+
                     $table->id();
                     $table->string('uuid')->unique();
                     $table->text('connection');
@@ -57,9 +81,11 @@ use Illuminate\Support\Facades\Schema;
             );
 
 
-            Schema::create( self::DB_TABLE_NAME_PASSWORD_RESET, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_PASSWORD_RESET, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
+                    
                     $table->id();
 
                     $table->bigInteger('email_id')->unsigned()->index();
@@ -80,9 +106,9 @@ use Illuminate\Support\Facades\Schema;
          */
         public function down()
         {
-            Schema::dropIfExists( self::DB_TABLE_NAME_ACCOUNT );
-            Schema::dropIfExists( self::DB_TABLE_NAME_FAILED_JOBS );
-            Schema::dropIfExists( self::DB_TABLE_NAME_PASSWORD_RESET );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_ACCOUNT );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_FAILED_JOBS );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_PASSWORD_RESET );
         }
     };
 ?>

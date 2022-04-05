@@ -24,9 +24,11 @@ use Illuminate\Support\Facades\Schema;
         public function up()
         {
             //
-            Schema::create( self::DB_TABLE_NAME_POST_FIELD, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_POST_FIELD, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
+
                     $table->id();
 
                     $table->integer('zip_code')->unsigned()->index();
@@ -38,9 +40,11 @@ use Illuminate\Support\Facades\Schema;
 
 
             //
-            Schema::create( self::DB_TABLE_NAME_ADDRESS_FIELD, 
+            Schema::connection('mysql')->create( self::DB_TABLE_NAME_ADDRESS_FIELD, 
                 function ( Blueprint $table ) 
                 {
+                    $table->engine = 'InnoDB';
+
                     $table->id(); 
 
                     $table->bigInteger( 'roadname_id' )->unsigned();
@@ -65,8 +69,8 @@ use Illuminate\Support\Facades\Schema;
         public function down()
         {
             //
-            Schema::dropIfExists( self::DB_TABLE_NAME_ADDRESS_FIELD );
-            Schema::dropIfExists( self::DB_TABLE_NAME_POST_FIELD );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_ADDRESS_FIELD );
+            Schema::connection('mysql')->dropIfExists( self::DB_TABLE_NAME_POST_FIELD );
         }
     };
 ?>
