@@ -4,6 +4,7 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+    use App\Models\AccountModel;
 
     // Code function
     /**
@@ -17,7 +18,7 @@
         const DB_ENGINE_DEFAULT = 'InnoDB';
         
             // Table names
-        const DB_TABLE_NAME_ACCOUNT                  = 'accounts';
+        
         const DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS  = 'account_activity_visits';
         
         const DB_TABLE_NAME_FAILED_JOBS              = 'failed_jobs';
@@ -32,7 +33,7 @@
         public function up()
         {
             Schema::connection( self::DB_CONNECTOR )
-                  ->create( self::DB_TABLE_NAME_ACCOUNT, 
+                  ->create( AccountModel::DB_TABLE_NAME, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
@@ -79,7 +80,7 @@
 
                     $table->foreign('account_id')
                           ->references('id')
-                          ->on( self::DB_TABLE_NAME_ACCOUNT );
+                          ->on( AccountModel::DB_TABLE_NAME );
                 }
             );
 

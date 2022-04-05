@@ -19,8 +19,10 @@ class AccountModel
         HasFactory, 
         Notifiable;
 
+    public const DB_TABLE_NAME = 'accounts';
 
-    protected $table = 'users';
+
+    protected $table = self::DB_TABLE_NAME;
 
     
     /**
