@@ -23,7 +23,8 @@ use Illuminate\Support\Facades\Schema;
         public function up()
         {
             //
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_MAILING_LIST, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_MAILING_LIST, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';

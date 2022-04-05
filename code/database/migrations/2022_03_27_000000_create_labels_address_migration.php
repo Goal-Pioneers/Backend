@@ -29,7 +29,8 @@ use Illuminate\Support\Facades\Schema;
          */
         public function up()
         {
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_COUNTRY, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_COUNTRY, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';
@@ -39,7 +40,8 @@ use Illuminate\Support\Facades\Schema;
             );
 
 
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_CITY, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_CITY, 
                 function( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';
@@ -49,7 +51,8 @@ use Illuminate\Support\Facades\Schema;
             );
 
 
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_PROVINCE, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_PROVINCE, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';
@@ -59,7 +62,8 @@ use Illuminate\Support\Facades\Schema;
             );   
 
 
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_ROADNAME, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_ROADNAME, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';
@@ -69,7 +73,8 @@ use Illuminate\Support\Facades\Schema;
             );
 
 
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_REGION, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_REGION, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';
@@ -79,7 +84,8 @@ use Illuminate\Support\Facades\Schema;
             );
 
 
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_APARTMENT, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_APARTMENT, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';

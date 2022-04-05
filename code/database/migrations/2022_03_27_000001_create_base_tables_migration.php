@@ -27,7 +27,8 @@ use Illuminate\Support\Facades\Schema;
          */
         public function up()
         {
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_ACCOUNT, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_ACCOUNT, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';
@@ -48,7 +49,8 @@ use Illuminate\Support\Facades\Schema;
             );
 
 
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';
@@ -65,7 +67,8 @@ use Illuminate\Support\Facades\Schema;
             );
 
             
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_FAILED_JOBS, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_FAILED_JOBS, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';
@@ -81,7 +84,8 @@ use Illuminate\Support\Facades\Schema;
             );
 
 
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_PASSWORD_RESET, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_PASSWORD_RESET, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';

@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\Schema;
         public function up()
         {
             //
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_POST_FIELD, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_POST_FIELD, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';
@@ -40,7 +41,8 @@ use Illuminate\Support\Facades\Schema;
 
 
             //
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_ADDRESS_FIELD, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_ADDRESS_FIELD, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';

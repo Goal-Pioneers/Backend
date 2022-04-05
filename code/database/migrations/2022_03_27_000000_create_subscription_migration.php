@@ -24,7 +24,8 @@ use Illuminate\Support\Facades\Schema;
         public function up()
         {
             //
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';
@@ -35,7 +36,8 @@ use Illuminate\Support\Facades\Schema;
             );
 
 
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_SUBSCRIPTION, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_SUBSCRIPTION, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';

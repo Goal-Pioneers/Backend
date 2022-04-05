@@ -19,7 +19,8 @@
          */
         public function up()
         {
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_APPLICATION, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_APPLICATION, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';
@@ -34,7 +35,8 @@
             
 
             //
-            Schema::connection('mysql')->create( self::DB_TABLE_NAME_ACCOUNT_ID, 
+            Schema::connection('mysql')
+                ->create( self::DB_TABLE_NAME_ACCOUNT_ID, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = 'InnoDB';
