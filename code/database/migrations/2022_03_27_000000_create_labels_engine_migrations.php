@@ -49,7 +49,8 @@
         public function down()
         {
             //
-            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_MAILING_LIST );
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_MAILING_LIST );
         }
     };
 ?>

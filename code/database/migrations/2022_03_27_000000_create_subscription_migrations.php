@@ -30,27 +30,34 @@
         {
             //
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY, 
+                  ->create( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
                     $table->id();
-                    $table->string( 'title' )->unique();
-                    $table->mediumText( 'description' )->nullable();
+
+                    $table->string( 'title' )
+                          ->unique();
+                    
+                    $table->mediumText( 'description' )
+                          ->nullable();
                 }
             );
 
 
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_SUBSCRIPTION, 
+                  ->create( self::DB_TABLE_NAME_SUBSCRIPTION, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
                     
                     $table->id();
 
-                    $table->bigInteger( 'category_id' )->unsigned();
-                    $table->bigInteger( 'mail_id' )->unsigned();
+                    $table->bigInteger( 'category_id' )
+                          ->unsigned();
+
+                    $table->bigInteger( 'mail_id' )
+                          ->unsigned();
 
                     $table->json( 'content' );
 
@@ -77,8 +84,11 @@
         public function down()
         {
             //
-            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY );
-            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_SUBSCRIPTION );
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY );
+
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_SUBSCRIPTION );
         }
     }; 
 ?>

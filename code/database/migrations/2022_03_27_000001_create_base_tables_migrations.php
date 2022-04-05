@@ -32,7 +32,7 @@
         public function up()
         {
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_ACCOUNT, 
+                  ->create( self::DB_TABLE_NAME_ACCOUNT, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
@@ -41,67 +41,93 @@
                     $table->string('username');
                     
                     
-                    $table->bigInteger('email_id')->unsigned()->unique();
-                    $table->timestamp('email_verified_at')->nullable()->useCurrent();
+                    $table->bigInteger('email_id')
+                          ->unsigned()
+                          ->unique();
+
+                    $table->timestamp('email_verified_at')
+                          ->nullable()
+                          ->useCurrent();
 
                     $table->string('password');
                     $table->rememberToken();
                     $table->timestamps();
 
-                    $table->foreign('email_id')->references('id')->on('mailing_lists');
+                    $table->foreign('email_id')
+                          ->references('id')
+                          ->on('mailing_lists');
                 }
             );
 
 
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS, 
+                  ->create( self::DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
+
                     $table->id();
 
-                    $table->bigInteger('account_id')->unsigned();
+                    $table->bigInteger('account_id')
+                          ->unsigned();
                     
                     $table->ipAddress('address');
                     
-                    $table->timestamp('authenticated_at')->nullable()->useCurrent();
+                    $table->timestamp('authenticated_at')
+                          ->nullable()
+                          ->useCurrent();
 
-                    $table->foreign('account_id')->references('id')->on('users');
+                    $table->foreign('account_id')
+                          ->references('id')
+                          ->on('users');
                 }
             );
 
             
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_FAILED_JOBS, 
+                  ->create( self::DB_TABLE_NAME_FAILED_JOBS, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id();
-                    $table->string('uuid')->unique();
+
+                    $table->string('uuid')
+                          ->unique();
+
                     $table->text('connection');
                     $table->text('queue');
+                    
                     $table->longText('payload');
                     $table->longText('exception');
-                    $table->timestamp('failed_at')->useCurrent();
+                    
+                    $table->timestamp('failed_at')
+                          ->useCurrent();
                 }
             );
 
 
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_PASSWORD_RESET, 
+                  ->create( self::DB_TABLE_NAME_PASSWORD_RESET, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
                     
                     $table->id();
 
-                    $table->bigInteger('email_id')->unsigned()->index();
+                    $table->bigInteger('email_id')
+                          ->unsigned()
+                          ->index();
 
                     $table->string('token');
                     
-                    $table->timestamp('created_at')->nullable()->useCurrent();
-                    $table->foreign('email_id')->references('id')->on('mailing_lists');
+                    $table->timestamp('created_at')
+                          ->nullable()
+                          ->useCurrent();
+
+                    $table->foreign('email_id')
+                          ->references('id')
+                          ->on('mailing_lists');
                 }
             );
         }
@@ -114,9 +140,14 @@
          */
         public function down()
         {
-            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_ACCOUNT );
-            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_FAILED_JOBS );
-            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_PASSWORD_RESET );
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_ACCOUNT );
+
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_FAILED_JOBS );
+
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_PASSWORD_RESET );
         }
     };
 ?>

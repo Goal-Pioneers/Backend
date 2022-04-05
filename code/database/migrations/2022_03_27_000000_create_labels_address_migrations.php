@@ -109,12 +109,23 @@
          */
         public function down()
         {
-            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_COUNTRY );
-            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_CITY );
-            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_PROVINCE );
-            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_ROADNAME );
-            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_REGION );
-            Schema::connection( self::DB_CONNECTOR )->dropIfExists( self::DB_TABLE_NAME_APARTMENT );
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_COUNTRY );
+
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_CITY );
+
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_PROVINCE );
+
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_ROADNAME );
+            
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_REGION );
+
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_APARTMENT );
         }
     };
 ?>
