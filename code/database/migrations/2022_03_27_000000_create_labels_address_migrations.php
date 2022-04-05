@@ -28,11 +28,7 @@
         const DB_COLUMN_CONTENT = 'content';
 
         
-        /**
-         * Run the migrations.
-         *
-         * @return void
-         */
+        
         public function up()
         {
             Schema::connection( self::DB_CONNECTOR )
@@ -102,11 +98,7 @@
         }
 
 
-        /**
-         * Reverse the migrations.
-         *
-         * @return void
-         */
+        
         public function down()
         {
             Schema::connection( self::DB_CONNECTOR )

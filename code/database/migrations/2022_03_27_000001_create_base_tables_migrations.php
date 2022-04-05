@@ -18,18 +18,13 @@
         const DB_ENGINE_DEFAULT = 'InnoDB';
         
             // Table names
-        
         const DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS  = 'account_activity_visits';
         
         const DB_TABLE_NAME_FAILED_JOBS              = 'failed_jobs';
         const DB_TABLE_NAME_PASSWORD_RESET           = 'password_resets';
 
 
-        /**
-         * Run the migrations.
-         *
-         * @return void
-         */
+        
         public function up()
         {
             Schema::connection( self::DB_CONNECTOR )
@@ -135,11 +130,7 @@
         }
         
 
-        /**
-         * Reverse the migrations.
-         *
-         * @return void
-         */
+        
         public function down()
         {
             Schema::connection( self::DB_CONNECTOR )

@@ -19,11 +19,7 @@
 
 
 
-        /**
-         * Run the migrations.
-         *
-         * @return void
-         */
+        
         public function up()
         {
             Schema::connection( self::DB_CONNECTOR )
@@ -77,11 +73,7 @@
         }
 
 
-        /**
-         * Reverse the migrations.
-         *
-         * @return void
-         */
+        
         public function down()
         {
             //

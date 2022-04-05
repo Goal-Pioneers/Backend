@@ -18,12 +18,7 @@
       const DB_TABLE_NAME_ACCOUNT_CURRENCY = 'currencies';
 
         
-        /**
-         * Run the migrations.
-         *
-         * @return void
-         */
-        public function up()
+      public function up()
         {
             //
             Schema::connection( self::DB_CONNECTOR )
@@ -98,11 +93,7 @@
         }
 
 
-        /**
-         * Reverse the migrations.
-         *
-         * @return void
-         */
+        
         public function down()
         {
             //

@@ -21,11 +21,7 @@
         const DB_TABLE_NAME_POST_FIELD        = 'entities_post_field';
 
 
-        /**
-         * Run the migrations.
-         *
-         * @return void
-         */
+        
         public function up()
         {
             //
@@ -87,11 +83,6 @@
 
 
         
-        /**
-         * Reverse the migrations.
-         *
-         * @return void
-         */
         public function down()
         {
             //
