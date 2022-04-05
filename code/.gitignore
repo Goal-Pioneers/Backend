@@ -15,9 +15,6 @@ yarn-error.log
 
 .editorconfig
 
-*.xml
-*.yml
-
 package-lock.json
 composer.lock
 .htaccess
