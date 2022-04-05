@@ -12,6 +12,7 @@
     return new class extends Migration
     {
         const DB_CONNECTOR = 'mysql';
+        const DB_ENGINE_DEFAULT = 'InnoDB';
         
         // Code Preperation
         const DB_TABLE_NAME_ACCOUNT                  = 'users';
@@ -33,7 +34,7 @@
                 ->create( self::DB_TABLE_NAME_ACCOUNT, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id();
                     $table->string('username');
@@ -55,7 +56,7 @@
                 ->create( self::DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
                     $table->id();
 
                     $table->bigInteger('account_id')->unsigned();
@@ -73,7 +74,7 @@
                 ->create( self::DB_TABLE_NAME_FAILED_JOBS, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id();
                     $table->string('uuid')->unique();
@@ -90,7 +91,7 @@
                 ->create( self::DB_TABLE_NAME_PASSWORD_RESET, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
                     
                     $table->id();
 

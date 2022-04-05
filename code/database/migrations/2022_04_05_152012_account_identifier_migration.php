@@ -12,6 +12,7 @@
         const DB_TABLE_NAME_APPLICATION = 'label_application_software';
 
         const DB_CONNECTOR = 'mysql';
+        const DB_ENGINE_DEFAULT = 'InnoDB';
 
 
         /**
@@ -25,7 +26,7 @@
                 ->create( self::DB_TABLE_NAME_APPLICATION, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id();
                     $table->uuid( 'identifier' )->index();
@@ -41,7 +42,7 @@
                 ->create( self::DB_TABLE_NAME_ACCOUNT_ID, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id(); 
 

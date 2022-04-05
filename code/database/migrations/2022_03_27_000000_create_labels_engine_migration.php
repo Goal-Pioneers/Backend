@@ -15,6 +15,7 @@
         const DB_TABLE_NAME_MAILING_LIST = 'mailing_lists';
 
         const DB_CONNECTOR = 'mysql';
+        const DB_ENGINE_DEFAULT = 'InnoDB';
 
 
         /**
@@ -29,7 +30,7 @@
                 ->create( self::DB_TABLE_NAME_MAILING_LIST, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
                     $table->id();
                     $table->string('content')->unique();
                 }

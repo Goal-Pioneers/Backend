@@ -16,6 +16,7 @@
         const DB_TABLE_NAME_SUBSCRIPTION                = 'newsletter_subscriptions';
         
         const DB_CONNECTOR = 'mysql';
+        const DB_ENGINE_DEFAULT = 'InnoDB';
         
         /**
          * Run the migrations.
@@ -29,7 +30,7 @@
                 ->create( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
                     $table->id();
                     $table->string( 'title' )->unique();
                     $table->mediumText( 'description' )->nullable();
@@ -41,7 +42,7 @@
                 ->create( self::DB_TABLE_NAME_SUBSCRIPTION, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
                     
                     $table->id();
 

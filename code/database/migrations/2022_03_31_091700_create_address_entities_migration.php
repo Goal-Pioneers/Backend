@@ -12,6 +12,7 @@
     return new class extends Migration
     {
         const DB_CONNECTOR = 'mysql';
+        const DB_ENGINE_DEFAULT = 'InnoDB';
         
         // Code Preperation
         const DB_TABLE_NAME_ADDRESS_FIELD     = 'entities_address_field';
@@ -30,7 +31,7 @@
                 ->create( self::DB_TABLE_NAME_POST_FIELD, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id();
 
@@ -47,7 +48,7 @@
                 ->create( self::DB_TABLE_NAME_ADDRESS_FIELD, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id(); 
 

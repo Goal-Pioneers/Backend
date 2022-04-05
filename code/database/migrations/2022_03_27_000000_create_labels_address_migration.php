@@ -22,6 +22,7 @@
         const DB_COLUMN_CONTENT = 'content';
         
         const DB_CONNECTOR = 'mysql';
+        const DB_ENGINE_DEFAULT = 'InnoDB';
 
         
         /**
@@ -35,7 +36,7 @@
                 ->create( self::DB_TABLE_NAME_COUNTRY, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
                     $table->id(); 
                     $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
@@ -46,7 +47,7 @@
                 ->create( self::DB_TABLE_NAME_CITY, 
                 function( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
                     $table->id();
                     $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
@@ -57,7 +58,7 @@
                 ->create( self::DB_TABLE_NAME_PROVINCE, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
                     $table->id(); 
                     $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
@@ -68,7 +69,7 @@
                 ->create( self::DB_TABLE_NAME_ROADNAME, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
                     $table->id(); 
                     $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
@@ -79,7 +80,7 @@
                 ->create( self::DB_TABLE_NAME_REGION, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
                     $table->id(); 
                     $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
@@ -90,7 +91,7 @@
                 ->create( self::DB_TABLE_NAME_APARTMENT, 
                 function ( Blueprint $table ) 
                 {
-                    $table->engine = 'InnoDB';
+                    $table->engine = self::DB_ENGINE_DEFAULT;
                     $table->id(); 
                     $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
