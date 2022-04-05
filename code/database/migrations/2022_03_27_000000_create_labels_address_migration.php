@@ -19,7 +19,9 @@ use Illuminate\Support\Facades\Schema;
         const DB_TABLE_NAME_REGION          = 'label_address_region';
         const DB_TABLE_NAME_APARTMENT       = 'label_address_apartment';
         
+        const DB_COLUMN_CONTENT = 'content';
 
+        
         /**
          * Run the migrations.
          *
@@ -31,7 +33,7 @@ use Illuminate\Support\Facades\Schema;
                 function ( Blueprint $table ) 
                 {
                     $table->id(); 
-                    $table->string('content')->unique();
+                    $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
             );
 
@@ -40,7 +42,7 @@ use Illuminate\Support\Facades\Schema;
                 function( Blueprint $table ) 
                 {
                     $table->id();
-                    $table->string('content')->unique();
+                    $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
             );
 
@@ -49,7 +51,7 @@ use Illuminate\Support\Facades\Schema;
                 function ( Blueprint $table ) 
                 {
                     $table->id(); 
-                    $table->string('content')->unique();
+                    $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
             );   
 
@@ -58,7 +60,7 @@ use Illuminate\Support\Facades\Schema;
                 function ( Blueprint $table ) 
                 {
                     $table->id(); 
-                    $table->string('content')->unique();
+                    $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
             );
 
@@ -67,7 +69,7 @@ use Illuminate\Support\Facades\Schema;
                 function ( Blueprint $table ) 
                 {
                     $table->id(); 
-                    $table->string('content')->unique();
+                    $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
             );
 
@@ -76,7 +78,7 @@ use Illuminate\Support\Facades\Schema;
                 function ( Blueprint $table ) 
                 {
                     $table->id(); 
-                    $table->string('content')->unique();
+                    $table->string( self::DB_COLUMN_CONTENT )->unique();
                 }
             );
         }

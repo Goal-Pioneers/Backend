@@ -55,6 +55,8 @@ use Illuminate\Support\Facades\Schema;
         }
 
 
+
+        
         /**
          * Reverse the migrations.
          *

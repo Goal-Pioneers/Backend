@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Schema;
     return new class extends Migration
     {
         // Code Preperation
-        const DB_TABLE_NAME_MAILING_LIST        = 'mailing_lists';
+        const DB_TABLE_NAME_MAILING_LIST = 'mailing_lists';
 
 
         /**

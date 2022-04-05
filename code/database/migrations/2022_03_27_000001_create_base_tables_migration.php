@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Schema;
     return new class extends Migration
     {
         // Code Preperation
-        const DB_TABLE_NAME_ACCOUNT = 'users';
-        const DB_TABLE_NAME_FAILED_JOBS = 'failed_jobs';
-        const DB_TABLE_NAME_PASSWORD_RESET = 'password_resets';
+        const DB_TABLE_NAME_ACCOUNT         = 'users';
+        const DB_TABLE_NAME_FAILED_JOBS     = 'failed_jobs';
+        const DB_TABLE_NAME_PASSWORD_RESET  = 'password_resets';
 
 
         /**
