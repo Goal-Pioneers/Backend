@@ -60,17 +60,18 @@
                           ->unsigned();
 
                     $table->json( 'content' );
+                    
+                    $table->timestamps();
 
-                    $table->foreign( 'category_id' )->references('id')
+                    $table->foreign( 'category_id' )
+                          ->references( 'id' )
                           ->on( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY )
-                          ->onDelete('CASCADE');
+                          ->onDelete( 'CASCADE' );
 
                     $table->foreign( 'mail_id' )
                           ->references( 'id' )
                           ->on( 'mailing_lists' )
                           ->onDelete( 'CASCADE' );
-
-                    $table->timestamps();
                 }
             );
         }

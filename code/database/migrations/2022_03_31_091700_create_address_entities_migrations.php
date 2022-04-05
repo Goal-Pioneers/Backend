@@ -37,16 +37,16 @@
 
                     $table->id();
 
-                    $table->integer('zip_code')
+                    $table->integer( 'zip_code' )
                           ->unsigned()
                           ->index();
 
                     $table->bigInteger( 'region_id' )
                           ->unsigned();
 
-                    $table->foreign('region_id')
-                          ->references('id')
-                          ->on('label_address_region');
+                    $table->foreign( 'region_id' )
+                          ->references( 'id' )
+                          ->on( 'label_address_region' );
                 }
             );
 
@@ -73,13 +73,13 @@
                           ->unsigned();
                     
 
-                    $table->foreign('roadname_id')
-                          ->references('id')
-                          ->on('label_address_roadname');
+                    $table->foreign( 'roadname_id' )
+                          ->references( 'id')
+                          ->on( 'label_address_roadname' );
 
-                    $table->foreign('apartment_id')
-                          ->references('id')
-                          ->on('label_address_apartment');
+                    $table->foreign( 'apartment_id' )
+                          ->references( 'id' )
+                          ->on( 'label_address_apartment' );
                 }
             );
         }
