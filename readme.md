@@ -1,9 +1,19 @@
-# Goal Pioneers website
+# Goal Pioneers Backend API
+Domain Area:
+* Authentication / Registration
 
-## Database
+* Send Mail
+  * forgot username
+  * forgot password
+  * login
+
+* Invoices
+
+* Support Ticket
+  * Topics | Subject | Content | Additional Attachements
+  * Open & tickets
 
 ## Backend
+* Rest API
 
-## SCSS
-
-## Frontend
+## Database
