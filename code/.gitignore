@@ -14,7 +14,3 @@ yarn-error.log
 /.vscode
 
 .editorconfig
-
-package-lock.json
-composer.lock
-.htaccess
