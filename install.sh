@@ -7,3 +7,7 @@ wget -O ./code/composer.json https://gist.githubusercontent.com/KentVejrupMadsen
 wget -O ./code/package.json https://gist.githubusercontent.com/KentVejrupMadsen/a09367cbb6f21bcda0cfc1614528fbcb/raw/181679c778451dd319e41debf4c473bae22e5a76/laravel.package.json
 
 wget -O ./code/phpunit.xml https://gist.githubusercontent.com/KentVejrupMadsen/4c9d6b8f26a73a38bdb66c8f98316fdb/raw/8eb22fb0cbc9f1535b7863c92ad16cb7a343d854/laravel.phpunit.xml
+
+cd code
+npm install
+composer require
