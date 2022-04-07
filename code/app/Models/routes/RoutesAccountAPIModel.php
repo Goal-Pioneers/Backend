@@ -14,7 +14,7 @@
         public static function register()
         {
             
-            Route::group( [ 'prefix'=>'account' ], 
+            Route::group( [ 'prefix' => 'account' ], 
                 function() 
                 {
                     Route::get('get', 

@@ -12,21 +12,26 @@
     {
         public static function register()
         {
-            Route::get( 'subscription/mail/{id}', 
-                [ MailingListController::class, 'select' ]
+            Route::group( [ 'prefix' => 'mailing_list' ], 
+                function()
+                {
+                    Route::get( '{id}', 
+                        [ MailingListController::class, 'select' ]
+                    );
+        
+                    Route::post( 'create', 
+                        [ MailingListController::class, 'create' ]
+                    );
+        
+                    Route::patch( 'update', 
+                        [ MailingListController::class, 'update' ]
+                    );
+        
+                    Route::delete( 'delete', 
+                        [ MailingListController::class, 'delete' ]
+                    ); 
+                }
             );
-
-            Route::post( 'subscription/mail/create', 
-                [ MailingListController::class, 'create' ]
-            );
-
-            Route::patch( 'subscription/mail/update', 
-                [ MailingListController::class, 'update' ]
-            );
-
-            Route::delete( 'subscription/mail/delete', 
-                [ MailingListController::class, 'delete' ]
-            ); 
         }
     }
 ?>
