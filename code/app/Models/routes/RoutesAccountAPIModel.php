@@ -20,13 +20,7 @@
             Route::group( [ 'prefix' => 'account' ], 
                 function() 
                 {
-                    Route::get('get', 
-                        function( Request $request ) 
-                        {
-                            return $request->user();
-                        }
-                    );
-                    
+                    Route::get( 'me', [ AccountController::class, 'me' ] );
                     Route::post( 'registration', [ AccountController::class, 'register' ] );
                     Route::post( 'login', [ AccountController::class, 'login' ] );   
                 }

@@ -33,7 +33,7 @@ class AccountModel
     protected $fillable = 
     [
         'username',
-        'email',
+        'email_id',
         'password',
     ];
 
