@@ -1,6 +1,6 @@
 <?php    
 
-    namespace App\Models\routes;
+    namespace App\Models\Routes;
 
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Route;
@@ -13,12 +13,22 @@
     {
         public static function register()
         {
-            Route::post( '1.0.0/account/registration', 
-                         [AccountController::class, 'register'] );
-
             
-            Route::post( '1.0.0/account/login', 
-                         [AccountController::class, 'login'] );
+            Route::group( ['prefix'=>'1.0.0/account'], 
+                function() 
+                {
+                    Route::get('get', 
+                        function( Request $request ) 
+                        {
+                            return $request->user();
+                        }
+                    );
+                    
+                    Route::post( 'registration', [AccountController::class, 'register'] );
+                    Route::post( 'login', [AccountController::class, 'login'] );   
+                }
+            );
+
         }
     }
 ?>
