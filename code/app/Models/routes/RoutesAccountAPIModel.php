@@ -1,6 +1,6 @@
 <?php    
 
-    namespace App\Models\routes;
+    namespace App\Models\Routes;
 
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Route;
@@ -11,14 +11,21 @@
 
     class RoutesAccountAPIModel
     {
+        /**
+         * 
+         */
         public static function register()
         {
-            Route::post( '1.0.0/account/registration', 
-                         [AccountController::class, 'register'] );
-
             
-            Route::post( '1.0.0/account/login', 
-                         [AccountController::class, 'login'] );
+            Route::group( [ 'prefix' => 'account' ], 
+                function() 
+                {
+                    Route::get( 'me', [ AccountController::class, 'me' ] );
+                    Route::post( 'registration', [ AccountController::class, 'register' ] );
+                    Route::post( 'login', [ AccountController::class, 'login' ] );   
+                }
+            );
+
         }
     }
 ?>
