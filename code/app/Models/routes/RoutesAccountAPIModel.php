@@ -14,7 +14,7 @@
         public static function register()
         {
             
-            Route::group( ['prefix'=>'1.0.0/account'], 
+            Route::group( [ 'prefix'=>'account' ], 
                 function() 
                 {
                     Route::get('get', 
@@ -24,8 +24,8 @@
                         }
                     );
                     
-                    Route::post( 'registration', [AccountController::class, 'register'] );
-                    Route::post( 'login', [AccountController::class, 'login'] );   
+                    Route::post( 'registration', [ AccountController::class, 'register' ] );
+                    Route::post( 'login', [ AccountController::class, 'login' ] );   
                 }
             );
 

@@ -26,7 +26,17 @@ Route::group( [ 'prefix' => '1.0.0' ],
 );
 
 
-Route::middleware( 'auth:sanctum' )->group( RoutesAccountAPIModel::register() );
-Route::middleware( 'auth:sanctum' )->group( RoutesNewsletterApiModel::registerSubscription() );
-Route::middleware( 'auth:sanctum' )->group( RoutesNewsletterApiModel::registerNewsletterCategory() );
-Route::middleware( 'auth:sanctum' )->group( RoutesMailingListApiModel::register() );
+Route::middleware( 'auth:sanctum' )->group( 
+    function()
+    {
+        Route::group( ['prefix'=>'1.0.0'], 
+            function() 
+            {
+                RoutesAccountAPIModel::register();
+                RoutesNewsletterApiModel::registerSubscription();
+                RoutesNewsletterApiModel::registerNewsletterCategory();
+                RoutesMailingListApiModel::register();
+            }
+        );
+    }
+);
