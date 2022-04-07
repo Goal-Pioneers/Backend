@@ -10,6 +10,9 @@
     
     class RoutesMailingListApiModel
     {
+        /**
+         * 
+         */
         public static function register()
         {
             Route::group( [ 'prefix' => 'mailing_list' ], 

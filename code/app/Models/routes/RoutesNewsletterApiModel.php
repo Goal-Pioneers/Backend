@@ -10,6 +10,9 @@
 
     class RoutesNewsletterApiModel
     {
+        /**
+         * 
+         */
         public static function register()
         {
             Route::group( [ 'prefix' => 'newsletter' ], 
@@ -41,6 +44,9 @@
         }
         
 
+        /**
+         * 
+         */
         public static function registerNewsletterCategory()
         {
             Route::group( [ 'prefix' => 'category' ], 

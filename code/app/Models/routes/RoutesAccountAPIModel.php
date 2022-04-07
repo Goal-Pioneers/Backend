@@ -11,6 +11,9 @@
 
     class RoutesAccountAPIModel
     {
+        /**
+         * 
+         */
         public static function register()
         {
             

@@ -6,6 +6,9 @@
 
     class RoutesForgotAPIModel
     {
+        /**
+         * 
+         */
         public static function register()
         {
 
