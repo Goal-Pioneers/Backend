@@ -5,7 +5,7 @@
 
     use Illuminate\Foundation\Http\FormRequest;
 
-    define('DEBUGGING', true);
+    define( 'DEBUGGING', false );
     
     class OnlySecureRequest 
         extends FormRequest
@@ -17,7 +17,12 @@
          */
         final public function authorize(): bool
         {
-            return DEBUGGING || $this->secure();
+            if( DEBUGGING )
+            {
+                return true;
+            }
+
+            return  $this->secure();
         }
     }
 

@@ -48,7 +48,7 @@
             $account->remember_token = $token;
             $account->save();
 
-            $outputMessage['token']     = $account->createToken('account')->plainTextToken;
+            $outputMessage['token']     = $token;
             $outputMessage['username']  = $account->username;
             $outputMessage['id']        = $account->id;
 
@@ -59,12 +59,21 @@
         /**
          * 
          */
-        final public function me( AccountRegisterRequest $request )
+        final public function me( Request $request )
         {
             self::logClientIP( $request );
             
+            $account = AccountModel::where( 'remember_token', $request->bearerToken() )->firstOrFail();
 
-            return response()->json($request->all(), 200);
+            $json_response = array();
+
+            $json_response['id'] = $account->id;
+            $json_response['username'] = $account->username;
+
+            $json_response['created_at'] = $account->created_at;
+            $json_response['updated_at'] = $account->updated_at;
+
+            return response()->json( $json_response, 200 );
         }
         
 

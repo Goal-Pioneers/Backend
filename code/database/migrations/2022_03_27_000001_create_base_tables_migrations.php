@@ -36,14 +36,9 @@
                     $table->id();
                     $table->string( 'username' );
                     
-                    
                     $table->bigInteger( 'email_id' )
                           ->unsigned()
                           ->unique();
-
-                    $table->timestamp( 'email_verified_at' ) 
-                          ->nullable()
-                          ->useCurrent();
 
                     $table->string( 'password' );
 
