@@ -10,49 +10,59 @@
 
     class RoutesNewsletterApiModel
     {
-        public static function registerSubscription()
+        public static function register()
         {
-            Route::post( 'subscription/create', 
-                [ SubscriptionController::class, 'create' ]
-            );
+            Route::group( [ 'prefix' => 'newsletter' ], 
+                function() 
+                {
+                    self::registerNewsletterCategory();
 
-            Route::get( 'subscription/{id}', 
-                [ SubscriptionController::class, 'select' ]
-            );
-
-            Route::get( 'subscription/page/{pagination}', 
-                [ SubscriptionController::class, 'page' ]
-            );
-
-            Route::patch( 'subscription/update', 
-                [ SubscriptionController::class, 'update' ]
-            );
-
-            Route::delete( 'subscription/delete', 
-                [ SubscriptionController::class, 'delete' ]
+                    Route::post( 'create', 
+                        [ SubscriptionController::class, 'create' ]
+                    );
+        
+                    Route::get( '{id}', 
+                        [ SubscriptionController::class, 'select' ]
+                    );
+        
+                    Route::get( 'page/{pagination}', 
+                        [ SubscriptionController::class, 'page' ]
+                    );
+        
+                    Route::patch( 'update', 
+                        [ SubscriptionController::class, 'update' ]
+                    );
+        
+                    Route::delete( 'delete', 
+                        [ SubscriptionController::class, 'delete' ]
+                    );
+                } 
             );
         }
         
 
         public static function registerNewsletterCategory()
         {
-            
-            Route::get( 'subscription/category/{id}', 
-                [ SubscriptionCategoryController::class, 'select' ]
+            Route::group( [ 'prefix' => 'category' ], 
+                function() 
+                {
+                    Route::get( '{id}', 
+                        [ SubscriptionCategoryController::class, 'select' ]
+                    );
+        
+                    Route::post( 'create', 
+                        [ SubscriptionCategoryController::class, 'create' ]
+                    );
+        
+                    Route::patch( 'update', 
+                        [ SubscriptionCategoryController::class, 'update' ]
+                    );
+        
+                    Route::delete( 'delete', 
+                        [ SubscriptionCategoryController::class, 'delete' ]
+                    );
+                }
             );
-
-            Route::post( 'subscription/category/create', 
-                [ SubscriptionCategoryController::class, 'create' ]
-            );
-
-            Route::patch( 'subscription/category/update', 
-                [ SubscriptionCategoryController::class, 'update' ]
-            );
-
-            Route::delete( 'subscription/category/delete', 
-                [ SubscriptionCategoryController::class, 'delete' ]
-            );
-
         }
     }
 ?>

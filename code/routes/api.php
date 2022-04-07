@@ -33,8 +33,7 @@ Route::middleware( 'auth:sanctum' )->group(
             function() 
             {
                 RoutesAccountAPIModel::register();
-                RoutesNewsletterApiModel::registerSubscription();
-                RoutesNewsletterApiModel::registerNewsletterCategory();
+                RoutesNewsletterApiModel::register();
                 RoutesMailingListApiModel::register();
             }
         );
