@@ -33,8 +33,9 @@ class AccountModel
     protected $fillable = 
     [
         'username',
-        'email',
+        'email_id',
         'password',
+        'email_verified_at'
     ];
 
 
@@ -57,6 +58,8 @@ class AccountModel
      */
     protected $casts = 
     [
-        'email_verified_at' => 'datetime',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'email_verified_at' => 'datetime'
     ];
 }

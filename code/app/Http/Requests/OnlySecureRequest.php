@@ -4,7 +4,6 @@
     namespace App\Http\Requests;
 
     use Illuminate\Foundation\Http\FormRequest;
-
     
     class OnlySecureRequest 
         extends FormRequest
@@ -16,7 +15,12 @@
          */
         final public function authorize(): bool
         {
-            return $this->secure();
+            if( DEBUGGING )
+            {
+                return true;
+            }
+
+            return  $this->secure();
         }
     }
 

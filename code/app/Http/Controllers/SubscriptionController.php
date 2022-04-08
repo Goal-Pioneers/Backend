@@ -36,7 +36,7 @@ class SubscriptionController
      */
     public function page( Request $request )
     {
-        self::logClientIP( $request );
+        // self::logClientIP( $request );
 
     }
 
@@ -46,7 +46,7 @@ class SubscriptionController
      */
     public function create( Request $request )
     {
-        self::logClientIP( $request );
+        // self::logClientIP( $request );
 
         // Get Mail
         $mail = MailingListsModel::find( 
@@ -79,7 +79,7 @@ class SubscriptionController
      */
     public function update( Request $request )
     {
-        self::logClientIP( $request );
+        // self::logClientIP( $request );
 
         // Get Mail
         $mail = MailingListsModel::find( 
@@ -116,7 +116,7 @@ class SubscriptionController
      */
     public function delete( Request $request )
     {
-        self::logClientIP( $request );
+        // self::logClientIP( $request );
 
         $subscription = SubscriptionModel::find( $request->input('id') );
 

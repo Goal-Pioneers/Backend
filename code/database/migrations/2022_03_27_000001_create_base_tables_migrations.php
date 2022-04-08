@@ -18,8 +18,9 @@
         const DB_ENGINE_DEFAULT = 'InnoDB';
         
             // Table names
+        const DB_TABLE_NAME_ACCOUNT_VERRIFIED_AT     = 'account_verified_at';
         const DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS  = 'account_activity_visits';
-        
+
         const DB_TABLE_NAME_FAILED_JOBS              = 'failed_jobs';
         const DB_TABLE_NAME_PASSWORD_RESET           = 'password_resets';
 
@@ -36,23 +37,79 @@
                     $table->id();
                     $table->string( 'username' );
                     
-                    
                     $table->bigInteger( 'email_id' )
                           ->unsigned()
                           ->unique();
 
-                    $table->timestamp( 'email_verified_at' ) 
-                          ->nullable()
-                          ->useCurrent();
-
                     $table->string( 'password' );
 
                     $table->rememberToken();
-                    $table->timestamps();
-
+                    
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
                           ->on( 'mailing_lists' );
+
+                    $table->timestamps();
+                }
+            );
+
+
+            Schema::connection( self::DB_CONNECTOR )
+                  ->create( self::DB_TABLE_NAME_ACCOUNT_VERRIFIED_AT, 
+                function ( Blueprint $table ) 
+                {
+                    $table->engine = self::DB_ENGINE_DEFAULT;
+
+                    $table->id();
+                    $table->string( 'content_token' );
+
+
+                    $table->bigInteger( 'account_id' )
+                          ->unsigned()
+                          ->unique();
+                  
+                    $table->foreign( 'account_id' )
+                          ->references( 'id' )
+                          ->on( AccountModel::DB_TABLE_NAME );
+
+                }
+            );
+
+            Schema::connection( self::DB_CONNECTOR )
+                  ->create( 'status', 
+                function ( Blueprint $table ) 
+                {
+                    $table->engine = self::DB_ENGINE_DEFAULT;
+
+                    $table->id();
+                    $table->string('content')->index();
+
+                }
+            );
+
+
+            Schema::connection( self::DB_CONNECTOR )
+                  ->create( 'ip_address_type', 
+                function ( Blueprint $table ) 
+                {
+                    $table->engine = self::DB_ENGINE_DEFAULT;
+
+                    $table->id();
+                    $table->string('content')->index()->unique();
+
+                }
+            );
+
+
+            Schema::connection( self::DB_CONNECTOR )
+                  ->create( 'label_ip_address', 
+                function ( Blueprint $table ) 
+                {
+                    $table->engine = self::DB_ENGINE_DEFAULT;
+
+                    $table->id();
+                    $table->ipAddress('content')->index()->unique();
+
                 }
             );
 
@@ -67,8 +124,17 @@
 
                     $table->bigInteger( 'account_id' )
                           ->unsigned();
+
+                    $table->bigInteger( 'status_id' )
+                          ->unsigned();
                     
-                    $table->ipAddress( 'address' );
+                    $table->bigInteger( 'address_id' )
+                          ->unsigned();
+
+                    $table->bigInteger( 'address_type_id' )
+                          ->unsigned();
+
+                    $table->json( 'request' );
                     
                     $table->timestamp( 'authenticated_at' )
                           ->nullable()
@@ -77,6 +143,18 @@
                     $table->foreign( 'account_id' )
                           ->references( 'id' )
                           ->on( AccountModel::DB_TABLE_NAME );
+
+                    $table->foreign( 'status_id' )
+                          ->references( 'id' )
+                          ->on( 'status' );
+
+                    $table->foreign( 'address_type_id' )
+                          ->references( 'id' )
+                          ->on( 'ip_address_type' );
+
+                    $table->foreign( 'address_id' )
+                          ->references( 'id' )
+                          ->on( 'label_ip_address' );
                 }
             );
 

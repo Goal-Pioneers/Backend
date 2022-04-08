@@ -7,12 +7,15 @@
     use Illuminate\Support\Facades\Hash;
 
     use Validator;
-
-    use App\Models\User;
     
     use App\Http\Requests\AccountRegisterRequest;
     use App\Http\Requests\AccountLoginRequest;
 
+    use App\Models\AccountModel;
+    use App\Models\MailingListsModel;
+    use App\Models\PasswordResets;
+
+    use App\Http\Controllers\MailingListController;
 
     /**
      * 
@@ -25,19 +28,57 @@
          */
         final public function register( AccountRegisterRequest $request )
         {
-            self::logClientIP( $request );
-            
-            $inputModel = $request->all();
-            $inputModel['email'] = $request->input('mail');
-            $inputModel['password'] = Hash::make( $inputModel['password'] );
+            $mlc = new MailingListController();
+            $model_email = $mlc->select_by_name( $request->input( 'mail' ) );
 
-            $account = User::create( $inputModel );
+            $email_does_not_exists = is_null( $model_email );
 
-            $outputMessage['token']     = $account->createToken('account')->plainTextToken;
+            if( $email_does_not_exists )
+            {
+                $emailInput[ 'content' ] = $request->input( 'mail' );
+                $mailModel = MailingListsModel::create( $emailInput );
+            }
+            else 
+            {
+                $mailModel = $model_email;
+            }
+
+            $inputModel[ 'username' ] = $request->input( 'username' );
+            $inputModel[ 'email_id' ] = $mailModel->id;
+            $inputModel[ 'password' ] = Hash::make( $request->input('password') );
+
+            $account = AccountModel::create( $inputModel );
+
+            $token = $account->createToken('account')->plainTextToken;
+            $account->remember_token = $token;
+            $account->save();
+
+            // self::logClientIP( $request );
+
+            $outputMessage['token']     = $token;
             $outputMessage['username']  = $account->username;
             $outputMessage['id']        = $account->id;
 
-            return response()->json($outputMessage, 200);
+            return response()->json( $outputMessage, 200 );
+        }
+
+
+        /**
+         * 
+         */
+        final public function me( Request $request )
+        {   
+            $account = AccountModel::where( 'remember_token', $request->bearerToken() )->firstOrFail();
+
+            $json_response = array();
+
+            $json_response['id'] = $account->id;
+            $json_response['username'] = $account->username;
+
+            $json_response['created_at'] = $account->created_at;
+            $json_response['updated_at'] = $account->updated_at;
+
+            return response()->json( $json_response, 200 );
         }
         
 
@@ -46,24 +87,53 @@
          */
         final public function login( AccountLoginRequest $request )
         {
-            self::logClientIP( $request );
+            // self::logClientIP( $request );
 
             $outputMessage = null;
 
-            if( Auth::attempt( ['username' => $request->username, 'password' => $request->password] ) )
+            if( Auth::attempt( [ 'username' => $request->username, 'password' => $request->password ] ) )
             { 
-                $authUser = Auth::user(); 
+                $authUser = Auth::user();
+                
+                $authUser->remember_token = $authUser->createToken( 'account' )->plainTextToken;
+                $authUser->save();
 
-                $outputMessage['token']     =  $authUser->createToken( 'account' )->plainTextToken; 
+                $outputMessage['id']        =  $authUser->id;
                 $outputMessage['username']  =  $authUser->username;
-                $outputMessage['id']        = $authUser->id;
+                $outputMessage['token']     =  $authUser->remember_token; 
             } 
             else
             { 
-                return response()->json('Unauthorised.', ['error'=>'Unauthorised']);
+                return response()->json( 'Unauthorised.', [ 'error'=>'Unauthorised' ] );
             } 
             
             return response()->json($outputMessage, 200);
         }
+
+
+        final public function loginWithMail( Request $request )
+        {
+            
+            return response()->json($outputMessage, 200);
+        }
+
+
+        /**
+         * 
+         */
+        final public function forgotPassword( Request $request )
+        {
+            
+            return response()->json($outputMessage, 200);
+        }
+
+
+        final public function forgotUsername( Request $request )
+        {
+
+            
+            return response()->json($outputMessage, 200);
+        }
+
     }
 ?>
