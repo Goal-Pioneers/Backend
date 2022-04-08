@@ -12,6 +12,7 @@ class PasswordResets
 
     protected $table = 'password_resets';
     public $timestamps = false;
+    protected $primaryKey = 'id';
 
     
     protected $fillable = 

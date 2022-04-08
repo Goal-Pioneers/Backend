@@ -5,36 +5,33 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-/**
- * 
- */
-class SubscriptionModel 
-    extends Model
+class StatusModel extends Model
 {
     use HasFactory;
+    
+    public const DB_TABLE_NAME = 'status';
 
-    protected $table = 'subscriptions';
+    protected $table = self::DB_TABLE_NAME;
     protected $primaryKey = 'id';
+
 
     
     protected $fillable = 
     [
-        'category_id',
-        'mail_id'
+        'content'
     ];
 
 
+    
     protected $hidden = 
     [
-        'created_at', 
-        'updated_at'
-    ];
-    
 
+    ];
+
+    
+    
     protected $casts = 
     [
-          
+        
     ];
-
 }
