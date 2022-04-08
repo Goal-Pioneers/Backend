@@ -16,3 +16,6 @@ code/composer.lock
 
 .idea
 .vscode
+
+*.editorconfig
+*.htaccess
