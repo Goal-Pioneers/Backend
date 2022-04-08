@@ -7,7 +7,7 @@
 
     // Code function
     /**
-     * 
+     *
      */
     return new class extends Migration
     {
@@ -23,22 +23,21 @@
         const DB_TABLE_NAME_ROADNAME        = 'label_address_roadname';
         const DB_TABLE_NAME_REGION          = 'label_address_region';
         const DB_TABLE_NAME_APARTMENT       = 'label_address_apartment';
-        
+
             // Columns
         const DB_COLUMN_CONTENT = 'content';
 
-        
-        
+
         public function up()
         {
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_COUNTRY, 
-                function ( Blueprint $table ) 
+                ->create( self::DB_TABLE_NAME_COUNTRY,
+                function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id()
-                          ->comment(''); 
+                          ->comment('');
 
                     $table->string( self::DB_COLUMN_CONTENT )
                           ->unique()
@@ -48,45 +47,13 @@
 
 
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_CITY, 
-                function( Blueprint $table ) 
-                {
-                    $table->engine = self::DB_ENGINE_DEFAULT;
-                    
-                    $table->id()
-                          ->comment('');
-                    
-                    $table->string( self::DB_COLUMN_CONTENT )
-                          ->unique()
-                          ->comment('');
-                }
-            );
-
-
-            Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_PROVINCE, 
-                function ( Blueprint $table ) 
+                ->create( self::DB_TABLE_NAME_CITY,
+                function( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id()
-                          ->comment(''); 
-                    
-                    $table->string( self::DB_COLUMN_CONTENT )
-                          ->unique()
                           ->comment('');
-                }
-            );   
-
-
-            Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_ROADNAME, 
-                function ( Blueprint $table ) 
-                {
-                    $table->engine = self::DB_ENGINE_DEFAULT;
-                    
-                    $table->id()
-                          ->comment(''); 
 
                     $table->string( self::DB_COLUMN_CONTENT )
                           ->unique()
@@ -96,13 +63,13 @@
 
 
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_REGION, 
-                function ( Blueprint $table ) 
+                ->create( self::DB_TABLE_NAME_PROVINCE,
+                function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id()
-                          ->comment(''); 
+                          ->comment('');
 
                     $table->string( self::DB_COLUMN_CONTENT )
                           ->unique()
@@ -112,14 +79,46 @@
 
 
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_APARTMENT, 
-                function ( Blueprint $table ) 
+                ->create( self::DB_TABLE_NAME_ROADNAME,
+                function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id()
                           ->comment('');
-                           
+
+                    $table->string( self::DB_COLUMN_CONTENT )
+                          ->unique()
+                          ->comment('');
+                }
+            );
+
+
+            Schema::connection( self::DB_CONNECTOR )
+                ->create( self::DB_TABLE_NAME_REGION,
+                function ( Blueprint $table )
+                {
+                    $table->engine = self::DB_ENGINE_DEFAULT;
+
+                    $table->id()
+                          ->comment('');
+
+                    $table->string( self::DB_COLUMN_CONTENT )
+                          ->unique()
+                          ->comment('');
+                }
+            );
+
+
+            Schema::connection( self::DB_CONNECTOR )
+                ->create( self::DB_TABLE_NAME_APARTMENT,
+                function ( Blueprint $table )
+                {
+                    $table->engine = self::DB_ENGINE_DEFAULT;
+
+                    $table->id()
+                          ->comment('');
+
                     $table->string( self::DB_COLUMN_CONTENT )
                           ->unique()
                           ->comment('');
@@ -128,7 +127,7 @@
         }
 
 
-        
+
         public function down()
         {
             Schema::connection( self::DB_CONNECTOR )
@@ -142,7 +141,7 @@
 
             Schema::connection( self::DB_CONNECTOR )
                   ->dropIfExists( self::DB_TABLE_NAME_ROADNAME );
-            
+
             Schema::connection( self::DB_CONNECTOR )
                   ->dropIfExists( self::DB_TABLE_NAME_REGION );
 
