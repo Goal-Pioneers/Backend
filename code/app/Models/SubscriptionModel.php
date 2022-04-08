@@ -15,6 +15,7 @@ class SubscriptionModel
     use HasFactory;
 
     protected $table = 'subscriptions';
+    protected $primaryKey = 'id';
 
     
     protected $fillable = 

@@ -12,6 +12,7 @@ class SubscriptionCategoryModel
 
     protected $table = 'subscription_category';
     public $timestamps = false;
+    protected $primaryKey = 'id';
 
 
     protected $fillable = 

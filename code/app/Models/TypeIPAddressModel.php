@@ -12,6 +12,7 @@ class TypeIPAddressModel
     
     public const DB_TABLE_NAME = 'ip_address_type';
     protected $table = self::DB_TABLE_NAME;
+    protected $primaryKey = 'id';
 
     protected $fillable = 
     [

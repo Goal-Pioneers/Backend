@@ -20,6 +20,7 @@ class AccountModel
         Notifiable;
 
     public const DB_TABLE_NAME = 'accounts';
+    protected $primaryKey = 'id';
 
 
     protected $table = self::DB_TABLE_NAME;

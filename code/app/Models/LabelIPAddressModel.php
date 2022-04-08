@@ -12,6 +12,7 @@ class LabelIPAddressModel
     
     public const DB_TABLE_NAME = 'label_ip_address';
     protected $table = self::DB_TABLE_NAME;
+    protected $primaryKey = 'id';
 
     protected $fillable = 
     [
