@@ -43,6 +43,8 @@
                     $table->string( 'password' );
 
                     $table->rememberToken();
+                    
+                    $table->timestamp( 'email_verified_at' )->nullable();
                     $table->timestamps();
 
                     $table->foreign( 'email_id' )

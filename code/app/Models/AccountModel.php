@@ -35,6 +35,7 @@ class AccountModel
         'username',
         'email_id',
         'password',
+        'email_verified_at'
     ];
 
 
@@ -58,6 +59,7 @@ class AccountModel
     protected $casts = 
     [
         'created_at' => 'datetime',
-        'updated_at' => 'datetime'
+        'updated_at' => 'datetime',
+        'email_verified_at' => 'datetime'
     ];
 }

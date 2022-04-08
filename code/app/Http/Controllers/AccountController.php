@@ -13,6 +13,7 @@
 
     use App\Models\AccountModel;
     use App\Models\MailingListsModel;
+    use App\Models\PasswordResets;
 
     /**
      * 
@@ -104,5 +105,24 @@
             
             return response()->json($outputMessage, 200);
         }
+
+        final public function loginWithMail( Request $request )
+        {
+
+        }
+
+        /**
+         * 
+         */
+        final public function forgotPassword( Request $request )
+        {
+
+        }
+
+        final public function forgotUsername( Request $request )
+        {
+
+        }
+
     }
 ?>
