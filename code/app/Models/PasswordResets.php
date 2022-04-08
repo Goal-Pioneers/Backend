@@ -9,9 +9,11 @@
         extends Model
     {
         use HasFactory;
+        public const DB_TABLE_NAME = 'password_resets';
 
-        protected $table = 'password_resets';
+        protected $table = self::DB_TABLE_NAME;
         public $timestamps = false;
+        
         protected $primaryKey = 'id';
 
         

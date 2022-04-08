@@ -10,10 +10,14 @@
     {
         use HasFactory;
 
-        protected $table = 'mailing_lists';
+        public const DB_TABLE_NAME = 'mailing_lists';
+
+        protected $table = self::DB_TABLE_NAME;
         public $timestamps = false;
+        
         protected $primaryKey = 'id';
 
+        
 
         
         protected $fillable = 

@@ -9,8 +9,10 @@
         extends Model
     {
         use HasFactory;
+        public const DB_TABLE_NAME = 'subscription_category';
 
-        protected $table = 'subscription_category';
+        protected $table = self::DB_TABLE_NAME;
+        
         public $timestamps = false;
         protected $primaryKey = 'id';
 

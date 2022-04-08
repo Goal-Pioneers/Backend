@@ -5,6 +5,8 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
+
+    
     class AddressModel 
         extends Model
     {
@@ -12,7 +14,9 @@
 
         public const DB_TABLE_NAME = 'account_address';
         protected $table = self::DB_TABLE_NAME;
+        
         protected $primaryKey = 'id';
+
 
         protected $fillable = 
         [

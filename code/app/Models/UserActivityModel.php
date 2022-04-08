@@ -13,6 +13,7 @@
         use HasFactory;
 
         public const DB_TABLE_NAME = 'account_activity_visits';
+        
         protected $table = self::DB_TABLE_NAME;
         protected $primaryKey = 'id';
 

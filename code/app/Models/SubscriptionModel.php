@@ -13,8 +13,9 @@
         extends Model
     {
         use HasFactory;
+        public const DB_TABLE_NAME = 'subscriptions';
 
-        protected $table = 'subscriptions';
+        protected $table = self::DB_TABLE_NAME;
         protected $primaryKey = 'id';
 
         
