@@ -1,3 +1,6 @@
 *.xml
 *.yml
 *.log
+*.iml
+*.example
+*.crt
