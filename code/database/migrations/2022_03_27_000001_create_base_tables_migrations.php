@@ -25,6 +25,7 @@
         const DB_TABLE_NAME_PASSWORD_RESET           = 'password_resets';
 
         const DB_TABLE_NAME_STATUS              = 'status';
+        
         const DB_TABLE_NAME_IP_ADDRESS_TYPE     = 'ip_address_type';
         const DB_TABLE_NAME_IP_ADDRESS_LABEL    = 'label_ip_address';
 
@@ -258,7 +259,6 @@
 
             Schema::connection( self::DB_CONNECTOR )
                   ->dropIfExists( self::DB_TABLE_NAME_FAILED_JOBS );
-
             
             Schema::connection( self::DB_CONNECTOR )
                   ->dropIfExists( self::DB_TABLE_NAME_PASSWORD_RESET );
