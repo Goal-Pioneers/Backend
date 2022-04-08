@@ -6,4 +6,13 @@
 *.example
 *.crt
 
+*.env
+*.env.backup
+
 .idea/*
+
+code/package-lock.json
+code/composer.lock
+
+.idea
+.vscode
