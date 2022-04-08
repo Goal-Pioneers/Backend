@@ -30,7 +30,8 @@
                     $table->id();
 
                     $table->string( 'content' )
-                          ->unique();
+                          ->unique()
+                          ->comment('');
                 }
             );
 
@@ -44,13 +45,16 @@
                     $table->id();
 
                     $table->string( 'currency_name' )
-                          ->unique();
+                          ->unique()
+                          ->comment('');
                     
                     $table->string( 'currency_acronyms' )
-                          ->index();
+                          ->index()
+                          ->comment('');
 
                     $table->string( 'currency_symbols' )
-                          ->nullable();
+                          ->nullable()
+                          ->comment('');
                 }
             );
 
@@ -64,16 +68,21 @@
                         $table->id();
 
                         $table->bigInteger( 'account_id' )
-                              ->unsigned();
+                              ->unsigned()
+                              ->comment('');
 
-                        $table->json( 'billing_content' );
-                        $table->double( 'total_cost' );
+                        $table->json( 'billing_content' )
+                        ->comment('');
+                        $table->double( 'total_cost' )
+                        ->comment('');
 
                         $table->bigInteger( 'currency_id' )
-                              ->unsigned();
+                              ->unsigned()
+                              ->comment('');
 
                         $table->bigInteger( 'account_invoice_id' )
-                              ->unsigned();
+                              ->unsigned()
+                              ->comment('');
 
                         $table->timestamps();
 

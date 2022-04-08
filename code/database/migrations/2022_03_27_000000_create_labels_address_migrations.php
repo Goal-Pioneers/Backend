@@ -36,8 +36,13 @@
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
-                    $table->id(); 
-                    $table->string( self::DB_COLUMN_CONTENT )->unique();
+
+                    $table->id()
+                          ->comment(''); 
+
+                    $table->string( self::DB_COLUMN_CONTENT )
+                          ->unique()
+                          ->comment('');
                 }
             );
 
@@ -47,8 +52,13 @@
                 function( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
-                    $table->id();
-                    $table->string( self::DB_COLUMN_CONTENT )->unique();
+                    
+                    $table->id()
+                          ->comment('');
+                    
+                    $table->string( self::DB_COLUMN_CONTENT )
+                          ->unique()
+                          ->comment('');
                 }
             );
 
@@ -58,8 +68,13 @@
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
-                    $table->id(); 
-                    $table->string( self::DB_COLUMN_CONTENT )->unique();
+
+                    $table->id()
+                          ->comment(''); 
+                    
+                    $table->string( self::DB_COLUMN_CONTENT )
+                          ->unique()
+                          ->comment('');
                 }
             );   
 
@@ -69,8 +84,13 @@
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
-                    $table->id(); 
-                    $table->string( self::DB_COLUMN_CONTENT )->unique();
+                    
+                    $table->id()
+                          ->comment(''); 
+
+                    $table->string( self::DB_COLUMN_CONTENT )
+                          ->unique()
+                          ->comment('');
                 }
             );
 
@@ -80,8 +100,13 @@
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
-                    $table->id(); 
-                    $table->string( self::DB_COLUMN_CONTENT )->unique();
+
+                    $table->id()
+                          ->comment(''); 
+
+                    $table->string( self::DB_COLUMN_CONTENT )
+                          ->unique()
+                          ->comment('');
                 }
             );
 
@@ -91,8 +116,13 @@
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
-                    $table->id(); 
-                    $table->string( self::DB_COLUMN_CONTENT )->unique();
+
+                    $table->id()
+                          ->comment('');
+                           
+                    $table->string( self::DB_COLUMN_CONTENT )
+                          ->unique()
+                          ->comment('');
                 }
             );
         }

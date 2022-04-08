@@ -39,21 +39,25 @@
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id();
-                    $table->string( 'username' );
+                    $table->string( 'username' )
+                          ->comment('');
                     
                     $table->bigInteger( 'email_id' )
                           ->unsigned()
-                          ->unique();
+                          ->unique()
+                          ->comment('');
 
-                    $table->string( 'password' );
+                    $table->string( 'password' )
+                          ->comment('');
 
-                    $table->rememberToken();
+                    $table->rememberToken()
+                          ->comment('');
+                    
+                    $table->timestamps();
                     
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
                           ->on( 'mailing_lists' );
-
-                    $table->timestamps();
                 }
             );
 
@@ -65,7 +69,9 @@
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id();
-                    $table->string( 'content_token' );
+
+                    $table->string( 'content_token' )
+                          ->comment('');
 
 
                     $table->bigInteger( 'account_id' )
@@ -87,7 +93,11 @@
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id();
-                    $table->string('content')->index()->unique();
+
+                    $table->string('content')
+                          ->index()
+                          ->unique()
+                          ->comment('');
 
                 }
             );
@@ -100,7 +110,11 @@
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id();
-                    $table->string('content')->index()->unique();
+
+                    $table->string('content')
+                          ->index()
+                          ->unique()
+                          ->comment('');
 
                 }
             );
@@ -113,7 +127,11 @@
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id();
-                    $table->ipAddress('content')->index()->unique();
+
+                    $table->ipAddress('content')
+                          ->index()
+                          ->unique()
+                          ->comment('');
 
                 }
             );
@@ -128,22 +146,28 @@
                     $table->id();
 
                     $table->bigInteger( 'account_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->bigInteger( 'status_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
                     
                     $table->bigInteger( 'address_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->bigInteger( 'address_type_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
-                    $table->json( 'request' );
+                    $table->json( 'request' )
+                          ->comment('');
                     
                     $table->timestamp( 'authenticated_at' )
                           ->nullable()
-                          ->useCurrent();
+                          ->useCurrent()
+                          ->comment('');
 
                     $table->foreign( 'account_id' )
                           ->references( 'id' )
@@ -173,16 +197,24 @@
                     $table->id();
 
                     $table->string( 'uuid' )
-                          ->unique();
+                          ->unique()
+                          ->comment('');
 
-                    $table->text( 'connection' );
-                    $table->text( 'queue' );
+                    $table->text( 'connection' )
+                          ->comment('');
+
+                    $table->text( 'queue' )
+                          ->comment('');
                     
-                    $table->longText( 'payload' );
-                    $table->longText( 'exception' );
+                    $table->longText( 'payload' )
+                          ->comment('');
+
+                    $table->longText( 'exception' )
+                          ->comment('');
                     
                     $table->timestamp( 'failed_at' )
-                          ->useCurrent();
+                          ->useCurrent()
+                          ->comment('');
                 }
             );
 
@@ -197,13 +229,16 @@
 
                     $table->bigInteger( 'email_id' )
                           ->unsigned()
-                          ->index();
+                          ->index()
+                          ->comment('');
 
-                    $table->string( 'token' );
+                    $table->string( 'token' )
+                          ->comment('');
                     
                     $table->timestamp( 'created_at' )
                           ->nullable()
-                          ->useCurrent();
+                          ->useCurrent()
+                          ->comment('');
 
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
