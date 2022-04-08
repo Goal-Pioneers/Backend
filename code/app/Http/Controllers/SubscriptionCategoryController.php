@@ -36,7 +36,7 @@ class SubscriptionCategoryController
      */
     public function page( Request $request )
     {
-        self::logClientIP( $request );
+        // self::logClientIP( $request );
 
     }
 
@@ -46,7 +46,7 @@ class SubscriptionCategoryController
      */
     public function create( Request $request )
     {
-        self::logClientIP( $request );
+        // self::logClientIP( $request );
 
         $mailRequest = $request->all();
 
@@ -72,7 +72,7 @@ class SubscriptionCategoryController
      */
     public function update( Request $request )
     {
-        self::logClientIP( $request );
+        // self::logClientIP( $request );
 
         $model = SubscriptionCategoryModel::find( $request->input('id') );
 
@@ -93,7 +93,7 @@ class SubscriptionCategoryController
      */
     public function delete( Request $request )
     {
-        self::logClientIP( $request );
+        // self::logClientIP( $request );
 
         $subscriptionCategoryRequest = $request->all();
 

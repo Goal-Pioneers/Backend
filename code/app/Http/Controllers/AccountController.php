@@ -28,8 +28,6 @@
          */
         final public function register( AccountRegisterRequest $request )
         {
-            self::logClientIP( $request );
-
             $mlc = new MailingListController();
             $model_email = $mlc->select_by_name( $request->input( 'mail' ) );
 
@@ -55,11 +53,13 @@
             $account->remember_token = $token;
             $account->save();
 
+            // self::logClientIP( $request );
+
             $outputMessage['token']     = $token;
             $outputMessage['username']  = $account->username;
             $outputMessage['id']        = $account->id;
 
-            return response()->json($outputMessage, 200);
+            return response()->json( $outputMessage, 200 );
         }
 
 
@@ -67,9 +67,7 @@
          * 
          */
         final public function me( Request $request )
-        {
-            self::logClientIP( $request );
-            
+        {   
             $account = AccountModel::where( 'remember_token', $request->bearerToken() )->firstOrFail();
 
             $json_response = array();
@@ -89,7 +87,7 @@
          */
         final public function login( AccountLoginRequest $request )
         {
-            self::logClientIP( $request );
+            // self::logClientIP( $request );
 
             $outputMessage = null;
 

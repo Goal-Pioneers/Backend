@@ -51,7 +51,7 @@ class MailingListController
      */
     public function page( Request $request )
     {
-        self::logClientIP( $request );
+        // self::logClientIP( $request );
         
         return response()->json($request, 200);
     }
@@ -62,7 +62,7 @@ class MailingListController
      */
     public function create( Request $request )
     {
-        self::logClientIP( $request );
+        // self::logClientIP( $request );
 
         $mailRequest = $request->all();
 
@@ -88,7 +88,7 @@ class MailingListController
      */
     public function update( Request $request )
     {
-        self::logClientIP( $request );
+        // self::logClientIP( $request );
 
         $model = MailingListsModel::find( $request->input( 'id' ) );
         
@@ -104,7 +104,7 @@ class MailingListController
      */
     public function delete( request $request )
     {
-        self::logClientIP( $request );
+        // self::logClientIP( $request );
 
         $mailRequest = $request->all();
 
