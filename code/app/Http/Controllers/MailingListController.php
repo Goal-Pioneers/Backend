@@ -33,6 +33,22 @@ class MailingListController
     /**
      * 
      */
+    public function select_by_name( string $request ): ?MailingListsModel
+    {
+        $model = MailingListsModel::where( 'content', $request )->first();
+
+        if( is_null( $model ) )
+        {
+            return $model;
+        }
+        
+        return $model;
+    }
+
+
+    /**
+     * 
+     */
     public function page( Request $request )
     {
         self::logClientIP( $request );

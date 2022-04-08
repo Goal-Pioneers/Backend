@@ -12,6 +12,7 @@ class MailingListsModel
 
     protected $table = 'mailing_lists';
     public $timestamps = false;
+    protected $primaryKey = 'id';
 
 
     /**

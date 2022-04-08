@@ -15,6 +15,8 @@
     use App\Models\MailingListsModel;
     use App\Models\PasswordResets;
 
+    use App\Http\Controllers\MailingListController;
+
     /**
      * 
      */
@@ -28,16 +30,20 @@
         {
             self::logClientIP( $request );
 
-            $emailInput[ 'content' ] = $request->input( 'mail' );
-            
-            // does it already exist ?
-            $email_exists = false;
+            $mlc = new MailingListController();
+            $model_email = $mlc->select_by_name( $request->input( 'mail' ) );
 
-            if( !$email_exists )
+            $email_does_not_exists = is_null( $model_email );
+
+            if( $email_does_not_exists )
             {
+                $emailInput[ 'content' ] = $request->input( 'mail' );
                 $mailModel = MailingListsModel::create( $emailInput );
             }
-
+            else 
+            {
+                $mailModel = $model_email;
+            }
 
             $inputModel[ 'username' ] = $request->input( 'username' );
             $inputModel[ 'email_id' ] = $mailModel->id;
@@ -87,7 +93,7 @@
 
             $outputMessage = null;
 
-            if( Auth::attempt( ['username' => $request->username, 'password' => $request->password] ) )
+            if( Auth::attempt( [ 'username' => $request->username, 'password' => $request->password ] ) )
             { 
                 $authUser = Auth::user();
                 
@@ -106,22 +112,29 @@
             return response()->json($outputMessage, 200);
         }
 
+
         final public function loginWithMail( Request $request )
         {
-
+            
+            return response()->json($outputMessage, 200);
         }
+
 
         /**
          * 
          */
         final public function forgotPassword( Request $request )
         {
-
+            
+            return response()->json($outputMessage, 200);
         }
+
 
         final public function forgotUsername( Request $request )
         {
 
+            
+            return response()->json($outputMessage, 200);
         }
 
     }
