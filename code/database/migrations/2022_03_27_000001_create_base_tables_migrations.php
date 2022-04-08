@@ -24,6 +24,10 @@
         const DB_TABLE_NAME_FAILED_JOBS              = 'failed_jobs';
         const DB_TABLE_NAME_PASSWORD_RESET           = 'password_resets';
 
+        const DB_TABLE_NAME_STATUS              = 'status';
+        const DB_TABLE_NAME_IP_ADDRESS_TYPE     = 'ip_address_type';
+        const DB_TABLE_NAME_IP_ADDRESS_LABEL    = 'label_ip_address';
+
 
         
         public function up()
@@ -75,21 +79,9 @@
                 }
             );
 
-            Schema::connection( self::DB_CONNECTOR )
-                  ->create( 'status', 
-                function ( Blueprint $table ) 
-                {
-                    $table->engine = self::DB_ENGINE_DEFAULT;
-
-                    $table->id();
-                    $table->string('content')->index();
-
-                }
-            );
-
 
             Schema::connection( self::DB_CONNECTOR )
-                  ->create( 'ip_address_type', 
+                  ->create( self::DB_TABLE_NAME_STATUS, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
@@ -102,7 +94,20 @@
 
 
             Schema::connection( self::DB_CONNECTOR )
-                  ->create( 'label_ip_address', 
+                  ->create( self::DB_TABLE_NAME_IP_ADDRESS_TYPE, 
+                function ( Blueprint $table ) 
+                {
+                    $table->engine = self::DB_ENGINE_DEFAULT;
+
+                    $table->id();
+                    $table->string('content')->index()->unique();
+
+                }
+            );
+
+
+            Schema::connection( self::DB_CONNECTOR )
+                  ->create( self::DB_TABLE_NAME_IP_ADDRESS_LABEL, 
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
@@ -206,19 +211,31 @@
                 }
             );
         }
-        
 
         
         public function down()
         {
             Schema::connection( self::DB_CONNECTOR )
-                  ->dropIfExists( self::DB_TABLE_NAME_ACCOUNT );
+                  ->dropIfExists( self::DB_TABLE_NAME_ACCOUNT_VERRIFIED_AT );
+
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS );
 
             Schema::connection( self::DB_CONNECTOR )
                   ->dropIfExists( self::DB_TABLE_NAME_FAILED_JOBS );
 
+            
             Schema::connection( self::DB_CONNECTOR )
                   ->dropIfExists( self::DB_TABLE_NAME_PASSWORD_RESET );
+                  
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_STATUS );
+                  
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_IP_ADDRESS_TYPE );
+            
+            Schema::connection( self::DB_CONNECTOR )
+                  ->dropIfExists( self::DB_TABLE_NAME_IP_ADDRESS_LABEL );
         }
     };
 ?>
