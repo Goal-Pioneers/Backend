@@ -16,9 +16,7 @@ class SubscriptionModel
 
     protected $table = 'subscriptions';
 
-    /**
-     * 
-     */
+    
     protected $fillable = 
     [
         'category_id',
@@ -26,11 +24,6 @@ class SubscriptionModel
     ];
 
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = 
     [
         'created_at', 
@@ -38,11 +31,6 @@ class SubscriptionModel
     ];
     
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = 
     [
           

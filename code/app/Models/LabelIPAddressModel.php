@@ -15,7 +15,7 @@ class LabelIPAddressModel
 
     protected $fillable = 
     [
-        
+        'content'
     ];
 
 

@@ -15,7 +15,7 @@ class TypeIPAddressModel
 
     protected $fillable = 
     [
-        
+        'content'
     ];
 
 
