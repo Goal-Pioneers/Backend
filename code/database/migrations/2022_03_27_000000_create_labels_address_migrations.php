@@ -11,6 +11,8 @@
     use App\Models\LabelAddressRoadnamesModel;
     use App\Models\LabelAddressRegionsModel;
 
+
+
     // Code function
     /**
      *
@@ -23,12 +25,12 @@
         const DB_ENGINE_DEFAULT = 'InnoDB';
 
             // Table Names
-        const DB_TABLE_NAME_PROVINCE        = 'label_address_province';
-        const DB_TABLE_NAME_COUNTRY         = 'label_address_country';
-        const DB_TABLE_NAME_CITY            = 'label_address_city';
-        const DB_TABLE_NAME_ROADNAME        = 'label_address_roadname';
-        const DB_TABLE_NAME_REGION          = 'label_address_region';
-        const DB_TABLE_NAME_APARTMENT       = 'label_address_apartment';
+        const DB_TABLE_NAME_PROVINCE        = LabelAddressProvinces::DB_TABLE_NAME;
+        const DB_TABLE_NAME_COUNTRY         = LabelAddressCountriesModel::DB_TABLE_NAME;
+        const DB_TABLE_NAME_CITY            = LabelAddressCitiesModel::DB_TABLE_NAME;
+        const DB_TABLE_NAME_ROADNAME        = LabelAddressRoadnamesModel::DB_TABLE_NAME;
+        const DB_TABLE_NAME_REGION          = LabelAddressRegionsModel::DB_TABLE_NAME;
+        const DB_TABLE_NAME_APARTMENT       = LabelAddressApartmentsModel::DB_TABLE_NAME;
 
             // Columns
         const DB_COLUMN_CONTENT = 'content';
