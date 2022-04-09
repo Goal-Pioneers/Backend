@@ -5,31 +5,32 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
-    class TypeIPAddressModel 
+
+    class TypeIPAddressModel
         extends Model
     {
         use HasFactory;
-        
+
         public const DB_TABLE_NAME = 'ip_address_type';
-        
+
         protected $table = self::DB_TABLE_NAME;
         protected $primaryKey = 'id';
 
-        protected $fillable = 
+        protected $fillable =
         [
             'content'
         ];
 
 
-        protected $hidden = 
+        protected $hidden =
         [
-            
+
         ];
 
 
-        protected $casts = 
+        protected $casts =
         [
-            
+
         ];
     }
 

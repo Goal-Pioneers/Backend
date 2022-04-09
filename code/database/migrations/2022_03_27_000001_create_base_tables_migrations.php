@@ -6,9 +6,20 @@
 
     use App\Models\AccountModel;
 
+    use App\Models\TypeIPAddressModel;
+    use App\Models\LabelIPAddressModel;
+
+    use App\Models\UserActivityStatusModel;
+
+    use App\Models\UserActivityModel;
+
+    use App\Models\AccountActivityStatusModel;
+    use App\Models\AccountActivityVisitsModel;
+    use App\Models\AccountVerifiedAtModel;
+
     // Code function
     /**
-     * 
+     *
      */
     return new class extends Migration
     {
@@ -16,33 +27,33 @@
             // Base
         const DB_CONNECTOR = 'mysql';
         const DB_ENGINE_DEFAULT = 'InnoDB';
-        
+
             // Table names
-        const DB_TABLE_NAME_ACCOUNT_VERRIFIED_AT     = 'account_verified_at';
-        const DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS  = 'account_activity_visits';
+        const DB_TABLE_NAME_ACCOUNT_VERRIFIED_AT     = AccountVerifiedAtModel::DB_TABLE_NAME;
+        const DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS  = AccountActivityVisitsModel::DB_TABLE_NAME;
 
         const DB_TABLE_NAME_FAILED_JOBS              = 'failed_jobs';
         const DB_TABLE_NAME_PASSWORD_RESET           = 'password_resets';
 
-        const DB_TABLE_NAME_STATUS              = 'status';
-        
-        const DB_TABLE_NAME_IP_ADDRESS_TYPE     = 'ip_address_type';
-        const DB_TABLE_NAME_IP_ADDRESS_LABEL    = 'label_ip_address';
+        const DB_TABLE_NAME_STATUS              = UserActivityStatusModel::DB_TABLE_NAME;
+
+        const DB_TABLE_NAME_IP_ADDRESS_TYPE     = TypeIPAddressModel::DB_TABLE_NAME;
+        const DB_TABLE_NAME_IP_ADDRESS_LABEL    = LabelIPAddressModel::DB_TABLE_NAME;
 
 
-        
+
         public function up()
         {
             Schema::connection( self::DB_CONNECTOR )
-                  ->create( AccountModel::DB_TABLE_NAME, 
-                function ( Blueprint $table ) 
+                  ->create( AccountModel::DB_TABLE_NAME,
+                function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
                     $table->id();
                     $table->string( 'username' )
                           ->comment('');
-                    
+
                     $table->bigInteger( 'email_id' )
                           ->unsigned()
                           ->unique()
@@ -53,9 +64,9 @@
 
                     $table->rememberToken()
                           ->comment('');
-                    
+
                     $table->timestamps();
-                    
+
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
                           ->on( 'mailing_lists' );
@@ -64,8 +75,8 @@
 
 
             Schema::connection( self::DB_CONNECTOR )
-                  ->create( self::DB_TABLE_NAME_ACCOUNT_VERRIFIED_AT, 
-                function ( Blueprint $table ) 
+                  ->create( self::DB_TABLE_NAME_ACCOUNT_VERRIFIED_AT,
+                function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
@@ -78,7 +89,7 @@
                     $table->bigInteger( 'account_id' )
                           ->unsigned()
                           ->unique();
-                  
+
                     $table->foreign( 'account_id' )
                           ->references( 'id' )
                           ->on( AccountModel::DB_TABLE_NAME );
@@ -88,8 +99,8 @@
 
 
             Schema::connection( self::DB_CONNECTOR )
-                  ->create( self::DB_TABLE_NAME_STATUS, 
-                function ( Blueprint $table ) 
+                  ->create( self::DB_TABLE_NAME_STATUS,
+                function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
@@ -105,8 +116,8 @@
 
 
             Schema::connection( self::DB_CONNECTOR )
-                  ->create( self::DB_TABLE_NAME_IP_ADDRESS_TYPE, 
-                function ( Blueprint $table ) 
+                  ->create( self::DB_TABLE_NAME_IP_ADDRESS_TYPE,
+                function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
@@ -122,8 +133,8 @@
 
 
             Schema::connection( self::DB_CONNECTOR )
-                  ->create( self::DB_TABLE_NAME_IP_ADDRESS_LABEL, 
-                function ( Blueprint $table ) 
+                  ->create( self::DB_TABLE_NAME_IP_ADDRESS_LABEL,
+                function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
@@ -139,8 +150,8 @@
 
 
             Schema::connection( self::DB_CONNECTOR )
-                  ->create( self::DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS, 
-                function ( Blueprint $table ) 
+                  ->create( self::DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS,
+                function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
@@ -153,7 +164,7 @@
                     $table->bigInteger( 'status_id' )
                           ->unsigned()
                           ->comment('');
-                    
+
                     $table->bigInteger( 'address_id' )
                           ->unsigned()
                           ->comment('');
@@ -164,7 +175,7 @@
 
                     $table->json( 'request' )
                           ->comment('');
-                    
+
                     $table->timestamp( 'authenticated_at' )
                           ->nullable()
                           ->useCurrent()
@@ -188,10 +199,10 @@
                 }
             );
 
-            
+
             Schema::connection( self::DB_CONNECTOR )
-                  ->create( self::DB_TABLE_NAME_FAILED_JOBS, 
-                function ( Blueprint $table ) 
+                  ->create( self::DB_TABLE_NAME_FAILED_JOBS,
+                function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
 
@@ -206,13 +217,13 @@
 
                     $table->text( 'queue' )
                           ->comment('');
-                    
+
                     $table->longText( 'payload' )
                           ->comment('');
 
                     $table->longText( 'exception' )
                           ->comment('');
-                    
+
                     $table->timestamp( 'failed_at' )
                           ->useCurrent()
                           ->comment('');
@@ -221,11 +232,11 @@
 
 
             Schema::connection( self::DB_CONNECTOR )
-                  ->create( self::DB_TABLE_NAME_PASSWORD_RESET, 
-                function ( Blueprint $table ) 
+                  ->create( self::DB_TABLE_NAME_PASSWORD_RESET,
+                function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
-                    
+
                     $table->id();
 
                     $table->bigInteger( 'email_id' )
@@ -235,7 +246,7 @@
 
                     $table->string( 'token' )
                           ->comment('');
-                    
+
                     $table->timestamp( 'created_at' )
                           ->nullable()
                           ->useCurrent()
@@ -248,7 +259,7 @@
             );
         }
 
-        
+
         public function down()
         {
             Schema::connection( self::DB_CONNECTOR )
@@ -259,16 +270,16 @@
 
             Schema::connection( self::DB_CONNECTOR )
                   ->dropIfExists( self::DB_TABLE_NAME_FAILED_JOBS );
-            
+
             Schema::connection( self::DB_CONNECTOR )
                   ->dropIfExists( self::DB_TABLE_NAME_PASSWORD_RESET );
-                  
+
             Schema::connection( self::DB_CONNECTOR )
                   ->dropIfExists( self::DB_TABLE_NAME_STATUS );
-                  
+
             Schema::connection( self::DB_CONNECTOR )
                   ->dropIfExists( self::DB_TABLE_NAME_IP_ADDRESS_TYPE );
-            
+
             Schema::connection( self::DB_CONNECTOR )
                   ->dropIfExists( self::DB_TABLE_NAME_IP_ADDRESS_LABEL );
         }
