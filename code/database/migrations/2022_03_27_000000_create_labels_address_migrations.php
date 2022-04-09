@@ -4,10 +4,18 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+    use App\Models\LabelAddressApartmentsModel;
+    use App\Models\LabelAddressCountriesModel;
+    use App\Models\LabelAddressCitiesModel;
+    use App\Models\LabelAddressProvinces;
+    use App\Models\LabelAddressRoadnamesModel;
+    use App\Models\LabelAddressRegionsModel;
+
+
 
     // Code function
     /**
-     * 
+     *
      */
     return new class extends Migration
     {
@@ -17,88 +25,117 @@
         const DB_ENGINE_DEFAULT = 'InnoDB';
 
             // Table Names
-        const DB_TABLE_NAME_PROVINCE        = 'label_address_province';
-        const DB_TABLE_NAME_COUNTRY         = 'label_address_country';
-        const DB_TABLE_NAME_CITY            = 'label_address_city';
-        const DB_TABLE_NAME_ROADNAME        = 'label_address_roadname';
-        const DB_TABLE_NAME_REGION          = 'label_address_region';
-        const DB_TABLE_NAME_APARTMENT       = 'label_address_apartment';
-        
+        const DB_TABLE_NAME_PROVINCE        = LabelAddressProvinces::DB_TABLE_NAME;
+        const DB_TABLE_NAME_COUNTRY         = LabelAddressCountriesModel::DB_TABLE_NAME;
+        const DB_TABLE_NAME_CITY            = LabelAddressCitiesModel::DB_TABLE_NAME;
+        const DB_TABLE_NAME_ROADNAME        = LabelAddressRoadnamesModel::DB_TABLE_NAME;
+        const DB_TABLE_NAME_REGION          = LabelAddressRegionsModel::DB_TABLE_NAME;
+        const DB_TABLE_NAME_APARTMENT       = LabelAddressApartmentsModel::DB_TABLE_NAME;
+
             // Columns
         const DB_COLUMN_CONTENT = 'content';
 
-        
-        
+
         public function up()
         {
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_COUNTRY, 
-                function ( Blueprint $table ) 
+                ->create( self::DB_TABLE_NAME_COUNTRY,
+                function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
-                    $table->id(); 
-                    $table->string( self::DB_COLUMN_CONTENT )->unique();
+
+                    $table->id()
+                          ->comment('');
+
+                    $table->string( self::DB_COLUMN_CONTENT )
+                          ->unique()
+                          ->comment('');
                 }
             );
 
 
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_CITY, 
-                function( Blueprint $table ) 
+                ->create( self::DB_TABLE_NAME_CITY,
+                function( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
-                    $table->id();
-                    $table->string( self::DB_COLUMN_CONTENT )->unique();
+
+                    $table->id()
+                          ->comment('');
+
+                    $table->string( self::DB_COLUMN_CONTENT )
+                          ->unique()
+                          ->comment('');
                 }
             );
 
 
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_PROVINCE, 
-                function ( Blueprint $table ) 
+                ->create( self::DB_TABLE_NAME_PROVINCE,
+                function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
-                    $table->id(); 
-                    $table->string( self::DB_COLUMN_CONTENT )->unique();
-                }
-            );   
 
+                    $table->id()
+                          ->comment('');
 
-            Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_ROADNAME, 
-                function ( Blueprint $table ) 
-                {
-                    $table->engine = self::DB_ENGINE_DEFAULT;
-                    $table->id(); 
-                    $table->string( self::DB_COLUMN_CONTENT )->unique();
+                    $table->string( self::DB_COLUMN_CONTENT )
+                          ->unique()
+                          ->comment('');
                 }
             );
 
 
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_REGION, 
-                function ( Blueprint $table ) 
+                ->create( self::DB_TABLE_NAME_ROADNAME,
+                function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
-                    $table->id(); 
-                    $table->string( self::DB_COLUMN_CONTENT )->unique();
+
+                    $table->id()
+                          ->comment('');
+
+                    $table->string( self::DB_COLUMN_CONTENT )
+                          ->unique()
+                          ->comment('');
                 }
             );
 
 
             Schema::connection( self::DB_CONNECTOR )
-                ->create( self::DB_TABLE_NAME_APARTMENT, 
-                function ( Blueprint $table ) 
+                ->create( self::DB_TABLE_NAME_REGION,
+                function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
-                    $table->id(); 
-                    $table->string( self::DB_COLUMN_CONTENT )->unique();
+
+                    $table->id()
+                          ->comment('');
+
+                    $table->string( self::DB_COLUMN_CONTENT )
+                          ->unique()
+                          ->comment('');
+                }
+            );
+
+
+            Schema::connection( self::DB_CONNECTOR )
+                ->create( self::DB_TABLE_NAME_APARTMENT,
+                function ( Blueprint $table )
+                {
+                    $table->engine = self::DB_ENGINE_DEFAULT;
+
+                    $table->id()
+                          ->comment('');
+
+                    $table->string( self::DB_COLUMN_CONTENT )
+                          ->unique()
+                          ->comment('');
                 }
             );
         }
 
 
-        
+
         public function down()
         {
             Schema::connection( self::DB_CONNECTOR )
@@ -112,7 +149,7 @@
 
             Schema::connection( self::DB_CONNECTOR )
                   ->dropIfExists( self::DB_TABLE_NAME_ROADNAME );
-            
+
             Schema::connection( self::DB_CONNECTOR )
                   ->dropIfExists( self::DB_TABLE_NAME_REGION );
 

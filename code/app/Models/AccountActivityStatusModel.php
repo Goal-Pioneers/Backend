@@ -9,34 +9,30 @@
     /**
      * 
      */
-    class SubscriptionModel 
+    class AccountActivityStatusModel 
         extends Model
     {
         use HasFactory;
-        public const DB_TABLE_NAME = 'subscriptions';
+
+        public const DB_TABLE_NAME = 'status';
 
         protected $table = self::DB_TABLE_NAME;
         protected $primaryKey = 'id';
-
         
         protected $fillable = 
         [
-            'category_id',
-            'mail_id'
+            'content'
         ];
-
 
         protected $hidden = 
         [
-            'created_at', 
-            'updated_at'
+            
         ];
-        
+
 
         protected $casts = 
         [
             
         ];
-
     }
 ?>

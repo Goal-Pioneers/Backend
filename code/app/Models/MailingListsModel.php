@@ -1,37 +1,42 @@
 <?php
 
-namespace App\Models;
+    namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\Factories\HasFactory;
+    use Illuminate\Database\Eloquent\Model;
 
-class MailingListsModel 
-    extends Model
-{
-    use HasFactory;
+    class MailingListsModel 
+        extends Model
+    {
+        use HasFactory;
 
-    protected $table = 'mailing_lists';
-    public $timestamps = false;
-    protected $primaryKey = 'id';
+        public const DB_TABLE_NAME = 'mailing_lists';
 
-
-    
-    protected $fillable = 
-    [
-        'content'
-    ];
-
-
-    
-    protected $hidden = 
-    [
-
-    ];
-
-    
-    
-    protected $casts = 
-    [
+        protected $table = self::DB_TABLE_NAME;
+        public $timestamps = false;
         
-    ];
-}
+        protected $primaryKey = 'id';
+
+        
+        
+        protected $fillable = 
+        [
+            'content'
+        ];
+
+
+        
+        protected $hidden = 
+        [
+
+        ];
+
+        
+        
+        protected $casts = 
+        [
+            
+        ];
+    }
+
+?>

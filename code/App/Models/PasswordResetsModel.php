@@ -5,38 +5,39 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
-
-    /**
-     * 
-     */
-    class SubscriptionModel 
+    class PasswordResetsModel 
         extends Model
     {
         use HasFactory;
-        public const DB_TABLE_NAME = 'subscriptions';
+        public const DB_TABLE_NAME = 'password_resets';
 
         protected $table = self::DB_TABLE_NAME;
+        public $timestamps = false;
+        
         protected $primaryKey = 'id';
 
         
         protected $fillable = 
         [
-            'category_id',
-            'mail_id'
+            'email_id',
+            'token',
+            'created_at'
         ];
 
 
+        
         protected $hidden = 
         [
-            'created_at', 
-            'updated_at'
-        ];
-        
 
+        ];
+
+        
+        
         protected $casts = 
         [
-            
+            'created_at' => 'datetime'
         ];
 
     }
+
 ?>
