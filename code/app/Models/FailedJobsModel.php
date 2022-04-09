@@ -5,12 +5,10 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
-    class UserActivityStatusModel
+    class FailedJobsModel
         extends Model
     {
+        public const DB_TABLE_NAME = 'failed_jobs';
         use HasFactory;
-
-        public const DB_TABLE_NAME = 'status';
     }
-
 ?>

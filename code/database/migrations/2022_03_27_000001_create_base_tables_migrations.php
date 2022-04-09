@@ -13,6 +13,9 @@
 
     use App\Models\UserActivityModel;
 
+    use App\Models\PasswordResets;
+    use App\Models\FailedJobsModel;
+
     use App\Models\AccountActivityStatusModel;
     use App\Models\AccountActivityVisitsModel;
     use App\Models\AccountVerifiedAtModel;
@@ -32,8 +35,8 @@
         const DB_TABLE_NAME_ACCOUNT_VERRIFIED_AT     = AccountVerifiedAtModel::DB_TABLE_NAME;
         const DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS  = AccountActivityVisitsModel::DB_TABLE_NAME;
 
-        const DB_TABLE_NAME_FAILED_JOBS              = 'failed_jobs';
-        const DB_TABLE_NAME_PASSWORD_RESET           = 'password_resets';
+        const DB_TABLE_NAME_FAILED_JOBS              = FailedJobsModel::DB_TABLE_NAME;
+        const DB_TABLE_NAME_PASSWORD_RESET           = PasswordResets::DB_TABLE_NAME;
 
         const DB_TABLE_NAME_STATUS              = UserActivityStatusModel::DB_TABLE_NAME;
 
