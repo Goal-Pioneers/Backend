@@ -6,37 +6,32 @@
     use Illuminate\Database\Eloquent\Model;
 
 
-    /**
-     * 
-     */
-    class SubscriptionModel 
+    class TypeIPAddressModel
         extends Model
     {
         use HasFactory;
-        public const DB_TABLE_NAME = 'subscriptions';
+
+        public const DB_TABLE_NAME = 'ip_address_type';
 
         protected $table = self::DB_TABLE_NAME;
         protected $primaryKey = 'id';
 
-        
-        protected $fillable = 
+        protected $fillable =
         [
-            'category_id',
-            'mail_id'
+            'content'
         ];
 
 
-        protected $hidden = 
+        protected $hidden =
         [
-            'created_at', 
-            'updated_at'
-        ];
-        
 
-        protected $casts = 
-        [
-            
         ];
 
+
+        protected $casts =
+        [
+
+        ];
     }
+
 ?>

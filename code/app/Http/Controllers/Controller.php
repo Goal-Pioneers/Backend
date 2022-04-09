@@ -13,6 +13,8 @@
 
     use Illuminate\Routing\Controller as BaseController;
 
+    use App\Http\AuthorizedUserController;
+
 
     /**
      * 
@@ -33,12 +35,13 @@
         /**
          * 
          */
-        final public function logClientIP( Request $request ): bool
+        final public function logClientIP( $request, $account_id, $status ): bool
         {
             $ipAddress = null;
 
             if( self::logIp )
             {
+                // Retrieves request ip of the user
                 $ipAddress = $request->ip();
 
                 // Send IP to database

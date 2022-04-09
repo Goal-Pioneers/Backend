@@ -13,6 +13,9 @@
 
     use App\Models\AccountModel;
     use App\Models\MailingListsModel;
+    use App\Models\PasswordResets;
+
+    use App\Http\Controllers\MailingListController;
 
     /**
      * 
@@ -25,18 +28,20 @@
          */
         final public function register( AccountRegisterRequest $request )
         {
-            self::logClientIP( $request );
+            $mlc = new MailingListController();
+            $model_email = $mlc->select_by_name( $request->input( 'mail' ) );
 
-            $emailInput[ 'content' ] = $request->input( 'mail' );
-            
-            // does it already exist ?
-            $email_exists = false;
+            $email_does_not_exists = is_null( $model_email );
 
-            if( !$email_exists )
+            if( $email_does_not_exists )
             {
+                $emailInput[ 'content' ] = $request->input( 'mail' );
                 $mailModel = MailingListsModel::create( $emailInput );
             }
-
+            else 
+            {
+                $mailModel = $model_email;
+            }
 
             $inputModel[ 'username' ] = $request->input( 'username' );
             $inputModel[ 'email_id' ] = $mailModel->id;
@@ -48,11 +53,32 @@
             $account->remember_token = $token;
             $account->save();
 
+            // self::logClientIP( $request );
+
             $outputMessage['token']     = $token;
             $outputMessage['username']  = $account->username;
             $outputMessage['id']        = $account->id;
 
-            return response()->json($outputMessage, 200);
+            return response()->json( $outputMessage, 200 );
+        }
+
+
+        /**
+         * 
+         */
+        final public function me( Request $request )
+        {   
+            $account = AccountModel::where( 'remember_token', $request->bearerToken() )->firstOrFail();
+
+            $json_response = array();
+
+            $json_response['id'] = $account->id;
+            $json_response['username'] = $account->username;
+
+            $json_response['created_at'] = $account->created_at;
+            $json_response['updated_at'] = $account->updated_at;
+
+            return response()->json( $json_response, 200 );
         }
 
 
@@ -82,11 +108,11 @@
          */
         final public function login( AccountLoginRequest $request )
         {
-            self::logClientIP( $request );
+            // self::logClientIP( $request );
 
             $outputMessage = null;
 
-            if( Auth::attempt( ['username' => $request->username, 'password' => $request->password] ) )
+            if( Auth::attempt( [ 'username' => $request->username, 'password' => $request->password ] ) )
             { 
                 $authUser = Auth::user();
                 
@@ -104,5 +130,31 @@
             
             return response()->json($outputMessage, 200);
         }
+
+
+        final public function loginWithMail( Request $request )
+        {
+            
+            return response()->json($outputMessage, 200);
+        }
+
+
+        /**
+         * 
+         */
+        final public function forgotPassword( Request $request )
+        {
+            
+            return response()->json($outputMessage, 200);
+        }
+
+
+        final public function forgotUsername( Request $request )
+        {
+
+            
+            return response()->json($outputMessage, 200);
+        }
+
     }
 ?>

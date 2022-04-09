@@ -33,10 +33,12 @@
                     $table->id();
 
                     $table->string( 'title' )
-                          ->unique();
+                          ->unique()
+                          ->comment('');
                     
                     $table->mediumText( 'description' )
-                          ->nullable();
+                          ->nullable()
+                          ->comment('');
                 }
             );
 
@@ -45,26 +47,32 @@
                   ->create( self::DB_TABLE_NAME_SUBSCRIPTION, 
                 function ( Blueprint $table ) 
                 {
+                    // Presetup
                     $table->engine = self::DB_ENGINE_DEFAULT;
-                    
+
+                    // Table setup
                     $table->id();
 
                     $table->bigInteger( 'category_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
-                    $table->bigInteger( 'mail_id' )
-                          ->unsigned();
+                    $table->bigInteger( 'email_id' )
+                          ->unsigned()
+                          ->comment('');
 
-                    $table->json( 'content' );
+                    $table->json( 'content' )
+                          ->comment('');
                     
                     $table->timestamps();
 
+                    // References
                     $table->foreign( 'category_id' )
                           ->references( 'id' )
                           ->on( self::DB_TABLE_NAME_LABEL_SUBSCRIPTION_CATEGORY )
                           ->onDelete( 'CASCADE' );
 
-                    $table->foreign( 'mail_id' )
+                    $table->foreign( 'email_id' )
                           ->references( 'id' )
                           ->on( 'mailing_lists' )
                           ->onDelete( 'CASCADE' );

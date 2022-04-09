@@ -6,37 +6,38 @@
     use Illuminate\Database\Eloquent\Model;
 
 
-    /**
-     * 
-     */
-    class SubscriptionModel 
+
+    class UserActivityModel 
         extends Model
     {
         use HasFactory;
-        public const DB_TABLE_NAME = 'subscriptions';
 
+        public const DB_TABLE_NAME = 'account_activity_visits';
+        
         protected $table = self::DB_TABLE_NAME;
         protected $primaryKey = 'id';
 
-        
+
         protected $fillable = 
         [
-            'category_id',
-            'mail_id'
+            'account_id',
+            'status_id',
+            'address_id',
+            'address_type_id',
+            'request',
+            'authenticated_at'
         ];
 
 
         protected $hidden = 
         [
-            'created_at', 
-            'updated_at'
-        ];
-        
-
-        protected $casts = 
-        [
             
         ];
 
+
+        protected $casts = 
+        [
+            'authenticated_at' => 'datetime'
+        ];
     }
 ?>

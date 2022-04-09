@@ -29,8 +29,13 @@
                 function ( Blueprint $table ) 
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;
-                    $table->id();
-                    $table->string( 'content' )->unique();
+
+                    $table->id()
+                          ->comment('');
+
+                    $table->string( 'content' )
+                          ->unique()
+                          ->comment('');
                 }
             );
 

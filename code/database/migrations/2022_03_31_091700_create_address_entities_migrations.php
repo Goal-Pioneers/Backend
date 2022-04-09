@@ -35,10 +35,12 @@
 
                     $table->integer( 'zip_code' )
                           ->unsigned()
-                          ->index();
+                          ->index()
+                          ->comment('');
 
                     $table->bigInteger( 'region_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->foreign( 'region_id' )
                           ->references( 'id' )
@@ -57,16 +59,20 @@
                     $table->id(); 
 
                     $table->bigInteger( 'roadname_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->integer( 'road_number' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->integer( 'level' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->bigInteger( 'apartment_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
                     
 
                     $table->foreign( 'roadname_id' )
