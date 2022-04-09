@@ -1,5 +1,7 @@
 # Goal Pioneers Backend API
+
 Domain Area:
+
 * Authentication / Registration
 
 * Send Mail
@@ -13,7 +15,14 @@ Domain Area:
   * Topics | Subject | Content | Additional Attachements
   * Open & tickets
 
+
 ## Backend
+
 * Rest API
 
+
 ## Database
+
+* MySQL & Mariadb
+* Redis
+* MongoDB
