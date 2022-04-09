@@ -25,10 +25,14 @@
         const DB_TABLE_NAME_POST_FIELD        = 'entities_post_field';
 
 
-        
+        /**
+         * 
+         */
         public function up()
         {
-            //
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_POST_FIELD, 
                 function ( Blueprint $table ) 
@@ -53,7 +57,9 @@
             );
 
 
-            //
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_ADDRESS_FIELD, 
                 function ( Blueprint $table ) 
@@ -92,7 +98,9 @@
 
 
 
-        
+        /**
+         * 
+         */
         public function down()
         {
             //

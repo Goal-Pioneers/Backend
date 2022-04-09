@@ -22,7 +22,9 @@
         const DB_TABLE_NAME_SUBSCRIPTION                = 'newsletter_subscriptions';
         
         
-        
+        /**
+         * 
+         */
         public function up()
         {
             //
@@ -82,7 +84,9 @@
         }
 
         
-        
+        /**
+         * 
+         */
         public function down()
         {
             //

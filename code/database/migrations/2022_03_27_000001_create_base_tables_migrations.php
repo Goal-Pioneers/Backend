@@ -45,9 +45,14 @@
         const DB_TABLE_NAME_IP_ADDRESS_LABEL    = LabelIPAddressModel::DB_TABLE_NAME;
 
 
-
+        /**
+         * 
+         */
         public function up()
         {
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( AccountModel::DB_TABLE_NAME,
                 function ( Blueprint $table )
@@ -78,6 +83,9 @@
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_ACCOUNT_VERRIFIED_AT,
                 function ( Blueprint $table )
@@ -102,6 +110,9 @@
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_STATUS,
                 function ( Blueprint $table )
@@ -119,6 +130,9 @@
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_IP_ADDRESS_TYPE,
                 function ( Blueprint $table )
@@ -136,6 +150,9 @@
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_IP_ADDRESS_LABEL,
                 function ( Blueprint $table )
@@ -153,6 +170,9 @@
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS,
                 function ( Blueprint $table )
@@ -204,6 +224,9 @@
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_FAILED_JOBS,
                 function ( Blueprint $table )
@@ -235,6 +258,9 @@
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_PASSWORD_RESET,
                 function ( Blueprint $table )
@@ -264,6 +290,9 @@
         }
 
 
+        /**
+         * 
+         */
         public function down()
         {
             Schema::connection( self::DB_CONNECTOR )

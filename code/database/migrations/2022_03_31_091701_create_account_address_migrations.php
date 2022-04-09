@@ -24,10 +24,14 @@
         const DB_TABLE_NAME_ADDRESS = 'account_address';
 
 
-        
+        /**
+         * 
+         */
         public function up()
         {
-            //
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_ADDRESS, 
                 function ( Blueprint $table ) 
@@ -87,8 +91,11 @@
             );
         }
 
-
         
+
+        /**
+         * 
+         */
         public function down()
         {
             //

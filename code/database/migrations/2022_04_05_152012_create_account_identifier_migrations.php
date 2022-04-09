@@ -4,8 +4,11 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-
     
+
+    /**
+     * 
+     */
     return new class extends Migration
     {
         // Code Preperation
@@ -19,9 +22,14 @@
 
 
 
-        
+        /**
+         * 
+         */
         public function up()
         {
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_APPLICATION, 
                 function ( Blueprint $table ) 
@@ -44,7 +52,9 @@
             );
             
 
-            //
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_ACCOUNT_ID, 
                 function ( Blueprint $table ) 
@@ -79,7 +89,9 @@
         }
 
 
-        
+        /**
+         * 
+         */
         public function down()
         {
             //

@@ -21,7 +21,9 @@
         const DB_TABLE_NAME_MAILING_LIST = LabelMailingListsModel::DB_TABLE_NAME;
 
 
-        
+        /**
+         * 
+         */
         public function up()
         {
             //
@@ -43,7 +45,9 @@
         }
         
 
-        
+        /**
+         * 
+         */
         public function down()
         {
             //
