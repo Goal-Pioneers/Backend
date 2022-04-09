@@ -13,7 +13,7 @@
 
     use App\Models\UserActivityModel;
 
-    use App\Models\PasswordResets;
+    use App\Models\PasswordResetsModel;
     use App\Models\FailedJobsModel;
 
     use App\Models\AccountActivityStatusModel;
@@ -36,7 +36,7 @@
         const DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS  = AccountActivityVisitsModel::DB_TABLE_NAME;
 
         const DB_TABLE_NAME_FAILED_JOBS              = FailedJobsModel::DB_TABLE_NAME;
-        const DB_TABLE_NAME_PASSWORD_RESET           = PasswordResets::DB_TABLE_NAME;
+        const DB_TABLE_NAME_PASSWORD_RESET           = PasswordResetsModel::DB_TABLE_NAME;
 
         const DB_TABLE_NAME_STATUS              = UserActivityStatusModel::DB_TABLE_NAME;
 
