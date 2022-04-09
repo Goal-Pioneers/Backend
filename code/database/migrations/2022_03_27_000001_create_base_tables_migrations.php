@@ -14,11 +14,11 @@
     
     use App\Models\AccountActivityModel;
     use App\Models\UserActivityModel;
-    use App\Models\AccountActivityStatusModel;
+    use App\Models\LabelAccountActivityStatusModel;
     
     use App\Models\AccountActivityVisitsModel;
     use App\Models\AccountVerifiedAtModel;
-    use App\Models\MailingListsModel;
+    use App\Models\LabelMailingListsModel;
 
 
     // Code function
@@ -39,7 +39,7 @@
         const DB_TABLE_NAME_FAILED_JOBS              = FailedJobsModel::DB_TABLE_NAME;
         const DB_TABLE_NAME_PASSWORD_RESET           = PasswordResetsModel::DB_TABLE_NAME;
 
-        const DB_TABLE_NAME_STATUS              = AccountActivityStatusModel::DB_TABLE_NAME;
+        const DB_TABLE_NAME_STATUS              = LabelAccountActivityStatusModel::DB_TABLE_NAME;
 
         const DB_TABLE_NAME_IP_ADDRESS_TYPE     = TypeIPAddressModel::DB_TABLE_NAME;
         const DB_TABLE_NAME_IP_ADDRESS_LABEL    = LabelIPAddressModel::DB_TABLE_NAME;
@@ -73,7 +73,7 @@
 
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
-                          ->on( MailingListsModel::DB_TABLE_NAME );
+                          ->on( LabelMailingListsModel::DB_TABLE_NAME );
                 }
             );
 
@@ -191,7 +191,7 @@
 
                     $table->foreign( 'status_id' )
                           ->references( 'id' )
-                          ->on( AccountActivityStatusModel::DB_TABLE_NAME );
+                          ->on( LabelAccountActivityStatusModel::DB_TABLE_NAME );
 
                     $table->foreign( 'address_type_id' )
                           ->references( 'id' )
@@ -258,7 +258,7 @@
 
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
-                          ->on( MailingListsModel::DB_TABLE_NAME );
+                          ->on( LabelMailingListsModel::DB_TABLE_NAME );
                 }
             );
         }
