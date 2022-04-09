@@ -34,23 +34,28 @@
 
 
                     $table->bigInteger( 'address_field_1_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->bigInteger( 'address_field_2_id' )
                           ->unsigned()
-                          ->nullable();
+                          ->nullable()
+                          ->comment('');
 
                     
                     
                     $table->bigInteger( 'city_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->bigInteger( 'post_field_id' )
                           ->unsigned()
-                          ->index();
+                          ->index()
+                          ->comment('');
 
                     $table->bigInteger( 'country_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
 
                     // References

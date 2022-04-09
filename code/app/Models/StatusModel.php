@@ -5,21 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PasswordResets 
-    extends Model
+class StatusModel extends Model
 {
     use HasFactory;
+    
+    public const DB_TABLE_NAME = 'status';
 
-    protected $table = 'password_resets';
-    public $timestamps = false;
+    protected $table = self::DB_TABLE_NAME;
     protected $primaryKey = 'id';
+
 
     
     protected $fillable = 
     [
-        'email_id',
-        'token',
-        'created_at'
+        'content'
     ];
 
 
@@ -33,7 +32,6 @@ class PasswordResets
     
     protected $casts = 
     [
-        'created_at' => 'datetime'
+        
     ];
-
 }

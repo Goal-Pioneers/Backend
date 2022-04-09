@@ -31,12 +31,15 @@
                     $table->id();
 
                     $table->uuid( 'identifier' )
-                          ->index();
+                          ->index()
+                          ->comment('');
 
-                    $table->string( 'title' );
+                    $table->string( 'title' )
+                    ->comment('');
 
                     $table->longText( 'description' )
-                          ->nullable();
+                          ->nullable()
+                          ->comment('');
                 }
             );
             
@@ -51,13 +54,16 @@
                     $table->id(); 
 
                     $table->bigInteger( 'account_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
 
                     $table->bigInteger( 'application_id' )
-                          ->unsigned();
+                          ->unsigned()
+                          ->comment('');
                     
                     $table->uuid( 'identifier' )
-                          ->index();
+                          ->index()
+                          ->comment('');
 
 
 
