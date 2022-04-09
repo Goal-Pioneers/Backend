@@ -8,18 +8,17 @@
 
     use App\Models\TypeIPAddressModel;
     use App\Models\LabelIPAddressModel;
-
-    use App\Models\UserActivityStatusModel;
-
     
     use App\Models\PasswordResetsModel;
     use App\Models\FailedJobsModel;
     
-    
+    use App\Models\AccountActivityModel;
     use App\Models\UserActivityModel;
     use App\Models\AccountActivityStatusModel;
+    
     use App\Models\AccountActivityVisitsModel;
     use App\Models\AccountVerifiedAtModel;
+    use App\Models\MailingListsModel;
 
 
     // Code function
@@ -40,7 +39,7 @@
         const DB_TABLE_NAME_FAILED_JOBS              = FailedJobsModel::DB_TABLE_NAME;
         const DB_TABLE_NAME_PASSWORD_RESET           = PasswordResetsModel::DB_TABLE_NAME;
 
-        const DB_TABLE_NAME_STATUS              = UserActivityStatusModel::DB_TABLE_NAME;
+        const DB_TABLE_NAME_STATUS              = AccountActivityStatusModel::DB_TABLE_NAME;
 
         const DB_TABLE_NAME_IP_ADDRESS_TYPE     = TypeIPAddressModel::DB_TABLE_NAME;
         const DB_TABLE_NAME_IP_ADDRESS_LABEL    = LabelIPAddressModel::DB_TABLE_NAME;
@@ -74,7 +73,7 @@
 
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
-                          ->on( 'mailing_lists' );
+                          ->on( MailingListsModel::DB_TABLE_NAME );
                 }
             );
 
@@ -192,15 +191,15 @@
 
                     $table->foreign( 'status_id' )
                           ->references( 'id' )
-                          ->on( 'status' );
+                          ->on( AccountActivityStatusModel::DB_TABLE_NAME );
 
                     $table->foreign( 'address_type_id' )
                           ->references( 'id' )
-                          ->on( 'ip_address_type' );
+                          ->on( TypeIPAddressModel::DB_TABLE_NAME );
 
                     $table->foreign( 'address_id' )
                           ->references( 'id' )
-                          ->on( 'label_ip_address' );
+                          ->on( LabelIPAddressModel::DB_TABLE_NAME );
                 }
             );
 
@@ -259,7 +258,7 @@
 
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
-                          ->on( 'mailing_lists' );
+                          ->on( MailingListsModel::DB_TABLE_NAME );
                 }
             );
         }

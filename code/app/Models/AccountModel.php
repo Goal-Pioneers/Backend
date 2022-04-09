@@ -10,7 +10,6 @@
     use Laravel\Sanctum\HasApiTokens;
 
 
-    
     /**
      * 
      */

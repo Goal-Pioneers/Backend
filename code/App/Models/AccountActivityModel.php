@@ -6,8 +6,10 @@
     use Illuminate\Database\Eloquent\Model;
 
 
-
-    class UserActivityModel 
+    /**
+     * 
+     */
+    class AccountActivityModel 
         extends Model
     {
         use HasFactory;
