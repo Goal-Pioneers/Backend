@@ -4,6 +4,10 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+    use App\Models\LabelAddressCountriesModel;
+    use App\Models\LabelAddressCitiesModel;
+    use App\Models\LabelAddressProvinces;
+
 
     // Code function
     /**
@@ -67,17 +71,18 @@
                           ->references( 'id' )
                           ->on( 'entities_address_field' );
                     
+                    
                     $table->foreign( 'city_id' )
                           ->references( 'id' )
-                          ->on( 'label_address_city' );
+                          ->on( LabelAddressCitiesModel::DB_TABLE_NAME );
 
                     $table->foreign( 'post_field_id' )
                           ->references( 'id' )
-                          ->on( 'entities_post_field' );
+                          ->on( LabelAddressProvinces::DB_TABLE_NAME );
                     
                     $table->foreign( 'country_id' )
                           ->references( 'id' )
-                          ->on( 'label_address_country' );
+                          ->on( LabelAddressCountriesModel::DB_TABLE_NAME );
                 }
             );
         }

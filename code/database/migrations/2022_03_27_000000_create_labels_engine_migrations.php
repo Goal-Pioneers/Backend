@@ -4,6 +4,7 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+    use App\Models\MailingListsModel;
 
     // Code function
     /**
@@ -17,7 +18,7 @@
         const DB_ENGINE_DEFAULT = 'InnoDB';
 
             // Table Names
-        const DB_TABLE_NAME_MAILING_LIST = 'mailing_lists';
+        const DB_TABLE_NAME_MAILING_LIST = MailingListsModel::DB_TABLE_NAME;
 
 
         

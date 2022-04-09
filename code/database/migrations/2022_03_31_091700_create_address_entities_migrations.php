@@ -4,6 +4,10 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+    use App\Models\LabelAddressApartmentsModel;
+    use App\Models\LabelAddressRoadnamesModel;
+    use App\Models\LabelAddressRegionsModel;
+
 
     // Code function
     /**
@@ -44,7 +48,7 @@
 
                     $table->foreign( 'region_id' )
                           ->references( 'id' )
-                          ->on( 'label_address_region' );
+                          ->on( LabelAddressRegionsModel::DB_TABLE_NAME );
                 }
             );
 
@@ -77,11 +81,11 @@
 
                     $table->foreign( 'roadname_id' )
                           ->references( 'id')
-                          ->on( 'label_address_roadname' );
+                          ->on( LabelAddressRoadnamesModel::DB_TABLE_NAME );
 
                     $table->foreign( 'apartment_id' )
                           ->references( 'id' )
-                          ->on( 'label_address_apartment' );
+                          ->on( LabelAddressApartmentsModel::DB_TABLE_NAME );
                 }
             );
         }

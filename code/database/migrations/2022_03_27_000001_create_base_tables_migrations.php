@@ -11,14 +11,16 @@
 
     use App\Models\UserActivityStatusModel;
 
-    use App\Models\UserActivityModel;
-
+    
     use App\Models\PasswordResetsModel;
     use App\Models\FailedJobsModel;
-
+    
+    
+    use App\Models\UserActivityModel;
     use App\Models\AccountActivityStatusModel;
     use App\Models\AccountActivityVisitsModel;
     use App\Models\AccountVerifiedAtModel;
+
 
     // Code function
     /**
