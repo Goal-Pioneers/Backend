@@ -4,6 +4,12 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+    use App\Models\LabelAddressApartmentsModel;
+    use App\Models\LabelAddressCountriesModel;
+    use App\Models\LabelAddressCitiesModel;
+    use App\Models\LabelAddressProvinces;
+    use App\Models\LabelAddressRoadnamesModel;
+    use App\Models\LabelAddressRegionsModel;
 
     // Code function
     /**
