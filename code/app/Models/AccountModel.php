@@ -9,6 +9,7 @@
 
     use Laravel\Sanctum\HasApiTokens;
 
+
     /**
      * 
      */

@@ -6,15 +6,19 @@
     use Illuminate\Database\Eloquent\Model;
 
 
+    /**
+     * 
+     */
     class TypeIPAddressModel
         extends Model
     {
         use HasFactory;
 
-        public const DB_TABLE_NAME = 'ip_address_type';
+        public const DB_TABLE_NAME = 'type_ip_address';
 
         protected $table = self::DB_TABLE_NAME;
         protected $primaryKey = 'id';
+        public $timestamps = false;
 
         protected $fillable =
         [

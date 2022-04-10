@@ -5,17 +5,17 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Hash;
-
-    use Validator;
     
     use App\Http\Requests\AccountRegisterRequest;
     use App\Http\Requests\AccountLoginRequest;
 
     use App\Models\AccountModel;
-    use App\Models\MailingListsModel;
-    use App\Models\PasswordResets;
+    use App\Models\LabelMailingListsModel;
+    use App\Models\PasswordResetsModel;
 
     use App\Http\Controllers\MailingListController;
+
+
 
     /**
      * 
@@ -36,7 +36,7 @@
             if( $email_does_not_exists )
             {
                 $emailInput[ 'content' ] = $request->input( 'mail' );
-                $mailModel = MailingListsModel::create( $emailInput );
+                $mailModel = LabelMailingListsModel::create( $emailInput );
             }
             else 
             {
@@ -87,8 +87,6 @@
          */
         final public function login( AccountLoginRequest $request )
         {
-            // self::logClientIP( $request );
-
             $outputMessage = null;
 
             if( Auth::attempt( [ 'username' => $request->username, 'password' => $request->password ] ) )
@@ -101,6 +99,8 @@
                 $outputMessage['id']        =  $authUser->id;
                 $outputMessage['username']  =  $authUser->username;
                 $outputMessage['token']     =  $authUser->remember_token; 
+
+                self::logClientIP( $request, $authUser->id, 'successfull' );
             } 
             else
             { 

@@ -4,6 +4,7 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+    use App\Models\LabelMailingListsModel;
 
     // Code function
     /**
@@ -21,7 +22,9 @@
         const DB_TABLE_NAME_SUBSCRIPTION                = 'newsletter_subscriptions';
         
         
-        
+        /**
+         * 
+         */
         public function up()
         {
             //
@@ -74,14 +77,16 @@
 
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
-                          ->on( 'mailing_lists' )
+                          ->on( LabelMailingListsModel::DB_TABLE_NAME )
                           ->onDelete( 'CASCADE' );
                 }
             );
         }
 
         
-        
+        /**
+         * 
+         */
         public function down()
         {
             //

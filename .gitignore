@@ -5,7 +5,6 @@
 *.iml
 *.example
 *.crt
-
 *.env
 *.env.backup
 
@@ -13,6 +12,14 @@
 
 code/package-lock.json
 code/composer.lock
+
+code/node_modules
+
+code/public/hot
+code/public/storage
+
+code/vendor
+
 
 .idea
 .vscode

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 
-use App\Models\MailingListsModel;
+use App\Models\LabelMailingListsModel;
 
 
 /**
@@ -19,7 +19,7 @@ class MailingListController
      */
     public function select( $request_id )
     {
-        $model = MailingListsModel::find($request_id);
+        $model = LabelMailingListsModel::find($request_id);
 
         if( is_null( $model ) )
         {
@@ -33,9 +33,9 @@ class MailingListController
     /**
      * 
      */
-    public function select_by_name( string $request ): ?MailingListsModel
+    public function select_by_name( string $request ): ?LabelMailingListsModel
     {
-        $model = MailingListsModel::where( 'content', $request )->first();
+        $model = LabelMailingListsModel::where( 'content', $request )->first();
 
         if( is_null( $model ) )
         {
@@ -77,7 +77,7 @@ class MailingListController
         }
 
         $model['content'] = $request->input('mail');
-        $creation = MailingListsModel::create($model);
+        $creation = LabelMailingListsModel::create($model);
 
         return response()->json($creation, 200);
     }
@@ -90,7 +90,7 @@ class MailingListController
     {
         // self::logClientIP( $request );
 
-        $model = MailingListsModel::find( $request->input( 'id' ) );
+        $model = LabelMailingListsModel::find( $request->input( 'id' ) );
         
         $model->content = $request->input('mail');
         $model->save();
@@ -119,7 +119,7 @@ class MailingListController
             return $this->sendError( 'Error validation', $validator->errors() );       
         }
 
-        MailingListsModel::destroy( $request->input( 'id' ) );
+        LabelMailingListsModel::destroy( $request->input( 'id' ) );
         
         return response()->json('success', 200);
     }

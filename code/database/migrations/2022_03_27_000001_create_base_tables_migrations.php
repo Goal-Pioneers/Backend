@@ -8,17 +8,18 @@
 
     use App\Models\TypeIPAddressModel;
     use App\Models\LabelIPAddressModel;
-
-    use App\Models\UserActivityStatusModel;
-
-    use App\Models\UserActivityModel;
-
+    
     use App\Models\PasswordResetsModel;
     use App\Models\FailedJobsModel;
-
-    use App\Models\AccountActivityStatusModel;
+    
+    use App\Models\AccountActivityModel;
+    use App\Models\UserActivityModel;
+    use App\Models\LabelAccountActivityStatusModel;
+    
     use App\Models\AccountActivityVisitsModel;
     use App\Models\AccountVerifiedAtModel;
+    use App\Models\LabelMailingListsModel;
+
 
     // Code function
     /**
@@ -38,15 +39,20 @@
         const DB_TABLE_NAME_FAILED_JOBS              = FailedJobsModel::DB_TABLE_NAME;
         const DB_TABLE_NAME_PASSWORD_RESET           = PasswordResetsModel::DB_TABLE_NAME;
 
-        const DB_TABLE_NAME_STATUS              = UserActivityStatusModel::DB_TABLE_NAME;
+        const DB_TABLE_NAME_STATUS              = LabelAccountActivityStatusModel::DB_TABLE_NAME;
 
         const DB_TABLE_NAME_IP_ADDRESS_TYPE     = TypeIPAddressModel::DB_TABLE_NAME;
         const DB_TABLE_NAME_IP_ADDRESS_LABEL    = LabelIPAddressModel::DB_TABLE_NAME;
 
 
-
+        /**
+         * 
+         */
         public function up()
         {
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( AccountModel::DB_TABLE_NAME,
                 function ( Blueprint $table )
@@ -72,11 +78,14 @@
 
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
-                          ->on( 'mailing_lists' );
+                          ->on( LabelMailingListsModel::DB_TABLE_NAME );
                 }
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_ACCOUNT_VERRIFIED_AT,
                 function ( Blueprint $table )
@@ -101,6 +110,9 @@
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_STATUS,
                 function ( Blueprint $table )
@@ -118,6 +130,9 @@
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_IP_ADDRESS_TYPE,
                 function ( Blueprint $table )
@@ -135,6 +150,9 @@
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_IP_ADDRESS_LABEL,
                 function ( Blueprint $table )
@@ -152,6 +170,9 @@
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_ACCOUNT_ACTIVITY_VISITS,
                 function ( Blueprint $table )
@@ -162,19 +183,25 @@
 
                     $table->bigInteger( 'account_id' )
                           ->unsigned()
-                          ->comment('');
+                          ->comment('')
+                          ->index();
 
-                    $table->bigInteger( 'status_id' )
+
+                    $table->bigInteger( 'label_account_activity_status_id' )
                           ->unsigned()
                           ->comment('');
 
-                    $table->bigInteger( 'address_id' )
-                          ->unsigned()
-                          ->comment('');
 
-                    $table->bigInteger( 'address_type_id' )
+                    $table->bigInteger( 'ip_address_id' )
                           ->unsigned()
-                          ->comment('');
+                          ->comment('')
+                          ->index();
+
+
+                    $table->bigInteger( 'ip_address_type_id' )
+                          ->unsigned()
+                          ->comment('')
+                          ->index();
 
                     $table->json( 'request' )
                           ->comment('');
@@ -188,21 +215,24 @@
                           ->references( 'id' )
                           ->on( AccountModel::DB_TABLE_NAME );
 
-                    $table->foreign( 'status_id' )
+                    $table->foreign( 'label_account_activity_status_id' )
                           ->references( 'id' )
-                          ->on( 'status' );
+                          ->on( LabelAccountActivityStatusModel::DB_TABLE_NAME );
 
-                    $table->foreign( 'address_type_id' )
+                    $table->foreign( 'ip_address_type_id' )
                           ->references( 'id' )
-                          ->on( 'ip_address_type' );
+                          ->on( TypeIPAddressModel::DB_TABLE_NAME );
 
-                    $table->foreign( 'address_id' )
+                    $table->foreign( 'ip_address_id' )
                           ->references( 'id' )
-                          ->on( 'label_ip_address' );
+                          ->on( LabelIPAddressModel::DB_TABLE_NAME );
                 }
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_FAILED_JOBS,
                 function ( Blueprint $table )
@@ -234,6 +264,9 @@
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_PASSWORD_RESET,
                 function ( Blueprint $table )
@@ -257,12 +290,15 @@
 
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
-                          ->on( 'mailing_lists' );
+                          ->on( LabelMailingListsModel::DB_TABLE_NAME );
                 }
             );
         }
 
 
+        /**
+         * 
+         */
         public function down()
         {
             Schema::connection( self::DB_CONNECTOR )

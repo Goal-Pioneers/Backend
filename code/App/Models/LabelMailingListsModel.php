@@ -5,18 +5,21 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
-    class MailingListsModel 
+    
+    /**
+     * 
+     */
+    class LabelMailingListsModel 
         extends Model
     {
         use HasFactory;
 
-        public const DB_TABLE_NAME = 'mailing_lists';
+        public const DB_TABLE_NAME = 'label_mailing_lists';
 
         protected $table = self::DB_TABLE_NAME;
         public $timestamps = false;
         
         protected $primaryKey = 'id';
-
         
         
         protected $fillable = 

@@ -6,6 +6,9 @@
     use Illuminate\Database\Eloquent\Model;
 
     
+    /**
+     * 
+     */
     class LabelIPAddressModel 
         extends Model
     {
@@ -15,6 +18,7 @@
         
         protected $table = self::DB_TABLE_NAME;
         protected $primaryKey = 'id';
+        public $timestamps = false;
 
         protected $fillable = 
         [

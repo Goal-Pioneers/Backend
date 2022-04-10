@@ -9,15 +9,16 @@
     /**
      * 
      */
-    class AccountActivityStatusModel 
+    class LabelAccountActivityStatusModel 
         extends Model
     {
         use HasFactory;
 
-        public const DB_TABLE_NAME = 'status';
+        public const DB_TABLE_NAME = 'label_account_activity_status';
 
         protected $table = self::DB_TABLE_NAME;
         protected $primaryKey = 'id';
+        public $timestamps = false;
         
         protected $fillable = 
         [
