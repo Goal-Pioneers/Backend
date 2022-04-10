@@ -16,23 +16,30 @@
 
         public const DB_TABLE_NAME = 'account_activity_visits';
         
+        protected $table = self::DB_TABLE_NAME;
         protected $primaryKey = 'id';
 
-        protected $fillable =
+
+        protected $fillable = 
         [
-            'content'
+            'account_id',
+            'status_id',
+            'ip_address_id',
+            'ip_address_type_id',
+            'request',
+            'authenticated_at'
         ];
 
 
-        protected $hidden =
+        protected $hidden = 
         [
-
+            
         ];
 
 
-        protected $casts =
+        protected $casts = 
         [
-
+            'authenticated_at' => 'datetime'
         ];
     }
 

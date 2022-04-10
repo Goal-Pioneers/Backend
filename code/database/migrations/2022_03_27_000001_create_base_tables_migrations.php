@@ -183,19 +183,25 @@
 
                     $table->bigInteger( 'account_id' )
                           ->unsigned()
-                          ->comment('');
+                          ->comment('')
+                          ->index();
+
 
                     $table->bigInteger( 'status_id' )
                           ->unsigned()
                           ->comment('');
 
-                    $table->bigInteger( 'address_id' )
-                          ->unsigned()
-                          ->comment('');
 
-                    $table->bigInteger( 'address_type_id' )
+                    $table->bigInteger( 'ip_address_id' )
                           ->unsigned()
-                          ->comment('');
+                          ->comment('')
+                          ->index();
+
+
+                    $table->bigInteger( 'ip_address_type_id' )
+                          ->unsigned()
+                          ->comment('')
+                          ->index();
 
                     $table->json( 'request' )
                           ->comment('');
@@ -213,11 +219,11 @@
                           ->references( 'id' )
                           ->on( LabelAccountActivityStatusModel::DB_TABLE_NAME );
 
-                    $table->foreign( 'address_type_id' )
+                    $table->foreign( 'ip_address_type_id' )
                           ->references( 'id' )
                           ->on( TypeIPAddressModel::DB_TABLE_NAME );
 
-                    $table->foreign( 'address_id' )
+                    $table->foreign( 'ip_address_id' )
                           ->references( 'id' )
                           ->on( LabelIPAddressModel::DB_TABLE_NAME );
                 }

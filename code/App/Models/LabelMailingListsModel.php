@@ -5,6 +5,7 @@
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
+    
     /**
      * 
      */
@@ -19,9 +20,7 @@
         public $timestamps = false;
         
         protected $primaryKey = 'id';
-
         
-
         
         protected $fillable = 
         [
