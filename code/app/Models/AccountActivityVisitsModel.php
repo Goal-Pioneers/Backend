@@ -18,12 +18,13 @@
         
         protected $table = self::DB_TABLE_NAME;
         protected $primaryKey = 'id';
+        public $timestamps = false;
 
 
         protected $fillable = 
         [
             'account_id',
-            'status_id',
+            'label_account_activity_status_id',
             'ip_address_id',
             'ip_address_type_id',
             'request',

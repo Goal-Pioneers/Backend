@@ -187,7 +187,7 @@
                           ->index();
 
 
-                    $table->bigInteger( 'status_id' )
+                    $table->bigInteger( 'label_account_activity_status_id' )
                           ->unsigned()
                           ->comment('');
 
@@ -215,7 +215,7 @@
                           ->references( 'id' )
                           ->on( AccountModel::DB_TABLE_NAME );
 
-                    $table->foreign( 'status_id' )
+                    $table->foreign( 'label_account_activity_status_id' )
                           ->references( 'id' )
                           ->on( LabelAccountActivityStatusModel::DB_TABLE_NAME );
 

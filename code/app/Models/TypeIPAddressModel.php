@@ -18,6 +18,7 @@
 
         protected $table = self::DB_TABLE_NAME;
         protected $primaryKey = 'id';
+        public $timestamps = false;
 
         protected $fillable =
         [
