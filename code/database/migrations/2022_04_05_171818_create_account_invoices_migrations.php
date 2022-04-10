@@ -4,7 +4,9 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    
+    /**
+     * 
+     */
     return new class extends Migration
     {
       // Code Preperation
@@ -17,10 +19,14 @@
       const DB_TABLE_NAME_ACCOUNT_INVOICES = 'account_invoices';
       const DB_TABLE_NAME_ACCOUNT_CURRENCY = 'currencies';
 
-        
+      /**
+       * 
+       */
       public function up()
         {
-            //
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_ACCOUNT_INVOICES_STATE, 
                 function ( Blueprint $table ) 
@@ -36,6 +42,9 @@
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_ACCOUNT_CURRENCY, 
                 function ( Blueprint $table ) 
@@ -59,6 +68,9 @@
             );
 
 
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                     ->create( self::DB_TABLE_NAME_ACCOUNT_INVOICES, 
                     function ( Blueprint $table ) 
@@ -102,7 +114,9 @@
         }
 
 
-        
+        /**
+         * 
+         */
         public function down()
         {
             //
