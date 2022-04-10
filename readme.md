@@ -8,6 +8,7 @@ Domain Area:
   * forgot username
   * forgot password
   * login
+  * newsletter 
 
 * Invoices
 
