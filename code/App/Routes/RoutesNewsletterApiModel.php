@@ -1,5 +1,5 @@
 <?php
-    namespace App\Models\Routes;
+    namespace App\Routes;
 
     use App\Http\Controllers\SubscriptionController;
     use App\Http\Controllers\SubscriptionCategoryController;
