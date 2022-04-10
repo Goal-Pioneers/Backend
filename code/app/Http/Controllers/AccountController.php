@@ -114,7 +114,7 @@
         final public function loginWithMail( Request $request )
         {
             
-            return response()->json($outputMessage, 200);
+            return response()->json('ready', 200);
         }
 
 
@@ -124,7 +124,7 @@
         final public function forgotPassword( Request $request )
         {
             
-            return response()->json($outputMessage, 200);
+            return response()->json('', 200);
         }
 
 
@@ -132,7 +132,7 @@
         {
 
             
-            return response()->json($outputMessage, 200);
+            return response()->json('ready', 200);
         }
 
     }
