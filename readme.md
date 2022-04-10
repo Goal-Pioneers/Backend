@@ -7,14 +7,20 @@ Domain Area:
 * Send Mail
   * forgot username
   * forgot password
+  
   * login
-  * newsletter 
+
+  * newsletters
+    * Subscripe
+    * Unsubscripe
 
 * Invoices
 
 * Support Ticket
   * Topics | Subject | Content | Additional Attachements
   * Open & tickets
+
+* GDPR
 
 
 ## Backend
