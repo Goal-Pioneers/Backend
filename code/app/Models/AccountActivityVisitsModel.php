@@ -1,16 +1,47 @@
 <?php
 
-namespace App\Models;
+    namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\Factories\HasFactory;
+    use Illuminate\Database\Eloquent\Model;
 
-class AccountActivityVisitsModel
-    extends Model
-{
-    use HasFactory;
 
-    public const DB_TABLE_NAME = 'account_activity_visits';
-}
+    /**
+     * 
+     */
+    class AccountActivityVisitsModel
+        extends Model
+    {
+        use HasFactory;
+
+        public const DB_TABLE_NAME = 'account_activity_visits';
+        
+        protected $table = self::DB_TABLE_NAME;
+        protected $primaryKey = 'id';
+        public $timestamps = false;
+
+
+        protected $fillable = 
+        [
+            'account_id',
+            'label_account_activity_status_id',
+            'ip_address_id',
+            'ip_address_type_id',
+            'request',
+            'authenticated_at'
+        ];
+
+
+        protected $hidden = 
+        [
+            
+        ];
+
+
+        protected $casts = 
+        [
+            'authenticated_at' => 'datetime'
+        ];
+    }
 
 ?>

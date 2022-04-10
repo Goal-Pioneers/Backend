@@ -4,6 +4,7 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+    use App\Models\LabelMailingListsModel;
 
     // Code function
     /**
@@ -17,10 +18,12 @@
         const DB_ENGINE_DEFAULT = 'InnoDB';
 
             // Table Names
-        const DB_TABLE_NAME_MAILING_LIST = 'mailing_lists';
+        const DB_TABLE_NAME_MAILING_LIST = LabelMailingListsModel::DB_TABLE_NAME;
 
 
-        
+        /**
+         * 
+         */
         public function up()
         {
             //
@@ -42,7 +45,9 @@
         }
         
 
-        
+        /**
+         * 
+         */
         public function down()
         {
             //

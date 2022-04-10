@@ -4,6 +4,10 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
+    use App\Models\LabelAddressApartmentsModel;
+    use App\Models\LabelAddressRoadnamesModel;
+    use App\Models\LabelAddressRegionsModel;
+
 
     // Code function
     /**
@@ -21,10 +25,14 @@
         const DB_TABLE_NAME_POST_FIELD        = 'entities_post_field';
 
 
-        
+        /**
+         * 
+         */
         public function up()
         {
-            //
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_POST_FIELD, 
                 function ( Blueprint $table ) 
@@ -44,12 +52,14 @@
 
                     $table->foreign( 'region_id' )
                           ->references( 'id' )
-                          ->on( 'label_address_region' );
+                          ->on( LabelAddressRegionsModel::DB_TABLE_NAME );
                 }
             );
 
 
-            //
+            /**
+             * 
+             */
             Schema::connection( self::DB_CONNECTOR )
                 ->create( self::DB_TABLE_NAME_ADDRESS_FIELD, 
                 function ( Blueprint $table ) 
@@ -77,18 +87,20 @@
 
                     $table->foreign( 'roadname_id' )
                           ->references( 'id')
-                          ->on( 'label_address_roadname' );
+                          ->on( LabelAddressRoadnamesModel::DB_TABLE_NAME );
 
                     $table->foreign( 'apartment_id' )
                           ->references( 'id' )
-                          ->on( 'label_address_apartment' );
+                          ->on( LabelAddressApartmentsModel::DB_TABLE_NAME );
                 }
             );
         }
 
 
 
-        
+        /**
+         * 
+         */
         public function down()
         {
             //
