@@ -141,13 +141,9 @@
             $inp[ 'token' ] = $token;
             $inp[ 'uuid' ] = $uuid;
             
-<<<<<<< HEAD
-            return response()->json('', 200);
-=======
             PasswordResetsModel::create( $inp );
         
             return response()->json( 'successfull', 200 );
->>>>>>> a6b69a7e25277e285f2aeb8182543c22083a9b40
         }
 
 

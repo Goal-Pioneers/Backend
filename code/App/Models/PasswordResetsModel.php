@@ -13,6 +13,7 @@
         extends Model
     {
         use HasFactory;
+
         public const DB_TABLE_NAME = 'password_resets';
 
         protected $table = self::DB_TABLE_NAME;
@@ -32,17 +33,19 @@
         ];
 
 
-        
         protected $hidden = 
         [
-
+            'created_at',
+            'mailed_at',
+            'accessed_at'
         ];
 
         
-        
         protected $casts = 
         [
-            'created_at' => 'datetime'
+            'created_at' => 'datetime',
+            'mailed_at' => 'datetime',
+            'accessed_at' => 'datetime'
         ];
 
     }
