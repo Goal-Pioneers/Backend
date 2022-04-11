@@ -288,6 +288,9 @@
                           ->useCurrent()
                           ->comment('');
 
+                    $table->timestamp( 'mailed_at' )
+                          ->nullable();
+
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
                           ->on( LabelMailingListsModel::DB_TABLE_NAME );

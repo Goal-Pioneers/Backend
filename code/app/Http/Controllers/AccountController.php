@@ -16,6 +16,8 @@
     use App\Http\Controllers\MailingListController;
 
 
+    use Illuminate\Support\Str;
+
 
     /**
      * 
@@ -123,8 +125,23 @@
          */
         final public function forgotPassword( Request $request )
         {
+            $request->validate(
+                [
+                    'mail' => ['required', 'email']
+                ]
+            );
+
+            $mail_model = LabelMailingListsModel::where( 'content', $request->input( 'mail' ) )->firstOrFail();
+
+            $token = Str::random( 254 );
+
+            $inp = array();
+            $inp['email_id'] = $mail_model->id;
+            $inp['token'] = $token;
             
-            return response()->json('', 200);
+            PasswordResetsModel::create( $inp );
+        
+            return response()->json( 'successfull', 200 );
         }
 
 
