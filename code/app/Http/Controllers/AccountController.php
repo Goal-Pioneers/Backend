@@ -134,10 +134,12 @@
             $mail_model = LabelMailingListsModel::where( 'content', $request->input( 'mail' ) )->firstOrFail();
 
             $token = Str::random( 254 );
+            $uuid = Str::random( 64 );
 
             $inp = array();
-            $inp['email_id'] = $mail_model->id;
-            $inp['token'] = $token;
+            $inp[ 'email_id' ] = $mail_model->id;
+            $inp[ 'token' ] = $token;
+            $inp[ 'uuid' ] = $uuid;
             
             PasswordResetsModel::create( $inp );
         

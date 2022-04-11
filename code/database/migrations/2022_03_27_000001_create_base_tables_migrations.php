@@ -283,13 +283,22 @@
                     $table->string( 'token' )
                           ->comment('');
 
+                    $table->string( 'uuid', 64 )
+                          ->comment('')
+                          ->index();
+
                     $table->timestamp( 'created_at' )
                           ->nullable()
                           ->useCurrent()
-                          ->comment('');
+                          ->comment( '' );
 
                     $table->timestamp( 'mailed_at' )
-                          ->nullable();
+                          ->nullable()
+                          ->comment( '' );
+                  
+                    $table->timestamp( 'accessed_at' )
+                          ->nullable()
+                          ->comment( '' );
 
                     $table->foreign( 'email_id' )
                           ->references( 'id' )
