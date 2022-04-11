@@ -25,7 +25,10 @@
         [
             'email_id',
             'token',
-            'created_at'
+            'created_at',
+            'uuid',
+            'mailed_at',
+            'accessed_at'
         ];
 
 

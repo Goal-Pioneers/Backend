@@ -16,6 +16,8 @@
     use App\Http\Controllers\MailingListController;
 
 
+    use Illuminate\Support\Str;
+
 
     /**
      * 
@@ -114,7 +116,7 @@
         final public function loginWithMail( Request $request )
         {
             
-            return response()->json($outputMessage, 200);
+            return response()->json('ready', 200);
         }
 
 
@@ -123,8 +125,25 @@
          */
         final public function forgotPassword( Request $request )
         {
+            $request->validate(
+                [
+                    'mail' => ['required', 'email']
+                ]
+            );
+
+            $mail_model = LabelMailingListsModel::where( 'content', $request->input( 'mail' ) )->firstOrFail();
+
+            $token = Str::random( 254 );
+            $uuid = Str::random( 64 );
+
+            $inp = array();
+            $inp[ 'email_id' ] = $mail_model->id;
+            $inp[ 'token' ] = $token;
+            $inp[ 'uuid' ] = $uuid;
             
-            return response()->json($outputMessage, 200);
+            PasswordResetsModel::create( $inp );
+        
+            return response()->json( 'successfull', 200 );
         }
 
 
@@ -132,7 +151,7 @@
         {
 
             
-            return response()->json($outputMessage, 200);
+            return response()->json('ready', 200);
         }
 
     }
