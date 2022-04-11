@@ -3,9 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Models\Routes\RoutesAccountAPIModel;
-use App\Models\Routes\RoutesNewsletterApiModel;
-use App\Models\Routes\RoutesMailingListApiModel;
+use App\Routes\RoutesAccountAPIModel;
+use App\Routes\RoutesNewsletterApiModel;
+use App\Routes\RoutesMailingListApiModel;
 
 
 define( 'VERSION_1_0_0_SLUG', '1.0.0' );

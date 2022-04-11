@@ -1,5 +1,5 @@
 <?php
-    namespace App\Models\Routes;
+    namespace App\Routes;
 
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Route;
