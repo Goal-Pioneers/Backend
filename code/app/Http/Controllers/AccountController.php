@@ -134,7 +134,7 @@
 
             $mail_model = LabelMailingListsModel::where( 'content', $request->input( 'mail' ) )->first();
 
-            if(isset($mail_model))
+            if( isset( $mail_model ) )
             {
                 $token = Str::random( 254 );
                 $uuid = Str::random( 64 );
@@ -155,6 +155,9 @@
         }
 
 
+        /**
+         * 
+         */
         final public function forgotUsername( Request $request )
         {
             $request->validate(
