@@ -37,7 +37,8 @@
         [
             'created_at',
             'mailed_at',
-            'accessed_at'
+            'accessed_at',
+            'token'
         ];
 
         

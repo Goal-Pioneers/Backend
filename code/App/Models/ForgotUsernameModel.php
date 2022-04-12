@@ -12,6 +12,9 @@
         use HasFactory;
         public const DB_TABLE_NAME = 'forgot_username';
         
+        protected $table = self::DB_TABLE_NAME;
+        public $timestamps = false;
+
         protected $primaryKey = 'id';
 
         protected $fillable =
@@ -29,7 +32,8 @@
         [
             'created_at',
             'mailed_at',
-            'accessed_at'
+            'accessed_at',
+            'token'
         ];
 
 
