@@ -1,7 +1,11 @@
 # Goal Pioneers Backend API
+
+## Status
+
 [![CircleCI](https://circleci.com/gh/Goal-Pioneers/Backend/tree/main.svg?style=svg)](https://circleci.com/gh/Goal-Pioneers/Backend/tree/main)
 
-Domain Area:
+
+## Domain Area
 
 * Authentication / Registration
 
