@@ -5,6 +5,8 @@
     use Illuminate\Database\Console\Seeds\WithoutModelEvents;
     use Illuminate\Database\Seeder;
 
+    use Database\Seeders\CurrencySeeder;
+
     class DatabaseSeeder
         extends Seeder
     {
@@ -16,6 +18,9 @@
         public function run()
         {
             // \App\Models\User::factory(10)->create();
+            $currency = new CurrencySeeder();
+            $currency->run();
+            
         }
     }
 
