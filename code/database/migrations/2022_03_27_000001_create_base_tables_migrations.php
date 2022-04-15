@@ -19,7 +19,7 @@
     use App\Models\AccountActivityVisitsModel;
     use App\Models\AccountVerifiedAtModel;
     use App\Models\LabelMailingListsModel;
-
+    use App\Models\ForgotUsernameModel;
 
     // Code function
     /**
@@ -43,6 +43,8 @@
 
         const DB_TABLE_NAME_IP_ADDRESS_TYPE     = TypeIPAddressModel::DB_TABLE_NAME;
         const DB_TABLE_NAME_IP_ADDRESS_LABEL    = LabelIPAddressModel::DB_TABLE_NAME;
+
+        const DB_TABLE_NAME_FORGOT = ForgotUsernameModel::DB_TABLE_NAME;
 
 
         /**
@@ -269,6 +271,49 @@
              */
             Schema::connection( self::DB_CONNECTOR )
                   ->create( self::DB_TABLE_NAME_PASSWORD_RESET,
+                function ( Blueprint $table )
+                {
+                    $table->engine = self::DB_ENGINE_DEFAULT;
+
+                    $table->id();
+
+                    $table->bigInteger( 'email_id' )
+                          ->unsigned()
+                          ->index()
+                          ->comment('');
+
+                    $table->string( 'token' )
+                          ->comment('');
+
+                    $table->string( 'uuid', 64 )
+                          ->comment('')
+                          ->index();
+
+                    $table->timestamp( 'created_at' )
+                          ->nullable()
+                          ->useCurrent()
+                          ->comment( '' );
+
+                    $table->timestamp( 'mailed_at' )
+                          ->nullable()
+                          ->comment( '' );
+                  
+                    $table->timestamp( 'accessed_at' )
+                          ->nullable()
+                          ->comment( '' );
+
+                    $table->foreign( 'email_id' )
+                          ->references( 'id' )
+                          ->on( LabelMailingListsModel::DB_TABLE_NAME );
+                }
+            );
+
+
+            /**
+             * 
+             */
+            Schema::connection( self::DB_CONNECTOR )
+                  ->create( self::DB_TABLE_NAME_FORGOT,
                 function ( Blueprint $table )
                 {
                     $table->engine = self::DB_ENGINE_DEFAULT;

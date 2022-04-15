@@ -6,23 +6,18 @@
     use Illuminate\Database\Eloquent\Model;
 
 
-    /**
-     * 
-     */
-    class PasswordResetsModel 
+    class ForgotUsernameModel 
         extends Model
     {
         use HasFactory;
-
-        public const DB_TABLE_NAME = 'password_resets';
-
+        public const DB_TABLE_NAME = 'forgot_username';
+        
         protected $table = self::DB_TABLE_NAME;
         public $timestamps = false;
-        
+
         protected $primaryKey = 'id';
 
-        
-        protected $fillable = 
+        protected $fillable =
         [
             'email_id',
             'token',
@@ -33,7 +28,7 @@
         ];
 
 
-        protected $hidden = 
+        protected $hidden =
         [
             'created_at',
             'mailed_at',
@@ -41,8 +36,8 @@
             'token'
         ];
 
-        
-        protected $casts = 
+
+        protected $casts =
         [
             'created_at' => 'datetime',
             'mailed_at' => 'datetime',

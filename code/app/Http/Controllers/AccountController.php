@@ -12,6 +12,7 @@
     use App\Models\AccountModel;
     use App\Models\LabelMailingListsModel;
     use App\Models\PasswordResetsModel;
+    use App\Models\ForgotUsernameModel;
 
     use App\Http\Controllers\MailingListController;
 
@@ -131,31 +132,62 @@
                 ]
             );
 
-            $mail_model = LabelMailingListsModel::where( 'content', $request->input( 'mail' ) )->firstOrFail();
+            $mail_model = LabelMailingListsModel::where( 'content', $request->input( 'mail' ) )->first();
 
-            $token = Str::random( 254 );
-            $uuid = Str::random( 64 );
+            if( isset( $mail_model ) )
+            {
+                $token = Str::random( 254 );
+                $uuid = Str::random( 64 );
 
-            $inp = array();
-            $inp[ 'email_id' ] = $mail_model->id;
-            $inp[ 'token' ] = $token;
-            $inp[ 'uuid' ] = $uuid;
+                $inp = array();
+                $inp[ 'email_id' ] = $mail_model->id;
+                $inp[ 'token' ] = $token;
+                $inp[ 'uuid' ] = $uuid;
+                
+                PasswordResetsModel::create( $inp );
             
-<<<<<<< HEAD
-            return response()->json('', 200);
-=======
-            PasswordResetsModel::create( $inp );
-        
-            return response()->json( 'successfull', 200 );
->>>>>>> a6b69a7e25277e285f2aeb8182543c22083a9b40
+                return response()->json( 'successfull', 200 );
+            }
+            else 
+            {
+                return response()->json('mail not found', 400);
+            }
         }
 
 
+        /**
+         * 
+         */
         final public function forgotUsername( Request $request )
         {
+            $request->validate(
+                [
+                    'mail' => ['required', 'email']
+                ]
+            );
+
+            $mail_model = LabelMailingListsModel::where( 'content', $request->input( 'mail' ) )->first();
 
             
-            return response()->json('ready', 200);
+            if( isset( $mail_model ) )
+            {
+                $token = Str::random( 254 );
+                $uuid = Str::random( 64 );
+
+                $inp = array();
+                $inp[ 'email_id' ] = $mail_model->id;
+                $inp[ 'token' ] = $token;
+                $inp[ 'uuid' ] = $uuid;
+
+                ForgotUsernameModel::create( $inp );
+
+                return response()->json('ready', 200);
+            }
+            else 
+            {
+                // Error
+                return response()->json('mail not found', 200);
+            }
         }
 
     }
