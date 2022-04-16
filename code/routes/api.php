@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Routes\RoutesAccountAPIModel;
 use App\Routes\RoutesNewsletterApiModel;
 use App\Routes\RoutesMailingListApiModel;
+use App\Routes\RoutesLabelAPI;
 
 
 define( 'VERSION_1_0_0_SLUG', '1.0.0' );
@@ -31,6 +32,7 @@ Route::middleware( PROTECTED_AUTH )
                 {
                     RoutesNewsletterApiModel::register();
                     RoutesMailingListApiModel::register();
+                    RoutesLabelAPI::register();
                 }
             );
         }
