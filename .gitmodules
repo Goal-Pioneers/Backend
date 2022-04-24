@@ -4,3 +4,6 @@
 [submodule "modules/Recommendation-Engine"]
 	path = modules/Recommendation-Engine
 	url = https://github.com/Goal-Pioneers/Recommendation-Engine.git
+[submodule "modules/ironjs"]
+	path = modules/ironjs
+	url = https://github.com/Goal-Pioneers/Iron.JS.git
