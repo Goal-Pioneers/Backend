@@ -1,0 +1,6 @@
+[submodule "modules/Frontend"]
+	path = modules/Frontend
+	url = https://github.com/Goal-Pioneers/Frontend.git
+[submodule "modules/Recommendation-Engine"]
+	path = modules/Recommendation-Engine
+	url = https://github.com/Goal-Pioneers/Recommendation-Engine.git
